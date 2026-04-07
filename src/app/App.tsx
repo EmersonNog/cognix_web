@@ -1,7 +1,7 @@
-import { AppRouter } from '@/app/router/AppRouter'
+import { HomePageView } from '@/pages/home/view/HomePageView'
 
 function App() {
-  return <AppRouter />
+  return <HomePageView />
 }
 
 export default App
