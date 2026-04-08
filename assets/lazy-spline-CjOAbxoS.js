@@ -1,2 +1,0 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/react-spline-CScEgGRR.js","assets/chunk-DHx0Hwia.js","assets/index-DBWdN5BD.js","assets/index-CkBl4JRc.css"])))=>i.map(i=>d[i]);
-import{i as e,n as t,t as n}from"./index-DBWdN5BD.js";var r=e(),i=t(),a=(0,r.lazy)(async()=>({default:(await n(()=>import(`./react-spline-CScEgGRR.js`),__vite__mapDeps([0,1,2,3]))).default}));function o(e){return(0,i.jsx)(r.Suspense,{fallback:null,children:(0,i.jsx)(a,{...e})})}export{o as t};
