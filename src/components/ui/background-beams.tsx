@@ -66,6 +66,30 @@ const desktopBeamDefinitions: BeamDefinition[] = [
     delay: -3.4,
     width: 1.1,
   },
+  {
+    d: 'M-240 176C-42 108 132 102 292 166C452 230 610 346 822 336C1034 326 1218 204 1516 230',
+    duration: 21,
+    delay: -15.2,
+    width: 1.25,
+  },
+  {
+    d: 'M-160 560C30 494 202 462 390 520C578 578 754 704 964 694C1174 684 1348 564 1564 506',
+    duration: 23,
+    delay: -6.7,
+    width: 1.45,
+  },
+  {
+    d: 'M40 790C238 666 430 626 592 670C754 714 904 822 1120 804C1336 786 1458 680 1548 644',
+    duration: 18,
+    delay: -9.8,
+    width: 1.35,
+  },
+  {
+    d: 'M356 -82C500 72 610 214 726 318C842 422 980 472 1138 428C1296 384 1416 258 1510 152',
+    duration: 20,
+    delay: -12.8,
+    width: 1.15,
+  },
 ]
 
 const mobileBeamDefinitions: BeamDefinition[] = [
@@ -98,6 +122,24 @@ const mobileBeamDefinitions: BeamDefinition[] = [
     duration: 18,
     delay: -12.2,
     width: 1.4,
+  },
+  {
+    d: 'M360 32C306 118 270 214 256 326C242 438 242 552 220 676C198 800 156 918 96 1022',
+    duration: 20,
+    delay: -14.1,
+    width: 1.22,
+  },
+  {
+    d: 'M-114 192C-14 194 84 240 160 326C236 412 290 514 372 626C454 738 534 826 626 902',
+    duration: 17,
+    delay: -9.6,
+    width: 1.3,
+  },
+  {
+    d: 'M438 226C356 260 294 340 254 448C214 556 196 676 144 792C92 908 20 1000 -76 1088',
+    duration: 19,
+    delay: -5.3,
+    width: 1.18,
   },
 ]
 
@@ -142,11 +184,7 @@ function BeamCanvas({
 
         return (
           <g key={`${idPrefix}-${beam.duration}-${index}`}>
-            <path
-              className="cognix-beam-line"
-              d={beam.d}
-              pathLength={100}
-            />
+            <path className="cognix-beam-line" d={beam.d} pathLength={100} />
             <path
               className="cognix-beam-glow"
               d={beam.d}
@@ -172,15 +210,15 @@ export function BackgroundBeams({ className }: BackgroundBeamsProps) {
   return (
     <div
       aria-hidden="true"
-      className={cn(
-        'pointer-events-none absolute inset-0 overflow-hidden',
-        className,
-      )}
+      className={cn('pointer-events-none absolute inset-0 overflow-hidden', className)}
     >
       <div className="absolute inset-x-[8%] top-[10%] h-32 rounded-full bg-[radial-gradient(circle,rgba(163,166,255,0.22)_0%,rgba(163,166,255,0)_72%)] blur-3xl sm:hidden" />
+      <div className="absolute inset-x-[18%] top-[38%] h-28 rounded-full bg-[radial-gradient(circle,rgba(143,212,255,0.18)_0%,rgba(143,212,255,0)_72%)] blur-3xl sm:hidden" />
       <div className="absolute inset-x-[14%] bottom-[18%] h-40 rounded-full bg-[radial-gradient(circle,rgba(96,99,238,0.18)_0%,rgba(96,99,238,0)_72%)] blur-3xl sm:hidden" />
       <div className="absolute inset-x-[12%] top-[12%] hidden h-44 rounded-full bg-[radial-gradient(circle,rgba(163,166,255,0.2)_0%,rgba(163,166,255,0)_72%)] blur-3xl sm:block" />
+      <div className="absolute inset-x-[24%] top-[36%] hidden h-44 rounded-full bg-[radial-gradient(circle,rgba(143,212,255,0.14)_0%,rgba(143,212,255,0)_72%)] blur-3xl sm:block" />
       <div className="absolute inset-x-[18%] bottom-[16%] hidden h-56 rounded-full bg-[radial-gradient(circle,rgba(96,99,238,0.18)_0%,rgba(96,99,238,0)_72%)] blur-3xl sm:block" />
+      <div className="absolute inset-x-[32%] bottom-[28%] hidden h-44 rounded-full bg-[radial-gradient(circle,rgba(163,166,255,0.12)_0%,rgba(163,166,255,0)_72%)] blur-3xl sm:block" />
 
       <BeamCanvas
         beamDefinitions={mobileBeamDefinitions}
