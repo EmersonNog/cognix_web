@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -19,20 +18,20 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: var(--cognix-bg);
+  --foreground: var(--cognix-text);
+  --card: #101a31;
+  --card-foreground: var(--cognix-text-strong);
+  --popover: #101a31;
+  --popover-foreground: var(--cognix-text-strong);
+  --primary: var(--cognix-accent);
+  --primary-foreground: #060e20;
+  --secondary: #0f1730;
+  --secondary-foreground: var(--cognix-text);
+  --muted: #101a31;
+  --muted-foreground: var(--cognix-muted);
+  --accent: #131d37;
+  --accent-foreground: var(--cognix-text-strong);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -90,12 +89,54 @@ body {
   inset: 0;
 }
 
+.cognix-spline-touch,
+.cognix-spline-touch > div,
+.cognix-spline-touch canvas {
+  touch-action: none !important;
+}
+
 .cognix-noise {
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.08) 0.6px, transparent 0.6px),
     radial-gradient(rgba(255, 255, 255, 0.035) 0.6px, transparent 0.6px);
   background-position: 0 0, 12px 12px;
   background-size: 24px 24px;
+}
+
+.cognix-beam-line,
+.cognix-beam-core,
+.cognix-beam-glow {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.cognix-beam-line {
+  stroke: rgba(163, 166, 255, 0.1);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.cognix-beam-core,
+.cognix-beam-glow {
+  stroke: var(--beam-gradient, none);
+  stroke-dasharray: 16 84;
+  stroke-dashoffset: 100;
+  animation-name: cognix-beam-flow, cognix-beam-pulse;
+  animation-duration: var(--beam-duration, 18s), 7.2s;
+  animation-delay: var(--beam-delay, 0s), 0s;
+  animation-iteration-count: infinite, infinite;
+  animation-timing-function: linear, ease-in-out;
+}
+
+.cognix-beam-core {
+  stroke-width: var(--beam-width, 1.4);
+  opacity: 0.9;
+}
+
+.cognix-beam-glow {
+  stroke-width: calc(var(--beam-width, 1.4) * 3.2);
+  opacity: 0.42;
+  filter: var(--beam-filter, none);
 }
 
 ::selection {
@@ -135,6 +176,27 @@ body {
   }
 }
 
+@keyframes cognix-beam-flow {
+  from {
+    stroke-dashoffset: 100;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cognix-beam-pulse {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cognix-reveal,
   .cognix-reveal-delay {
@@ -142,11 +204,18 @@ body {
     transform: none;
     animation: none;
   }
+
+  .cognix-beam-core,
+  .cognix-beam-glow {
+    animation: none;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
 }
 
 @theme inline {
-  --font-heading: var(--font-sans);
-  --font-sans: 'Geist Variable', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-sans: 'IBM Plex Sans', sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
