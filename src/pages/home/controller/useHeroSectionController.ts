@@ -7,7 +7,9 @@ function clamp(value: number, min: number, max: number) {
 }
 
 function getFrameSource(frameDirectory: string, frameNumber: number) {
-  return `${frameDirectory}/frame_${String(frameNumber).padStart(4, '0')}.jpg`
+  const normalizedBaseUrl = import.meta.env.BASE_URL.replace(/\/+$/, '')
+  const normalizedDirectory = frameDirectory.replace(/^\/+|\/+$/g, '')
+  return `${normalizedBaseUrl}/${normalizedDirectory}/frame_${String(frameNumber).padStart(4, '0')}.jpg`
 }
 
 export type HeroSectionControllerState = {
