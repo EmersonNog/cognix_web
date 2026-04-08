@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 
-export function useInViewOnce<T extends HTMLElement>(threshold = 0.35) {
+export function useInViewOnce<T extends HTMLElement>(
+  threshold = 0.35,
+  rootMargin = '0px',
+) {
   const [node, setNode] = useState<T | null>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -16,7 +19,7 @@ export function useInViewOnce<T extends HTMLElement>(threshold = 0.35) {
           observer.disconnect()
         }
       },
-      { threshold },
+      { rootMargin, threshold },
     )
 
     observer.observe(node)
@@ -24,12 +27,15 @@ export function useInViewOnce<T extends HTMLElement>(threshold = 0.35) {
     return () => {
       observer.disconnect()
     }
-  }, [isVisible, node, threshold])
+  }, [isVisible, node, rootMargin, threshold])
 
   return [setNode, isVisible] as const
 }
 
-export function useInViewState<T extends HTMLElement>(threshold = 0.2) {
+export function useInViewState<T extends HTMLElement>(
+  threshold = 0.2,
+  rootMargin = '0px',
+) {
   const [node, setNode] = useState<T | null>(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -42,7 +48,7 @@ export function useInViewState<T extends HTMLElement>(threshold = 0.2) {
       ([entry]) => {
         setIsVisible(entry.isIntersecting)
       },
-      { threshold },
+      { rootMargin, threshold },
     )
 
     observer.observe(node)
@@ -50,7 +56,7 @@ export function useInViewState<T extends HTMLElement>(threshold = 0.2) {
     return () => {
       observer.disconnect()
     }
-  }, [node, threshold])
+  }, [node, rootMargin, threshold])
 
   return [setNode, isVisible] as const
 }

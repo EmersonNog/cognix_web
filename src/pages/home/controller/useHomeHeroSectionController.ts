@@ -10,11 +10,13 @@ export function useHomeHeroSectionController() {
   const heroSplineContainerRef = useRef<HTMLDivElement | null>(null)
   const [setHeroRevealRef, heroRevealVisible] =
     useInViewOnce<HTMLDivElement>(0.2)
-  const [setHeroSplineGateRef, heroSplineVisible] =
-    useInViewOnce<HTMLDivElement>(0.15)
+  const [setHeroSplineGateRef, heroSplineVisible] = useInViewState<HTMLDivElement>(
+    0.01,
+    '640px 0px 640px 0px',
+  )
   const [setHeroPlaybackRef, heroSplineInView] =
     useInViewState<HTMLDivElement>(0.18)
-  const shouldRenderHeroSpline = heroSplineVisible && heroSplineInView
+  const shouldRenderHeroSpline = heroSplineVisible
 
   const syncHeroSplineZoom = useCallback(() => {
     const splineApp = heroSplineAppRef.current
@@ -40,8 +42,12 @@ export function useHomeHeroSectionController() {
     (splineApp: Application) => {
       heroSplineAppRef.current = splineApp
       syncHeroSplineZoom()
+
+      if (!heroSplineInView) {
+        splineApp.stop()
+      }
     },
-    [syncHeroSplineZoom],
+    [heroSplineInView, syncHeroSplineZoom],
   )
 
   useEffect(() => {

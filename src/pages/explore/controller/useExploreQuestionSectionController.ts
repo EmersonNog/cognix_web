@@ -1,28 +1,48 @@
+import type { Application } from '@splinetool/runtime'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { QUESTION_SPLINE_SCENE } from '@/pages/explore/model/exploreQuestionSectionModel'
 
 import { useInViewOnce, useInViewState } from './explorePageViewport'
 
-export function useExploreQuestionSectionController() {
+type UseExploreQuestionSectionControllerOptions = {
+  forceRender?: boolean
+}
+
+export function useExploreQuestionSectionController({
+  forceRender = false,
+}: UseExploreQuestionSectionControllerOptions = {}) {
+  const questionSplineAppRef = useRef<Application | null>(null)
   const questionSplineContainerRef = useRef<HTMLDivElement | null>(null)
+  const [questionSplineLoadedState, setQuestionSplineLoadedState] =
+    useState(false)
   const [questionSplineVisibleState, setQuestionSplineVisibleState] =
     useState(false)
   const [setQuestionSectionRef, questionSectionVisible] =
     useInViewOnce<HTMLDivElement>(0.4)
   const [setQuestionSplineGateRef, questionSplineVisible] =
-    useInViewOnce<HTMLDivElement>(0.3)
+    useInViewState<HTMLDivElement>(0.01, '280px 0px 280px 0px')
   const [setQuestionSplinePlaybackRef, questionSplineInView] =
     useInViewState<HTMLDivElement>(0.2)
-  const shouldRenderQuestionSpline = questionSplineVisible && questionSplineInView
+  const shouldRenderQuestionSpline = questionSplineVisible || forceRender
 
-  const handleQuestionSplineLoad = useCallback(() => {
-    window.setTimeout(() => {
-      window.requestAnimationFrame(() => {
-        setQuestionSplineVisibleState(true)
-      })
-    }, 180)
-  }, [])
+  const handleQuestionSplineLoad = useCallback(
+    (splineApp: Application) => {
+      questionSplineAppRef.current = splineApp
+      setQuestionSplineLoadedState(true)
+
+      if (!questionSplineInView) {
+        splineApp.stop()
+      }
+
+      window.setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          setQuestionSplineVisibleState(true)
+        })
+      }, 180)
+    },
+    [questionSplineInView],
+  )
 
   useEffect(() => {
     const linkElements: HTMLLinkElement[] = []
@@ -64,10 +84,27 @@ export function useExploreQuestionSectionController() {
   }, [])
 
   useEffect(() => {
+    const splineApp = questionSplineAppRef.current
+
+    if (!splineApp) {
+      return
+    }
+
+    if (questionSplineInView) {
+      splineApp.play()
+      return
+    }
+
+    splineApp.stop()
+  }, [questionSplineInView])
+
+  useEffect(() => {
     if (shouldRenderQuestionSpline) {
       return
     }
 
+    questionSplineAppRef.current?.stop()
+    questionSplineAppRef.current = null
     setQuestionSplineVisibleState(false)
   }, [shouldRenderQuestionSpline])
 
@@ -111,10 +148,18 @@ export function useExploreQuestionSectionController() {
     }
   }, [])
 
+  useEffect(() => {
+    return () => {
+      questionSplineAppRef.current?.stop()
+      questionSplineAppRef.current = null
+    }
+  }, [])
+
   return {
     handleQuestionSplineLoad,
     questionSectionVisible,
     questionSplineContainerRef,
+    questionSplineLoadedState,
     questionSplineVisibleState,
     setQuestionSectionRef,
     setQuestionSplineGateRef,

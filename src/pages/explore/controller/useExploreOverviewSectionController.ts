@@ -6,28 +6,41 @@ import {
   OVERVIEW_SPLINE_SCENE,
 } from '@/pages/explore/model/exploreOverviewSectionModel'
 
-import { useInViewOnce, useInViewState } from './explorePageViewport'
+import { useInViewState } from './explorePageViewport'
 
-export function useExploreOverviewSectionController() {
+type UseExploreOverviewSectionControllerOptions = {
+  playbackEnabled?: boolean
+}
+
+export function useExploreOverviewSectionController({
+  playbackEnabled = true,
+}: UseExploreOverviewSectionControllerOptions = {}) {
   const overviewSplineAppRef = useRef<Application | null>(null)
   const overviewSplineContainerRef = useRef<HTMLDivElement | null>(null)
   const overviewControlsTimeoutRef = useRef<number | null>(null)
+  const [overviewSplineLoadedState, setOverviewSplineLoadedState] =
+    useState(false)
   const [overviewSplineVisibleState, setOverviewSplineVisibleState] =
     useState(false)
   const [overviewSplineControlsVisible, setOverviewSplineControlsVisible] =
     useState(false)
   const [overviewZoomLevel, setOverviewZoomLevel] = useState(1)
   const [setOverviewSplineGateRef, overviewSplineVisible] =
-    useInViewOnce<HTMLDivElement>(0.2)
+    useInViewState<HTMLDivElement>(0.01, '640px 0px 640px 0px')
   const [setOverviewSplinePlaybackRef, overviewSplineInView] =
     useInViewState<HTMLDivElement>(0.18)
-  const shouldRenderOverviewSpline = overviewSplineVisible && overviewSplineInView
+  const shouldRenderOverviewSpline = overviewSplineVisible
 
   const handleOverviewSplineLoad = useCallback(
     (splineApp: Application) => {
       overviewSplineAppRef.current = splineApp
       splineApp.setZoom(overviewZoomLevel)
       setOverviewSplineControlsVisible(false)
+      setOverviewSplineLoadedState(true)
+
+      if (!overviewSplineInView || !playbackEnabled) {
+        splineApp.stop()
+      }
 
       if (overviewControlsTimeoutRef.current !== null) {
         window.clearTimeout(overviewControlsTimeoutRef.current)
@@ -45,7 +58,7 @@ export function useExploreOverviewSectionController() {
         })
       }, OVERVIEW_SPLINE_CONTROLS_DELAY_MS)
     },
-    [overviewZoomLevel],
+    [overviewSplineInView, overviewZoomLevel, playbackEnabled],
   )
 
   const applyOverviewZoom = useCallback((nextZoom: number) => {
@@ -108,6 +121,21 @@ export function useExploreOverviewSectionController() {
   }, [])
 
   useEffect(() => {
+    const splineApp = overviewSplineAppRef.current
+
+    if (!splineApp) {
+      return
+    }
+
+    if (overviewSplineInView && playbackEnabled) {
+      splineApp.play()
+      return
+    }
+
+    splineApp.stop()
+  }, [overviewSplineInView, playbackEnabled])
+
+  useEffect(() => {
     if (shouldRenderOverviewSpline) {
       return
     }
@@ -119,6 +147,7 @@ export function useExploreOverviewSectionController() {
 
     overviewSplineAppRef.current?.stop()
     overviewSplineAppRef.current = null
+    setOverviewSplineLoadedState(false)
     setOverviewSplineVisibleState(false)
     setOverviewSplineControlsVisible(false)
   }, [shouldRenderOverviewSpline])
@@ -171,6 +200,7 @@ export function useExploreOverviewSectionController() {
 
       overviewSplineAppRef.current?.stop()
       overviewSplineAppRef.current = null
+      setOverviewSplineLoadedState(false)
     }
   }, [])
 
@@ -180,6 +210,7 @@ export function useExploreOverviewSectionController() {
     handleOverviewZoomOut,
     overviewSplineContainerRef,
     overviewSplineControlsVisible,
+    overviewSplineLoadedState,
     overviewSplineVisibleState,
     setOverviewSplineGateRef,
     setOverviewSplinePlaybackRef,

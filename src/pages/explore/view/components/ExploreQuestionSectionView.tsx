@@ -60,7 +60,10 @@ export function ExploreQuestionSectionView({
   shouldRenderQuestionSpline,
 }: ExploreQuestionSectionController) {
   return (
-    <section className="relative left-1/2 mt-14 flex w-screen -translate-x-1/2 items-start overflow-hidden bg-transparent px-5 py-6 sm:mt-16 sm:px-8 sm:py-10 lg:mt-20 lg:px-14 lg:py-12">
+    <section
+      className="relative left-1/2 mt-14 flex w-screen -translate-x-1/2 items-start overflow-hidden bg-transparent px-5 py-6 sm:mt-16 sm:px-8 sm:py-10 lg:mt-20 lg:px-14 lg:py-12"
+      style={{ containIntrinsicSize: '1100px', contentVisibility: 'auto' }}
+    >
       <div
         ref={setQuestionSectionRef}
         className="relative z-10 mx-auto grid w-full max-w-[1180px] gap-12 md:gap-12 lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-start lg:gap-10"

@@ -186,6 +186,24 @@ body {
   animation-delay: 130ms;
 }
 
+.cognix-loader-ring {
+  animation: cognix-loader-spin 7.2s linear infinite;
+}
+
+.cognix-loader-core {
+  box-shadow:
+    0 0 0 8px rgba(163, 166, 255, 0.08),
+    0 0 28px rgba(163, 166, 255, 0.28);
+}
+
+.cognix-loader-dot {
+  animation: cognix-loader-bounce 1s ease-in-out infinite;
+}
+
+.cognix-loader-scan {
+  animation: cognix-loader-scan 1.8s cubic-bezier(0.22, 0.8, 0.22, 1) infinite;
+}
+
 @keyframes cognix-rise {
   from {
     opacity: 0;
@@ -219,6 +237,49 @@ body {
   }
 }
 
+@keyframes cognix-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cognix-loader-bounce {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: translateY(0) scale(0.86);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+  }
+}
+
+@keyframes cognix-loader-scan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(320%);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cognix-route-shell {
     transition: none;
@@ -243,6 +304,12 @@ body {
     animation: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
+  }
+
+  .cognix-loader-ring,
+  .cognix-loader-dot,
+  .cognix-loader-scan {
+    animation: none;
   }
 }
 
