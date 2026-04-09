@@ -1,6 +1,6 @@
 import { startTransition, useState, type ReactNode } from 'react'
 
-import { BackgroundBeams } from '@/components/ui/background-beams'
+import { GridDotBackground } from '@/components/ui/grid-dot-background'
 import { cn } from '@/lib/utils'
 import type {
   OverviewSectionModel,
@@ -84,7 +84,7 @@ function SectionLabel({
   children: ReactNode
 }) {
   return (
-    <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#D8E0F2] bg-white/78 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-[#5D6D91] sm:text-[11px] sm:tracking-[0.28em]">
+    <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-[#B9C7E0] bg-[#EAF0FA]/96 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-[#40516F] sm:text-[11px] sm:tracking-[0.28em]">
       <Icon className="h-3.5 w-3.5 text-[#6063EE]" strokeWidth={2} />
       <span className="truncate">{children}</span>
     </div>
@@ -104,7 +104,7 @@ function CarouselNavButton({
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex h-6.5 w-6.5 items-center justify-center rounded-full border border-[#D8E0F2] bg-white/82 text-[#4F5D80] transition hover:border-[#A3A6FF]/40 hover:bg-[#EEF0FF] hover:text-[#303B5F] sm:h-9 sm:w-9"
+      className="inline-flex h-6.5 w-6.5 items-center justify-center rounded-full border border-[#B7C5DF] bg-[#EAF0FA]/96 text-[#364461] transition hover:border-[#8D98E0]/60 hover:bg-[#DDE6F8] hover:text-[#1F2B45] sm:h-9 sm:w-9"
       aria-label={direction === 'prev' ? 'Card anterior' : 'Proximo card'}
     >
       <Icon className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -149,7 +149,7 @@ function CompactFeatureCard({
   const tone = toneClasses(accent)
 
   return (
-    <div className={cn('rounded-[16px] border bg-white/78 px-3 py-3', tone.border)}>
+    <div className={cn('rounded-[16px] border bg-[#DCE5F2]/96 px-3 py-3', tone.border)}>
       <div className="flex items-center gap-2">
         <span className={cn('h-2 w-2 rounded-full', tone.strongBg)} />
         <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#6A789B]">
@@ -175,7 +175,7 @@ function PerformanceFeatureCard({
   return (
     <div
       className={cn(
-        'flex flex-col rounded-[18px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(248,251,255,0.84)_100%)] px-4 py-3.5',
+        'flex flex-col rounded-[18px] border bg-[linear-gradient(180deg,rgba(221,231,243,0.98)_0%,rgba(211,223,239,0.96)_100%)] px-4 py-3.5',
         tone.border,
       )}
     >
@@ -237,7 +237,7 @@ function MiniArea({
   const tone = toneClasses(accent)
 
   return (
-    <div className={cn('rounded-[16px] border bg-white/78 px-3 py-3', tone.border)}>
+    <div className={cn('rounded-[16px] border bg-[#DCE5F2]/96 px-3 py-3', tone.border)}>
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold leading-5 text-[#16233F]">{title}</p>
         <span className={cn('h-2.5 w-2.5 rounded-full', trainingStatusDot(status))} />
@@ -256,9 +256,9 @@ function CarouselStageCard({
   const Icon = card.icon
 
   return (
-    <article className="relative mx-auto w-full min-w-0 max-w-[24rem] overflow-hidden rounded-[24px] border border-[#D6DFF1] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(247,250,255,0.92)_100%)] p-3.5 backdrop-blur-xl min-h-[17.5rem] sm:rounded-[26px] sm:p-4 sm:min-h-[18.75rem]">
+    <article className="relative mx-auto w-full min-w-0 max-w-[24rem] overflow-hidden rounded-[24px] border border-[#BCCBE1] bg-[linear-gradient(180deg,rgba(239,244,251,0.99)_0%,rgba(228,236,247,0.97)_100%)] p-3.5 backdrop-blur-xl min-h-[17.5rem] sm:rounded-[26px] sm:p-4 sm:min-h-[18.75rem]">
       <div className={cn('pointer-events-none absolute -right-10 top-3 h-28 w-28 rounded-full blur-3xl', tone.glowBg)} />
-      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#FFFFFF]/80 to-transparent" />
 
       <div className="relative z-10">
         <div className={cn('inline-flex items-center gap-2 rounded-full border px-3 py-1.5', tone.border, tone.softBg)}>
@@ -379,7 +379,7 @@ export function OverviewSectionView({
       icon: BrainCircuit,
       content: (
         <>
-          <div className="rounded-[18px] border border-[#DCE4F4] bg-white/82 px-4 py-3.5">
+          <div className="rounded-[18px] border border-[#BBC9DE] bg-[#DCE5F2]/96 px-4 py-3.5">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#89E6CB]" />
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#6A789B]">
@@ -437,7 +437,7 @@ export function OverviewSectionView({
             />
           </div>
 
-          <div className="mt-3 rounded-[20px] border border-[#DCE4F4] bg-[linear-gradient(180deg,rgba(255,255,255,0.9)_0%,rgba(246,249,255,0.84)_100%)] px-4 py-3.5">
+          <div className="mt-3 rounded-[20px] border border-[#BBC9DE] bg-[linear-gradient(180deg,rgba(221,231,243,0.98)_0%,rgba(210,222,238,0.96)_100%)] px-4 py-3.5">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#FFD07E]" />
               <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#6A789B]">
@@ -477,8 +477,8 @@ export function OverviewSectionView({
       id="overview"
       className="relative overflow-hidden bg-[linear-gradient(180deg,#F9FBFF_0%,#F3F6FD_24%,#EEF2FA_100%)] text-[#060E20] xl:min-h-[100svh]"
     >
-      <BackgroundBeams className="opacity-95" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(249,251,255,0.72)_0%,rgba(243,246,253,0.84)_24%,rgba(238,242,250,0.94)_100%)]" />
+      <GridDotBackground className="opacity-100" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(249,251,255,0.48)_0%,rgba(243,246,253,0.6)_24%,rgba(238,242,250,0.78)_100%)]" />
 
       <div className="relative mx-auto flex w-full max-w-[1440px] items-center px-4 py-12 sm:px-8 md:px-10 md:py-16 lg:px-14 xl:min-h-[100svh] xl:py-8">
         <div className="grid w-full min-w-0 gap-8 lg:grid-cols-[minmax(16rem,0.9fr)_minmax(20rem,1.1fr)] lg:items-center lg:gap-8 xl:grid-cols-[minmax(18rem,0.92fr)_minmax(22rem,1.08fr)]">
@@ -503,10 +503,10 @@ export function OverviewSectionView({
           </div>
 
           <div className="flex min-w-0 flex-col items-start lg:items-end lg:justify-center xl:items-center">
-            <div className="flex w-full min-w-0 max-w-[24rem] flex-col gap-1 rounded-[16px] border border-white/70 bg-white/58 px-2.5 py-1.5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 lg:max-w-[22rem] xl:max-w-[24rem]">
+            <div className="flex w-full min-w-0 max-w-[24rem] flex-col gap-1 rounded-[16px] border border-[#BAC9E0]/95 bg-[#E7EDF8]/92 px-2.5 py-1.5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 lg:max-w-[22rem] xl:max-w-[24rem]">
               <div className="min-w-0">
                 <SectionLabel icon={activeCard.icon}>{activeCard.label}</SectionLabel>
-                <p className="mt-0.5 text-[0.82rem] leading-5 text-[#5B6888] sm:mt-2 sm:text-sm sm:leading-6">
+                <p className="mt-0.5 text-[0.82rem] leading-5 text-[#3E4E6D] sm:mt-2 sm:text-sm sm:leading-6">
                   {String(activeIndex + 1).padStart(2, '0')} / {String(carouselCards.length).padStart(2, '0')}
                 </p>
               </div>
@@ -528,7 +528,7 @@ export function OverviewSectionView({
                     onClick={() => goToIndex(index)}
                     className={cn(
                       'h-1.5 flex-1 rounded-full transition',
-                      index === activeIndex ? tone.strongBg : 'bg-white/72 hover:bg-[#DCE4F4]',
+                      index === activeIndex ? tone.strongBg : 'bg-[#C7D3E6] hover:bg-[#B4C4DE]',
                     )}
                     aria-label={`Ir para ${card.label}`}
                   />

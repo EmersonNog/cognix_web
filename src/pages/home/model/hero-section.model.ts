@@ -9,16 +9,20 @@ export type HeroSectionModel = {
   firstFrame: number
   lastUsableFrame: number
   scrollDistance: number
+  mobileScrollDistance: number
+  mobileCoverScale: number
   loadingEyebrow: string
   loadingLabel: string
   copy: HeroSectionCopy
 }
 
 export const heroSectionModel: HeroSectionModel = {
-  frameDirectory: '/frames-desktop',
+  frameDirectory: '/frames',
   firstFrame: 1,
-  lastUsableFrame: 118,
-  scrollDistance: 3.25,
+  lastUsableFrame: 235,
+  scrollDistance: 5.5,
+  mobileScrollDistance: 2.4,
+  mobileCoverScale: 1.04,
   loadingEyebrow: 'Preparando hero',
   loadingLabel: 'carregando a narrativa em frames',
   copy: {

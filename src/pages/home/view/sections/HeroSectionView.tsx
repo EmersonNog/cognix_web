@@ -17,7 +17,6 @@ export function HeroSectionView({
     copyRef,
     progressHintRef,
     flashRef,
-    watermarkMaskRef,
     heroReady,
     allFramesReady,
     sectionStyle,
@@ -35,10 +34,6 @@ export function HeroSectionView({
 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_46%,rgba(96,99,238,0.14)_0%,rgba(96,99,238,0.06)_20%,rgba(96,99,238,0)_40%),linear-gradient(90deg,rgba(2,7,20,0.86)_0%,rgba(2,7,20,0.62)_28%,rgba(2,7,20,0.22)_60%,rgba(2,7,20,0.12)_100%),linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.16)_52%,rgba(0,0,0,0.68)_100%)]" />
         <div
-          ref={watermarkMaskRef}
-          className="absolute bottom-0 right-0 h-32 w-48 bg-[radial-gradient(circle_at_bottom_right,rgba(0,0,0,1)_6%,rgba(0,0,0,0.96)_28%,rgba(0,0,0,0.76)_54%,transparent_84%)] sm:h-40 sm:w-60"
-        />
-        <div
           ref={flashRef}
           className="absolute inset-0 bg-white opacity-0 transition-opacity duration-150"
         />
@@ -54,19 +49,19 @@ export function HeroSectionView({
 
                 <div className="relative flex w-full flex-col items-center gap-2.5 sm:gap-2 lg:items-start lg:gap-0">
                   <p
-                    className="mx-auto max-w-[18rem] text-center text-[9px] uppercase leading-[1.7] tracking-[0.38em] text-[#A3A6FF]/88 sm:max-w-[32rem] sm:text-[10px] md:max-w-[36rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-[11px] lg:tracking-[0.42em]"
+                    className="mx-auto max-w-[18rem] text-center text-[9px] uppercase leading-[1.7] tracking-[0.38em] text-[#BCC0FF]/90 [text-shadow:0_0_10px_rgba(163,166,255,0.36),0_0_22px_rgba(96,99,238,0.16)] sm:max-w-[32rem] sm:text-[10px] md:max-w-[36rem] lg:mx-0 lg:max-w-none lg:text-left lg:text-[11px] lg:tracking-[0.42em]"
                     style={{ fontFamily: '"Montserrat", sans-serif', fontWeight: 400 }}
                   >
                     {model.copy.eyebrow}
                   </p>
                   <h1
-                    className="w-full text-center text-[clamp(3rem,14vw,4.45rem)] uppercase leading-[0.92] tracking-[0.11em] text-white [text-shadow:0_10px_32px_rgba(2,7,20,0.3)] sm:text-[clamp(3.16rem,8.2vw,4.38rem)] md:text-[clamp(3.3rem,7.55vw,4.6rem)] lg:mt-5 lg:text-left lg:text-[clamp(4rem,8vw,7.2rem)] lg:tracking-[0.16em]"
+                    className="w-full text-center text-[clamp(3rem,14vw,4.45rem)] uppercase leading-[0.92] tracking-[0.11em] text-white [text-shadow:0_0_12px_rgba(255,255,255,0.24),0_0_34px_rgba(163,166,255,0.2),0_10px_28px_rgba(2,7,20,0.24)] sm:text-[clamp(3.16rem,8.2vw,4.38rem)] md:text-[clamp(3.3rem,7.55vw,4.6rem)] lg:mt-5 lg:text-left lg:text-[clamp(4rem,8vw,7.2rem)] lg:tracking-[0.16em]"
                     style={{ fontFamily: '"Montserrat", sans-serif', fontWeight: 400 }}
                   >
                     {model.copy.title}
                   </h1>
                   <p
-                    className="max-w-[19rem] text-center text-[0.81rem] leading-[1.58] tracking-[-0.015em] text-white/74 sm:max-w-[34ch] sm:text-[0.91rem] md:max-w-[36ch] md:text-[0.93rem] lg:mt-6 lg:max-w-[52ch] lg:text-left lg:text-[1rem] lg:leading-[1.86]"
+                    className="max-w-[19rem] text-center text-[0.81rem] leading-[1.58] tracking-[-0.015em] text-white/78 [text-shadow:0_0_12px_rgba(255,255,255,0.1),0_0_22px_rgba(96,99,238,0.1)] sm:max-w-[34ch] sm:text-[0.91rem] md:max-w-[36ch] md:text-[0.93rem] lg:mt-6 lg:max-w-[52ch] lg:text-left lg:text-[1rem] lg:leading-[1.86]"
                     style={{ fontFamily: '"IBM Plex Sans", sans-serif', fontWeight: 300 }}
                   >
                     {model.copy.description}
