@@ -37,42 +37,6 @@ body {
   overflow-x: hidden;
 }
 
-.cognix-beam-line,
-.cognix-beam-core,
-.cognix-beam-glow {
-  fill: none;
-  stroke-linecap: round;
-}
-
-.cognix-beam-line {
-  stroke: rgba(163, 166, 255, 0.1);
-  stroke-width: 1;
-  opacity: 0.5;
-}
-
-.cognix-beam-core,
-.cognix-beam-glow {
-  stroke: var(--beam-gradient, none);
-  stroke-dasharray: 16 84;
-  stroke-dashoffset: 100;
-  animation-name: cognix-beam-flow, cognix-beam-pulse;
-  animation-duration: var(--beam-duration, 18s), 7.2s;
-  animation-delay: var(--beam-delay, 0s), 0s;
-  animation-iteration-count: infinite, infinite;
-  animation-timing-function: linear, ease-in-out;
-}
-
-.cognix-beam-core {
-  stroke-width: var(--beam-width, 1.4);
-  opacity: 0.9;
-}
-
-.cognix-beam-glow {
-  stroke-width: calc(var(--beam-width, 1.4) * 3.2);
-  opacity: 0.42;
-  filter: var(--beam-filter, none);
-}
-
 @keyframes cognix-scroll-chevron {
   0% {
     opacity: 0;
@@ -98,40 +62,12 @@ body {
   }
 }
 
-@keyframes cognix-beam-flow {
-  from {
-    stroke-dashoffset: 100;
-  }
-
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes cognix-beam-pulse {
-  0%,
-  100% {
-    opacity: 0.28;
-  }
-
-  50% {
-    opacity: 0.92;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .cognix-beam-core,
-  .cognix-beam-glow {
-    animation: none;
-    stroke-dasharray: none;
-    stroke-dashoffset: 0;
   }
 }
 
