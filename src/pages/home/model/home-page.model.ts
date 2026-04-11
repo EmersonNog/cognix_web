@@ -68,7 +68,19 @@ export type HomeGlobalStudySectionModel = {
   title: string
 }
 
+export type HomeFooterGroupModel = {
+  items: string[]
+  title: string
+}
+
+export type HomeFooterModel = {
+  brandName: string
+  description: string
+  groups: HomeFooterGroupModel[]
+}
+
 export type HomePageModel = {
+  footer: HomeFooterModel
   globalStudySection: HomeGlobalStudySectionModel
   hero: HomeHeroModel
   launchBanner: HomeLaunchBannerModel
@@ -310,7 +322,36 @@ const globalStudySteps: HomeGlobalStudyStepModel[] = [
   },
 ]
 
+const footerGroups: HomeFooterGroupModel[] = [
+  {
+    items: [
+      'Diagnostico',
+      'Plano de estudo',
+      'Gamificacao',
+      'Mapa mental',
+    ],
+    title: 'Produto',
+  },
+  {
+    items: ['Sobre o projeto', 'Contato', 'Atualizacoes', 'Parcerias'],
+    title: 'Empresa',
+  },
+  {
+    items: [
+      'Termos de uso',
+      'Politica de privacidade',
+      'Politica de cookies',
+    ],
+    title: 'Legal',
+  },
+]
+
 export const homePageModel: HomePageModel = {
+  footer: {
+    brandName: 'Cognix',
+    description: 'Planejamento inteligente de estudo com IA.',
+    groups: footerGroups,
+  },
   globalStudySection: {
     description:
       'Resultados entram, prioridades aparecem e a proxima sessao ganha foco.',
