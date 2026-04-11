@@ -1,23 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 :root {
-  color-scheme: dark;
-  font-family: "IBM Plex Sans", sans-serif;
+  --font-brand: "Sora", sans-serif;
+  color-scheme: light;
+  font-family: var(--font-brand);
+  font-optical-sizing: auto;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --cognix-bg: #060e20;
-  --cognix-accent: #a3a6ff;
-  --cognix-accent-strong: #6063ee;
-  --cognix-text-strong: #f8faff;
-  --cognix-text: #e7eafb;
-  --cognix-muted-strong: #aab6d8;
-  --cognix-muted: #7a86ae;
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #060e20;
 }
 
 * {
@@ -32,34 +28,10 @@ body,
 }
 
 body {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #060e20;
+  font-family: var(--font-brand);
   overflow-x: hidden;
-}
-
-@keyframes cognix-scroll-chevron {
-  0% {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.9);
-  }
-
-  20% {
-    opacity: 0.4;
-  }
-
-  45% {
-    opacity: 1;
-  }
-
-  75% {
-    opacity: 0;
-    transform: translateY(10px) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(10px) scale(1);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -73,6 +45,6 @@ body {
 
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply bg-white text-[#060E20];
   }
 }
