@@ -9,12 +9,13 @@ type HomePageMotion = {
   particlesReady: boolean
   productValueSectionAccentStyle: CSSProperties
   productValueSectionContentStyle: CSSProperties
+  stickyAccentProgress: number
   stickyThemeProgress: number
 }
 
 export function useHomePageMotion(): HomePageMotion {
   const [particlesReady, setParticlesReady] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [pageProgress, setPageProgress] = useState(0)
   const [viewportWidth, setViewportWidth] = useState(0)
 
   useEffect(() => {
@@ -39,10 +40,10 @@ export function useHomePageMotion(): HomePageMotion {
     const updateViewport = () => {
       const viewportHeight = window.innerHeight || 1
       const nextViewportWidth = window.innerWidth || 0
-      const nextProgress = Math.min(window.scrollY / viewportHeight, 1)
+      const nextProgress = window.scrollY / viewportHeight
 
       setViewportWidth(nextViewportWidth)
-      setScrollProgress(nextProgress)
+      setPageProgress(nextProgress)
       frameId = 0
     }
 
@@ -70,18 +71,29 @@ export function useHomePageMotion(): HomePageMotion {
 
   const isMobile = viewportWidth > 0 && viewportWidth < 640
   const isTablet = viewportWidth >= 640 && viewportWidth < 1024
+  const heroScrollProgress = Math.min(pageProgress, 1)
 
-  const heroOpacity = 1 - scrollProgress * 0.55
-  const heroTranslateY = scrollProgress * (isMobile ? -28 : isTablet ? -44 : -72)
-  const heroScale = 1 - scrollProgress * (isMobile ? 0.015 : isTablet ? 0.025 : 0.04)
-  const heroBlur = scrollProgress * (isMobile ? 10 : isTablet ? 14 : 18)
+  const heroOpacity = 1 - heroScrollProgress * 0.55
+  const heroTranslateY = heroScrollProgress * (isMobile ? -28 : isTablet ? -44 : -72)
+  const heroScale =
+    1 - heroScrollProgress * (isMobile ? 0.015 : isTablet ? 0.025 : 0.04)
+  const heroBlur = heroScrollProgress * (isMobile ? 10 : isTablet ? 14 : 18)
 
-  const sectionEnterOffset = (1 - scrollProgress) * (isMobile ? 32 : isTablet ? 56 : 96)
+  const sectionEnterOffset =
+    (1 - heroScrollProgress) * (isMobile ? 32 : isTablet ? 56 : 96)
   const sectionContentOpacity = isMobile
-    ? 0.42 + scrollProgress * 0.58
-    : 0.18 + scrollProgress * 0.82
-  const sectionContentScale = 0.96 + scrollProgress * (isMobile ? 0.04 : 0.06)
-  const stickyThemeProgress = Math.min(Math.max((scrollProgress - 0.46) / 0.34, 0), 1)
+    ? 0.42 + heroScrollProgress * 0.58
+    : 0.18 + heroScrollProgress * 0.82
+  const sectionContentScale =
+    0.96 + heroScrollProgress * (isMobile ? 0.04 : 0.06)
+  const stickyThemeProgress = Math.min(
+    Math.max((pageProgress - 0.46) / 0.34, 0),
+    1,
+  )
+  const stickyAccentProgress = Math.min(
+    Math.max((pageProgress - 1.52) / 0.48, 0),
+    1,
+  )
 
   return {
     activeSectionTheme: stickyThemeProgress > 0.58 ? 'light' : 'dark',
@@ -97,13 +109,14 @@ export function useHomePageMotion(): HomePageMotion {
     },
     particlesReady,
     productValueSectionAccentStyle: {
-      opacity: scrollProgress,
+      opacity: heroScrollProgress,
       transform: `translate3d(0, ${Math.max(sectionEnterOffset * -0.35, -36)}px, 0)`,
     },
     productValueSectionContentStyle: {
       opacity: sectionContentOpacity,
       transform: `translate3d(0, ${sectionEnterOffset}px, 0) scale(${sectionContentScale})`,
     },
+    stickyAccentProgress,
     stickyThemeProgress,
   }
 }

@@ -22,6 +22,7 @@ export const ProductValueSection = forwardRef<HTMLElement, ProductValueSectionPr
 
   return (
     <section
+      id="cognix-diagnostico"
       ref={ref}
       className="relative z-10 flex min-h-[100svh] items-start overflow-hidden bg-white px-5 pb-16 pt-16 text-[#060E20] sm:px-8 sm:pb-20 sm:pt-20 lg:h-[100svh] lg:min-h-0 lg:items-center lg:px-16 lg:pb-16 lg:pt-16"
     >

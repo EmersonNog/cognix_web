@@ -2,10 +2,11 @@ import { useRef } from 'react'
 
 import { useHomePageMotion } from '@/pages/home/view/hooks/useHomePageMotion'
 import { useHomeSectionSnap } from '@/pages/home/view/hooks/useHomeSectionSnap'
-import { HeroSection } from '@/pages/home/view/sections/hero/HeroSection'
-import { LaunchBanner } from '@/pages/home/view/sections/launch-banner/LaunchBanner'
-import { ProductValueSection } from '@/pages/home/view/sections/product-value/ProductValueSection'
 import type { HomePageModel } from '@/pages/home/model/home-page.model'
+import { GlobalStudySection } from '@/pages/home/view/sections/global-study'
+import { HeroSection } from '@/pages/home/view/sections/hero'
+import { LaunchBanner } from '@/pages/home/view/sections/launch-banner'
+import { ProductValueSection } from '@/pages/home/view/sections/product-value'
 
 type HomePageViewProps = {
   model: HomePageModel
@@ -24,6 +25,7 @@ export function HomePageView({ model }: HomePageViewProps) {
     >
       <LaunchBanner
         banner={model.launchBanner}
+        accentProgress={motion.stickyAccentProgress}
         theme={motion.activeSectionTheme}
         themeProgress={motion.stickyThemeProgress}
       />
@@ -42,6 +44,8 @@ export function HomePageView({ model }: HomePageViewProps) {
         contentStyle={motion.productValueSectionContentStyle}
         section={model.productValueSection}
       />
+
+      <GlobalStudySection section={model.globalStudySection} />
     </main>
   )
 }
