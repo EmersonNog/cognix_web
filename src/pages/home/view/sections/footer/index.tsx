@@ -10,7 +10,7 @@ export function HomeFooterSection({ footer }: HomeFooterSectionProps) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden bg-white px-5 pb-8 pt-8 text-[#060E20] sm:px-8 sm:pb-10 sm:pt-10 lg:px-16 lg:pb-11 lg:pt-10">
+    <footer className="relative z-30 overflow-hidden bg-white px-5 pb-8 pt-8 text-[#060E20] sm:px-8 sm:pb-10 sm:pt-10 lg:px-16 lg:pb-11 lg:pt-10">
       <SectionPattern variant="light" className="opacity-30" />
       <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(6,14,32,0),rgba(145,160,186,0.55),rgba(6,14,32,0))]" />
       <div className="absolute inset-x-0 top-0 h-16 bg-[linear-gradient(180deg,rgba(239,245,255,0.62),rgba(255,255,255,0))]" />

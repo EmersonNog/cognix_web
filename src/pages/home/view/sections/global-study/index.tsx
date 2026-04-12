@@ -72,7 +72,7 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
     <section
       id="rota-cognix"
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#eff5ff] px-5 pb-16 pt-16 text-[#06171a] sm:px-8 sm:pb-20 sm:pt-20 lg:min-h-[100svh] lg:px-16 lg:pb-24 lg:pt-24"
+      className="relative z-20 isolate overflow-hidden bg-[#eff5ff] px-5 pb-16 pt-16 text-[#06171a] sm:px-8 sm:pb-20 sm:pt-20 lg:min-h-[100svh] lg:px-16 lg:pb-24 lg:pt-24"
     >
       <SectionPattern variant="light" className="opacity-42" />
 

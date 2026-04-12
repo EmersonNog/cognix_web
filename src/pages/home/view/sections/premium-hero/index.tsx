@@ -289,7 +289,7 @@ export const PremiumHeroSection = forwardRef<HTMLElement, PremiumHeroSectionProp
     return (
       <section
         ref={ref}
-        className="relative sticky top-0 isolate h-[100svh] overflow-hidden bg-[#060E20] text-[#DEE5FF]"
+        className="relative sticky top-0 z-0 isolate h-[100svh] overflow-hidden bg-[#060E20] text-[#DEE5FF]"
       >
         <div className="absolute inset-0" style={stageStyle}>
           <div className="absolute inset-0" style={backgroundStyle}>
