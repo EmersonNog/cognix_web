@@ -1,6 +1,11 @@
 import type { ISourceOptions } from '@tsparticles/engine'
 import type { CSSProperties } from 'react'
 
+import dashboardMapaMentalMockup from '@/assets/mockup/dashboard_mapa_mental.png'
+import planoMockup from '@/assets/mockup/plano.png'
+import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.png'
+import simuladoMockup from '@/assets/mockup/simulado.png'
+
 export type HomeFeatureCardModel = {
   accentClassName: string
   description: string
@@ -33,6 +38,20 @@ export type HomeProductValueSectionModel = {
   description: string
   eyebrow: string
   title: string
+}
+
+export type HomeCognixHubTopicModel = {
+  description: string
+  eyebrow: string
+  imageAlt: string
+  imageSrc: string
+  points: string[]
+  proof: string
+  title: string
+}
+
+export type HomeCognixHubSectionModel = {
+  topics: HomeCognixHubTopicModel[]
 }
 
 export type HomeGlobalStudyMarkerModel = {
@@ -82,6 +101,7 @@ export type HomeFooterModel = {
 }
 
 export type HomePageModel = {
+  cognixHubSection: HomeCognixHubSectionModel
   footer: HomeFooterModel
   globalStudySection: HomeGlobalStudySectionModel
   launchBanner: HomeLaunchBannerModel
@@ -216,6 +236,69 @@ const productValueCards: HomeFeatureCardModel[] = [
   },
 ]
 
+const cognixHubTopics: HomeCognixHubTopicModel[] = [
+  {
+    description:
+      'O plano de estudos reúne ritmo semanal, carga diária, meta de questões e prioridades para a semana começar com um critério claro.',
+    eyebrow: 'Plano da semana',
+    imageAlt:
+      'Mockup do Cognix mostrando a tela de plano de estudos com metas e prioridades.',
+    imageSrc: planoMockup,
+    points: [
+      'Ritmo semanal',
+      'Meta de questões',
+      'Prioridades da semana',
+    ],
+    proof: 'Plano editável dentro do app',
+    title: 'Transforma a rotina em um plano de estudo mais fácil de seguir',
+  },
+  {
+    description:
+      'Na home, o Cognix junta recomendações para hoje, desempenho recente e sequência atual para facilitar a decisão do que fazer agora.',
+    eyebrow: 'Recomendações e ritmo',
+    imageAlt:
+      'Mockup do Cognix mostrando recomendações do dia, sequência atual e desempenho recente.',
+    imageSrc: recomendadosDesempenhoMockup,
+    points: [
+      'Recomendado para hoje',
+      'Desempenho recente',
+      'Sequência atual',
+    ],
+    proof: 'Próximo passo com base no momento',
+    title: 'Entrega um próximo passo claro sem te deixar perdido entre telas',
+  },
+  {
+    description:
+      'O treino por áreas e os simulados mostram sessões em andamento, progresso e questões respondidas para você continuar de onde parou.',
+    eyebrow: 'Treino e simulado',
+    imageAlt:
+      'Mockup do Cognix mostrando áreas de conhecimento, tela de exercícios e simulado em andamento.',
+    imageSrc: simuladoMockup,
+    points: [
+      'Áreas de conhecimento',
+      'Sessões em andamento',
+      'Questões respondidas',
+    ],
+    proof: 'Treino organizado por área e disciplina',
+    title: 'Mantém o estudo ativo com treino por área e continuidade de simulado',
+  },
+  {
+    description:
+      'Depois do treino, o app mostra indicadores do momento e libera mapa mental para revisar conceitos, padrões de questão e pontos de atenção.',
+    eyebrow: 'Análise e revisão',
+    imageAlt:
+      'Mockup do Cognix mostrando o painel de desempenho ao lado do mapa mental.',
+    imageSrc: dashboardMapaMentalMockup,
+    points: [
+      'Pontos de atenção',
+      'Mapa mental',
+      'Leitura por disciplina',
+    ],
+    proof: 'Desempenho e revisão visual no mesmo fluxo',
+    title: 'Converte resultado em leitura objetiva e revisão visual',
+  },
+]
+
 const globalStudyMarkers: HomeGlobalStudyMarkerModel[] = [
   {
     city: 'São Paulo',
@@ -317,7 +400,7 @@ const globalStudySteps: HomeGlobalStudyStepModel[] = [
   },
   {
     description:
-      'A próxima sessão chega organizada por prioridade, com foco definido e tempo sugerido para estudar sem dispersão.',
+      'Recomendações, plano semanal e pontos de atenção aparecem juntos para orientar o próximo treino com mais clareza.',
     label: 'Saída',
     toneClassName: 'border-[#ff8f70]',
     title: 'Plano acionável',
@@ -349,6 +432,9 @@ const footerGroups: HomeFooterGroupModel[] = [
 ]
 
 export const homePageModel: HomePageModel = {
+  cognixHubSection: {
+    topics: cognixHubTopics,
+  },
   footer: {
     brandName: 'Cognix',
     description: 'Planejamento inteligente de estudo com IA.',

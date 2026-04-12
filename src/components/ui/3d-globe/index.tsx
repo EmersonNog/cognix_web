@@ -1,5 +1,3 @@
-'use client'
-
 import { Suspense, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 
@@ -50,5 +48,3 @@ export function Globe3D({
     </div>
   )
 }
-
-export default Globe3D

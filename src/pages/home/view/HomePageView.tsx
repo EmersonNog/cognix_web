@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { useHomePageMotion } from '@/pages/home/view/hooks/useHomePageMotion'
 import type { HomePageModel } from '@/pages/home/model/home-page.model'
 import { HomeFooterSection } from '@/pages/home/view/sections/footer'
+import { CognixHubSection } from '@/pages/home/view/sections/cognix-hub'
 import { GlobalStudySection } from '@/pages/home/view/sections/global-study'
 import { LaunchBanner } from '@/pages/home/view/sections/launch-banner'
 import { PremiumHeroSection } from '@/pages/home/view/sections/premium-hero'
@@ -52,6 +53,8 @@ export function HomePageView({ model }: HomePageViewProps) {
           contentStyle={motion.productValueSectionContentStyle}
           section={model.productValueSection}
         />
+
+        <CognixHubSection section={model.cognixHubSection} />
 
         <GlobalStudySection section={model.globalStudySection} />
       </main>
