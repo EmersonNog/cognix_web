@@ -28,7 +28,6 @@ export const globeConfig = {
   bumpScale: 3,
   globeColor: '#d8efe2',
   initialRotation: { x: -0.12, y: -0.22 },
-  markerSize: 0.08,
   pointLightIntensity: 1.7,
   showAtmosphere: true,
   showWireframe: true,

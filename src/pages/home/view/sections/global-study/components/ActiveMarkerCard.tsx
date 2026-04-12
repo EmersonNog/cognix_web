@@ -10,7 +10,7 @@ export function ActiveMarkerCard({ marker }: ActiveMarkerCardProps) {
   }
 
   return (
-    <div className="absolute right-0 top-[9rem] hidden w-64 rounded-[8px] border border-[#d6e6dd] bg-white/88 p-4 shadow-[0_18px_46px_rgba(20,86,69,0.12)] backdrop-blur sm:block">
+    <div className="absolute right-0 top-[9rem] hidden w-64 rounded-[8px] border border-[#d6e6dd] bg-white/88 p-4 backdrop-blur sm:block">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-[0.68rem] font-semibold tracking-[0.18em] uppercase text-[#6f7d74]">

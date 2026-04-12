@@ -1,12 +1,35 @@
 import type { HomeFeatureCardModel } from '@/pages/home/model/home-page.model'
 
+import { cn } from '@/lib/utils'
+
 type FeatureCardProps = {
   card: HomeFeatureCardModel
+  hasEntered: boolean
+  index: number
 }
 
-export function FeatureCard({ card }: FeatureCardProps) {
+const cardBorderClassNames = [
+  'border-[#1faabb]/75',
+  'border-[#5f8dff]/75',
+  'border-[#35b997]/75',
+]
+
+export function FeatureCard({ card, hasEntered, index }: FeatureCardProps) {
+  const borderClassName =
+    cardBorderClassNames[Math.max(Number(card.metric) - 1, 0)] ??
+    'border-[#E1E8F0]'
+
   return (
-    <article className="group relative h-full overflow-hidden rounded-[1.5rem] border border-[#E1E8F0] bg-white/92 p-4 shadow-[0_18px_40px_rgba(6,14,32,0.05)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(6,14,32,0.09)] sm:p-5">
+    <article
+      className={cn(
+        'group relative h-full overflow-hidden rounded-[1.5rem] border-2 bg-white/92 p-4 opacity-0 shadow-[0_18px_40px_rgba(6,14,32,0.05)] blur-[3px] transition-[opacity,filter,transform,box-shadow] duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(6,14,32,0.09)] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-none sm:p-5',
+        hasEntered ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-14',
+        borderClassName,
+      )}
+      style={{
+        transitionDelay: hasEntered ? `${index * 180}ms` : '0ms',
+      }}
+    >
       <div
         className={`absolute inset-x-0 top-0 h-16 bg-gradient-to-br ${card.accentClassName}`}
       />

@@ -85,12 +85,18 @@ export function useMetricCarousel({
   }, [clearTransitionTimeout])
 
   useEffect(() => {
-    if (activeMetricIndex < metricCount) {
+    if (metricCount <= 0 || activeMetricIndex < metricCount) {
       return
     }
 
-    setActiveMetricIndex(0)
-    setPreviousMetricIndex(null)
+    const frameId = window.requestAnimationFrame(() => {
+      setActiveMetricIndex(0)
+      setPreviousMetricIndex(null)
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frameId)
+    }
   }, [activeMetricIndex, metricCount])
 
   useEffect(() => {

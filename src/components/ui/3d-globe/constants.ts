@@ -6,13 +6,6 @@ export const DEFAULT_BUMP_TEXTURE =
   'https://unpkg.com/three-globe@2.31.0/example/img/earth-topology.png'
 
 export const CAMERA_DISTANCE_MULTIPLIER = 3.5
-export const MARKER_DISTANCE_FACTOR = 10
-export const MARKER_LINE_RADIUS = 0.003
-export const MARKER_PIN_HEIGHT = 0.04
-export const MARKER_PIN_RADIUS = 0.015
-export const MARKER_SURFACE_OFFSET = 1.001
-export const MARKER_TOP_OFFSET = 1.18
-export const MARKER_VISIBILITY_THRESHOLD = 0.1
 
 export const defaultConfig: Required<Globe3DConfig> = {
   ambientIntensity: 0.6,
@@ -27,7 +20,6 @@ export const defaultConfig: Required<Globe3DConfig> = {
   enableZoom: false,
   globeColor: '#1a1a2e',
   initialRotation: { x: 0, y: 0 },
-  markerSize: 0.06,
   maxDistance: 15,
   minDistance: 5,
   pointLightIntensity: 1.5,

@@ -1,12 +1,11 @@
 import { useRef } from 'react'
 
 import { useHomePageMotion } from '@/pages/home/view/hooks/useHomePageMotion'
-import { useHomeSectionSnap } from '@/pages/home/view/hooks/useHomeSectionSnap'
 import type { HomePageModel } from '@/pages/home/model/home-page.model'
 import { HomeFooterSection } from '@/pages/home/view/sections/footer'
 import { GlobalStudySection } from '@/pages/home/view/sections/global-study'
-import { HeroSection } from '@/pages/home/view/sections/hero'
 import { LaunchBanner } from '@/pages/home/view/sections/launch-banner'
+import { PremiumHeroSection } from '@/pages/home/view/sections/premium-hero'
 import { ProductValueSection } from '@/pages/home/view/sections/product-value'
 
 type HomePageViewProps = {
@@ -14,10 +13,12 @@ type HomePageViewProps = {
 }
 
 export function HomePageView({ model }: HomePageViewProps) {
+  const premiumHeroSectionRef = useRef<HTMLElement | null>(null)
   const productValueSectionRef = useRef<HTMLElement | null>(null)
-  const motion = useHomePageMotion()
-
-  useHomeSectionSnap({ targetRef: productValueSectionRef })
+  const motion = useHomePageMotion({
+    productValueSectionRef,
+    sectionRef: premiumHeroSectionRef,
+  })
 
   return (
     <>
@@ -29,16 +30,20 @@ export function HomePageView({ model }: HomePageViewProps) {
         <LaunchBanner
           banner={model.launchBanner}
           accentProgress={motion.stickyAccentProgress}
-          theme={motion.activeSectionTheme}
           themeProgress={motion.stickyThemeProgress}
         />
 
-        <HeroSection
-          contentStyle={motion.heroContentStyle}
-          hero={model.hero}
+        <PremiumHeroSection
+          backgroundStyle={motion.premiumHeroBackgroundStyle}
+          contentStyle={motion.premiumHeroContentStyle}
+          overlayStyle={motion.premiumHeroOverlayStyle}
+          particlesStyle={motion.premiumHeroParticlesStyle}
+          ref={premiumHeroSectionRef}
           particlesOptions={model.particlesOptions}
           particlesReady={motion.particlesReady}
-          particlesStyle={motion.heroParticlesStyle}
+          section={model.premiumHero}
+          stageStyle={motion.premiumHeroStageStyle}
+          visualStyle={motion.premiumHeroVisualStyle}
         />
 
         <ProductValueSection

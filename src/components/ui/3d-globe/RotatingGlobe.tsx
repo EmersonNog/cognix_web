@@ -2,15 +2,9 @@ import { useTexture } from '@react-three/drei'
 import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 
-import { Marker } from './Marker'
 import type { RotatingGlobeProps } from './types'
 
-export function RotatingGlobe({
-  config,
-  markers,
-  onMarkerClick,
-  onMarkerHover,
-}: RotatingGlobeProps) {
+export function RotatingGlobe({ config }: RotatingGlobeProps) {
   const [earthTexture, bumpTexture] = useTexture([
     config.textureUrl,
     config.bumpMapUrl,
@@ -56,6 +50,9 @@ export function RotatingGlobe({
           bumpMap={bumpMap}
           color={config.globeColor}
           bumpScale={config.bumpScale * 0.05}
+          emissive="#4b4a47"
+          emissiveIntensity={0.11}
+          emissiveMap={earthMap}
           roughness={0.7}
           metalness={0}
         />
@@ -71,17 +68,6 @@ export function RotatingGlobe({
           />
         </mesh>
       )}
-
-      {markers.map((marker) => (
-        <Marker
-          key={marker.id ?? `${marker.lat}-${marker.lng}`}
-          defaultSize={config.markerSize}
-          marker={marker}
-          onClick={onMarkerClick}
-          onHover={onMarkerHover}
-          radius={config.radius}
-        />
-      ))}
     </group>
   )
 }

@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 
-import type { GlobeMarker } from '@/components/ui/3d-globe'
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type { HomeGlobalStudySectionModel } from '@/pages/home/model/home-page.model'
+import { scrollToElement } from '@/pages/home/view/scrollToElement'
 import { GlobalStudyHeader } from './components/GlobalStudyHeader'
 import { GlobalStudyMetricsCarousel } from './components/GlobalStudyMetricsCarousel'
 import { GlobalStudyVisualPanel } from './components/GlobalStudyVisualPanel'
@@ -22,9 +22,6 @@ type GlobalStudySectionProps = {
 export function GlobalStudySection({ section }: GlobalStudySectionProps) {
   const sectionRef = useRef<HTMLElement | null>(null)
   const [isMetricCarouselPaused, setIsMetricCarouselPaused] = useState(false)
-  const [activeMarkerId, setActiveMarkerId] = useState(
-    section.markers[0]?.id ?? '',
-  )
 
   const { hasEntered, prefersReducedMotion } = useGlobalStudyEntry(sectionRef)
   const { activeMetricIndex, previousMetricIndex, showMetric } =
@@ -36,19 +33,9 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
     })
 
   const activeMarker = useMemo(
-    () =>
-      section.markers.find((marker) => marker.id === activeMarkerId) ??
-      section.markers[0],
-    [activeMarkerId, section.markers],
+    () => section.markers[0],
+    [section.markers],
   )
-
-  useEffect(() => {
-    if (section.markers.some((marker) => marker.id === activeMarkerId)) {
-      return
-    }
-
-    setActiveMarkerId(section.markers[0]?.id ?? '')
-  }, [activeMarkerId, section.markers])
 
   const handleMetricCarouselPause = useCallback(() => {
     setIsMetricCarouselPaused(true)
@@ -58,20 +45,22 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
     setIsMetricCarouselPaused(false)
   }, [])
 
-  const handleMarkerSelection = useCallback((marker: GlobeMarker | null) => {
-    if (marker?.id) {
-      setActiveMarkerId(marker.id)
-    }
-  }, [])
-
-  const scrollToTop = useCallback(() => {
-    window.scrollTo({ behavior: 'smooth', top: 0 })
+  const openLaunchInstagram = useCallback(() => {
+    window.open(
+      'https://www.instagram.com/cognix_hub/',
+      '_blank',
+      'noopener,noreferrer',
+    )
   }, [])
 
   const scrollToDiagnostics = useCallback(() => {
-    document
-      .getElementById('cognix-diagnostico')
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const target = document.getElementById('cognix-diagnostico')
+
+    if (!target) {
+      return
+    }
+
+    scrollToElement(target)
   }, [])
 
   const accentStyle = getAccentStyle(hasEntered)
@@ -111,7 +100,7 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
           <GlobalStudyHeader
             description={section.description}
             eyebrow={section.eyebrow}
-            onPrimaryCta={scrollToTop}
+            onPrimaryCta={openLaunchInstagram}
             onSecondaryCta={scrollToDiagnostics}
             primaryCta={section.primaryCta}
             secondaryCta={section.secondaryCta}
@@ -131,8 +120,6 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
 
         <GlobalStudyVisualPanel
           activeMarker={activeMarker}
-          markers={section.markers}
-          onMarkerSelection={handleMarkerSelection}
           steps={section.steps}
           visualStyle={visualStyle}
         />

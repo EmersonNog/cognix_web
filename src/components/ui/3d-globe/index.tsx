@@ -11,16 +11,13 @@ import {
 } from './constants'
 import { LoadingFallback } from './LoadingFallback'
 import { Scene } from './Scene'
-import type { Globe3DConfig, Globe3DProps, GlobeMarker } from './types'
+import type { Globe3DConfig, Globe3DProps } from './types'
 
-export type { Globe3DConfig, GlobeMarker }
+export type { Globe3DConfig }
 
 export function Globe3D({
   className,
   config = {},
-  markers = [],
-  onMarkerClick,
-  onMarkerHover,
 }: Globe3DProps) {
   const mergedConfig = useMemo(
     () => ({ ...defaultConfig, ...config }),
@@ -47,12 +44,7 @@ export function Globe3D({
         }}
       >
         <Suspense fallback={<LoadingFallback />}>
-          <Scene
-            config={mergedConfig}
-            markers={markers}
-            onMarkerClick={onMarkerClick}
-            onMarkerHover={onMarkerHover}
-          />
+          <Scene config={mergedConfig} />
         </Suspense>
       </Canvas>
     </div>

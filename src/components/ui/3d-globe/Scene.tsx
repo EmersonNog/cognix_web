@@ -7,7 +7,7 @@ import { CAMERA_DISTANCE_MULTIPLIER } from './constants'
 import { RotatingGlobe } from './RotatingGlobe'
 import type { SceneProps } from './types'
 
-export function Scene({ config, markers, onMarkerClick, onMarkerHover }: SceneProps) {
+export function Scene({ config }: SceneProps) {
   const { camera } = useThree()
 
   useEffect(() => {
@@ -18,6 +18,9 @@ export function Scene({ config, markers, onMarkerClick, onMarkerHover }: ScenePr
   return (
     <>
       <ambientLight intensity={config.ambientIntensity} />
+      <hemisphereLight
+        args={['#ffffff', '#2a2d30', config.ambientIntensity * 1.05]}
+      />
 
       <directionalLight
         position={[config.radius * 5, config.radius * 2, config.radius * 5]}
@@ -27,16 +30,23 @@ export function Scene({ config, markers, onMarkerClick, onMarkerHover }: ScenePr
 
       <directionalLight
         position={[-config.radius * 3, config.radius, -config.radius * 2]}
-        intensity={config.pointLightIntensity * 0.3}
-        color="#88ccff"
+        intensity={config.pointLightIntensity * 0.42}
+        color="#ffffff"
       />
 
-      <RotatingGlobe
-        config={config}
-        markers={markers}
-        onMarkerClick={onMarkerClick}
-        onMarkerHover={onMarkerHover}
+      <directionalLight
+        position={[config.radius * 4, config.radius * 0.8, -config.radius * 4]}
+        intensity={config.pointLightIntensity * 0.28}
+        color="#ffffff"
       />
+
+      <directionalLight
+        position={[-config.radius * 4, config.radius * 0.75, config.radius * 4]}
+        intensity={config.pointLightIntensity * 0.24}
+        color="#ffffff"
+      />
+
+      <RotatingGlobe config={config} />
 
       {config.showAtmosphere && (
         <Atmosphere

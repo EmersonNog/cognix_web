@@ -8,32 +8,50 @@ import type { HomeLaunchBannerModel } from '@/pages/home/model/home-page.model'
 type LaunchBannerProps = {
   accentProgress: number
   banner: HomeLaunchBannerModel
-  theme: 'dark' | 'light'
   themeProgress: number
 }
 
+type RgbTuple = [number, number, number]
+
+const clamp01 = (value: number) => Math.min(Math.max(value, 0), 1)
+
+const smoothStep = (value: number) => {
+  const progress = clamp01(value)
+
+  return progress * progress * (3 - 2 * progress)
+}
+
 const mixNumber = (from: number, to: number, progress: number) =>
-  Math.round(from + (to - from) * progress)
+  from + (to - from) * progress
 
 const mixTuple = (
-  from: [number, number, number],
-  to: [number, number, number],
+  from: RgbTuple,
+  to: RgbTuple,
   progress: number,
-): [number, number, number] => [
+): RgbTuple => [
   mixNumber(from[0], to[0], progress),
   mixNumber(from[1], to[1], progress),
   mixNumber(from[2], to[2], progress),
 ]
 
+const formatCssNumber = (value: number) => Number(value.toFixed(3))
+
+const formatColorChannels = (color: RgbTuple, separator: ' ' | ', ' = ' ') =>
+  color.map((value) => formatCssNumber(value)).join(separator)
+
+const toRgb = (color: RgbTuple) => `rgb(${formatColorChannels(color)})`
+
+const toRgba = (color: RgbTuple, opacity: number) =>
+  `rgba(${formatColorChannels(color, ', ')}, ${formatCssNumber(opacity)})`
+
 export function LaunchBanner({
   accentProgress,
   banner,
-  theme,
   themeProgress,
 }: LaunchBannerProps) {
-  const transitionProgress = Math.min(Math.max(themeProgress, 0), 1)
-  const accentTransitionProgress = Math.min(Math.max(accentProgress, 0), 1)
-  const isLightTheme = theme === 'light'
+  const transitionProgress = smoothStep(themeProgress)
+  const accentTransitionProgress = smoothStep(accentProgress)
+  const isLightTheme = transitionProgress > 0.52
   const bannerBaseColor = mixTuple(
     mixTuple([6, 22, 36], [255, 255, 255], transitionProgress),
     [239, 245, 255],
@@ -74,54 +92,87 @@ export function LaunchBanner({
     [63, 82, 112],
     accentTransitionProgress,
   )
+  const shadowBaseColor = mixTuple(
+    mixTuple([0, 8, 18], [15, 44, 64], transitionProgress),
+    [69, 93, 151],
+    accentTransitionProgress,
+  )
+  const bannerOpacity = mixNumber(
+    mixNumber(0.9, 0.96, transitionProgress),
+    0.98,
+    accentTransitionProgress,
+  )
+  const borderOpacity = mixNumber(
+    mixNumber(0.16, 0.72, transitionProgress),
+    0.78,
+    accentTransitionProgress,
+  )
+  const shadowBlur = mixNumber(
+    mixNumber(60, 44, transitionProgress),
+    52,
+    accentTransitionProgress,
+  )
+  const shadowOpacity = mixNumber(
+    mixNumber(0.18, 0.09, transitionProgress),
+    0.12,
+    accentTransitionProgress,
+  )
   const bannerStyle = {
-    backgroundColor: `rgba(${bannerBaseColor.join(', ')}, ${
-      0.88 + transitionProgress * 0.08 + accentTransitionProgress * 0.02
-    })`,
-    borderColor: `rgba(${borderBaseColor.join(', ')}, ${
-      0.1 + transitionProgress * 0.72 + accentTransitionProgress * 0.06
-    })`,
-    boxShadow: `0 18px ${mixNumber(60, 58, transitionProgress)}px rgba(${mixTuple(
-      mixTuple([0, 8, 18], [15, 44, 64], transitionProgress),
-      [69, 93, 151],
-      accentTransitionProgress,
-    ).join(', ')}, ${0.16 - transitionProgress * 0.04 - accentTransitionProgress * 0.02})`,
-    color: `rgb(${textBaseColor.join(' ')})`,
+    backgroundColor: toRgba(bannerBaseColor, bannerOpacity),
+    borderColor: toRgba(borderBaseColor, borderOpacity),
+    boxShadow: `0 18px ${formatCssNumber(shadowBlur)}px ${toRgba(
+      shadowBaseColor,
+      shadowOpacity,
+    )}`,
+    color: toRgb(textBaseColor),
   } satisfies CSSProperties
   const pillStyle = {
-    backgroundColor: `rgba(${pillBaseColor.join(', ')}, ${
-      0.05 + transitionProgress * 0.95
-    })`,
-    borderColor: `rgba(${pillBorderBaseColor.join(', ')}, ${
-      0.1 + transitionProgress * 0.74 + accentTransitionProgress * 0.06
-    })`,
-    color: `rgb(${pillTextBaseColor.join(' ')})`,
+    backgroundColor: toRgba(
+      pillBaseColor,
+      mixNumber(
+        mixNumber(0.08, 0.96, transitionProgress),
+        0.98,
+        accentTransitionProgress,
+      ),
+    ),
+    borderColor: toRgba(
+      pillBorderBaseColor,
+      mixNumber(
+        mixNumber(0.14, 0.74, transitionProgress),
+        0.8,
+        accentTransitionProgress,
+      ),
+    ),
+    color: toRgb(pillTextBaseColor),
   } satisfies CSSProperties
-  const iconColor = `rgb(${iconBaseColor.join(' ')})`
+  const iconColor = toRgb(iconBaseColor)
   const messageStyle = {
-    color: `rgb(${messageBaseColor.join(' ')})`,
+    color: toRgb(messageBaseColor),
   } satisfies CSSProperties
 
   return (
     <StickyBanner>
       <div
         className={cn(
-          'relative mx-auto max-w-7xl overflow-hidden rounded-[1.15rem] border backdrop-blur-xl transition-[background-color,border-color,box-shadow,color] duration-700 ease-out',
-          isLightTheme ? 'text-[#071426]' : 'text-white',
+          'relative mx-auto max-w-7xl overflow-hidden rounded-[1.15rem] border backdrop-blur-xl transition-[background-color,border-color,box-shadow,color] duration-300 ease-out',
         )}
         style={bannerStyle}
       >
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,246,255,0.12)_0%,rgba(61,246,255,0)_40%,rgba(61,246,255,0.08)_100%)] transition-opacity duration-700 ease-out"
-          style={{ opacity: 1 - transitionProgress }}
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,246,255,0.12)_0%,rgba(61,246,255,0)_40%,rgba(61,246,255,0.08)_100%)] transition-opacity duration-300 ease-out"
+          style={{ opacity: formatCssNumber(1 - transitionProgress) }}
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,246,255,0.14)_0%,rgba(255,255,255,0)_45%,rgba(91,129,255,0.1)_100%)] transition-opacity duration-700 ease-out"
-          style={{ opacity: transitionProgress * (1 - accentTransitionProgress * 0.35) }}
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(61,246,255,0.14)_0%,rgba(255,255,255,0)_45%,rgba(91,129,255,0.1)_100%)] transition-opacity duration-300 ease-out"
+          style={{
+            opacity: formatCssNumber(
+              transitionProgress * (1 - accentTransitionProgress * 0.35),
+            ),
+          }}
         />
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(90,141,255,0.16)_0%,rgba(255,255,255,0)_45%,rgba(54,194,163,0.1)_100%)] transition-opacity duration-700 ease-out"
-          style={{ opacity: accentTransitionProgress }}
+          className="absolute inset-0 bg-[linear-gradient(90deg,rgba(90,141,255,0.16)_0%,rgba(255,255,255,0)_45%,rgba(54,194,163,0.1)_100%)] transition-opacity duration-300 ease-out"
+          style={{ opacity: formatCssNumber(accentTransitionProgress) }}
         />
 
         <div className="relative flex items-center gap-3 px-3 py-2.5 sm:px-5 sm:py-3 md:gap-4">

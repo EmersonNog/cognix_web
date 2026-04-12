@@ -11,8 +11,10 @@ export type HomeFeatureCardModel = {
   title: string
 }
 
-export type HomeHeroModel = {
+export type HomePremiumHeroModel = {
   badge: string
+  primaryCtaLabel: string
+  primaryCtaTargetId: string
   subtitle: string
   titlePrefix: string
   titleWords: string[]
@@ -82,9 +84,9 @@ export type HomeFooterModel = {
 export type HomePageModel = {
   footer: HomeFooterModel
   globalStudySection: HomeGlobalStudySectionModel
-  hero: HomeHeroModel
   launchBanner: HomeLaunchBannerModel
   particlesOptions: ISourceOptions
+  premiumHero: HomePremiumHeroModel
   productValueSection: HomeProductValueSectionModel
   themeStyle: CSSProperties
 }
@@ -358,17 +360,10 @@ export const homePageModel: HomePageModel = {
     eyebrow: 'Rota viva de estudo',
     markers: globalStudyMarkers,
     metrics: globalStudyMetrics,
-    primaryCta: 'Quero entrar no beta',
-    secondaryCta: 'Ver diagnostico',
+    primaryCta: 'Acompanhar lançamento',
+    secondaryCta: 'Solicitar apresentação',
     steps: globalStudySteps,
     title: 'Seu estudo nao precisa de mais abas. Precisa de uma rota.',
-  },
-  hero: {
-    badge: 'Cognix',
-    subtitle:
-      'Cognix indica o que revisar e organiza seu plano de estudo. Pare de perder tempo estudando errado.',
-    titlePrefix: 'Estude com',
-    titleWords: ['IA', 'foco', 'clareza', 'metodo'],
   },
   launchBanner: {
     compactMessage: 'Cognix sera liberado em breve.',
@@ -379,6 +374,15 @@ export const homePageModel: HomePageModel = {
     tabletMessage: 'A experiencia completa do Cognix sera liberada em breve.',
   },
   particlesOptions,
+  premiumHero: {
+    badge: 'Cognix',
+    primaryCtaLabel: 'Ver como funciona',
+    primaryCtaTargetId: 'cognix-diagnostico',
+    subtitle:
+      'Cognix indica o que revisar e organiza seu plano de estudo. Pare de perder tempo estudando errado.',
+    titlePrefix: 'Estude com',
+    titleWords: ['IA', 'foco', 'clareza', 'metodo'],
+  },
   productValueSection: {
     cards: productValueCards,
     description:

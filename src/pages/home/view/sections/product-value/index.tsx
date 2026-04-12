@@ -1,4 +1,4 @@
-import { forwardRef, type CSSProperties } from 'react'
+import { forwardRef, useEffect, useRef, useState, type CSSProperties } from 'react'
 
 import { FocusCards } from '@/components/ui/focus-cards'
 import { SectionPattern } from '@/components/ui/section-pattern'
@@ -14,9 +14,46 @@ type ProductValueSectionProps = {
 
 export const ProductValueSection = forwardRef<HTMLElement, ProductValueSectionProps>(
   function ProductValueSection({ accentStyle, contentStyle, section }, ref) {
-  const focusCards = section.cards.map((card) => ({
+  const cardsRef = useRef<HTMLDivElement | null>(null)
+  const [cardsHaveEntered, setCardsHaveEntered] = useState(false)
+
+  useEffect(() => {
+    const cardsElement = cardsRef.current
+
+    if (!cardsElement) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setCardsHaveEntered(true)
+          observer.disconnect()
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -18% 0px',
+        threshold: 0.18,
+      },
+    )
+
+    observer.observe(cardsElement)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  const focusCards = section.cards.map((card, index) => ({
     className: card.spanClassName,
-    content: <FeatureCard card={card} />,
+    content: (
+      <FeatureCard
+        card={card}
+        hasEntered={cardsHaveEntered}
+        index={index}
+      />
+    ),
     key: card.title,
   }))
 
@@ -24,7 +61,7 @@ export const ProductValueSection = forwardRef<HTMLElement, ProductValueSectionPr
     <section
       id="cognix-diagnostico"
       ref={ref}
-      className="relative z-10 flex min-h-[100svh] items-start overflow-hidden bg-white px-5 pb-16 pt-16 text-[#060E20] sm:px-8 sm:pb-20 sm:pt-20 lg:h-[100svh] lg:min-h-0 lg:items-center lg:px-16 lg:pb-16 lg:pt-16"
+      className="relative z-10 flex min-h-[100svh] scroll-mt-24 items-start overflow-hidden bg-white px-5 pb-16 pt-16 text-[#060E20] sm:scroll-mt-28 sm:px-8 sm:pb-20 sm:pt-20 lg:h-[100svh] lg:min-h-0 lg:items-center lg:px-16 lg:pb-16 lg:pt-16"
     >
       <SectionPattern variant="light" className="opacity-70" />
       <div
@@ -49,10 +86,12 @@ export const ProductValueSection = forwardRef<HTMLElement, ProductValueSectionPr
             </p>
           </div>
 
-          <FocusCards
-            cards={focusCards}
-            className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-6"
-          />
+          <div ref={cardsRef}>
+            <FocusCards
+              cards={focusCards}
+              className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-6"
+            />
+          </div>
         </div>
       </div>
     </section>

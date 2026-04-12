@@ -5,19 +5,32 @@ type UseGlobalStudyEntryResult = {
   prefersReducedMotion: boolean
 }
 
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)'
+
+const getPrefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia(reducedMotionQuery).matches
+
 export function useGlobalStudyEntry(
   sectionRef: RefObject<HTMLElement | null>,
 ): UseGlobalStudyEntryResult {
-  const [hasEntered, setHasEntered] = useState(false)
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const [hasEntered, setHasEntered] = useState(getPrefersReducedMotion)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(
+    getPrefersReducedMotion,
+  )
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const mediaQuery = window.matchMedia(reducedMotionQuery)
     const updatePreference = () => {
-      setPrefersReducedMotion(mediaQuery.matches)
+      const nextPrefersReducedMotion = mediaQuery.matches
+
+      setPrefersReducedMotion(nextPrefersReducedMotion)
+
+      if (nextPrefersReducedMotion) {
+        setHasEntered(true)
+      }
     }
 
-    updatePreference()
     mediaQuery.addEventListener('change', updatePreference)
 
     return () => {
@@ -33,7 +46,6 @@ export function useGlobalStudyEntry(
     }
 
     if (prefersReducedMotion) {
-      setHasEntered(true)
       return
     }
 
