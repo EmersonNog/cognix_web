@@ -187,17 +187,17 @@ const productValueCards: HomeFeatureCardModel[] = [
   {
     accentClassName: 'from-[#7efbff]/30 via-[#7efbff]/8 to-transparent',
     description:
-      'Veja com clareza quais assuntos e tipos de questao estao derrubando seu desempenho.',
-    detail: 'Assuntos com maior incidencia de erro',
-    label: 'Diagnostico',
+      'Veja com clareza quais assuntos e tipos de questão estão derrubando seu desempenho.',
+    detail: 'Assuntos com maior incidência de erro',
+    label: 'Diagnóstico',
     metric: '01',
     spanClassName: 'xl:col-span-3',
-    title: 'Mostra onde voce esta errando',
+    title: 'Mostra onde você está errando',
   },
   {
     accentClassName: 'from-[#5ab7ff]/28 via-[#5ab7ff]/8 to-transparent',
     description:
-      'A IA do Cognix analisa seu desempenho e define o que revisar primeiro para gerar mais impacto na sua preparacao.',
+      'A IA do Cognix analisa seu desempenho e define o que revisar primeiro para gerar mais impacto na sua preparação.',
     detail: 'Prioridade definida com apoio de IA',
     label: 'IA aplicada',
     metric: '02',
@@ -207,9 +207,9 @@ const productValueCards: HomeFeatureCardModel[] = [
   {
     accentClassName: 'from-[#83ffd4]/24 via-[#83ffd4]/8 to-transparent',
     description:
-      'Seus erros viram direcao pratica: o que estudar, em que ordem e com qual prioridade.',
+      'Seus erros viram direção prática: o que estudar, em que ordem e com qual prioridade.',
     detail: 'Plano ajustado com base no seu desempenho',
-    label: 'Plano de acao',
+    label: 'Plano de ação',
     metric: '03',
     spanClassName: 'md:col-span-2 xl:col-span-6',
     title: 'Organiza seu plano de estudo',
@@ -218,18 +218,18 @@ const productValueCards: HomeFeatureCardModel[] = [
 
 const globalStudyMarkers: HomeGlobalStudyMarkerModel[] = [
   {
-    city: 'Sao Paulo',
-    detail: 'Funcoes entrou como prioridade nesta rota.',
+    city: 'São Paulo',
+    detail: 'Funções entrou como prioridade nesta rota.',
     id: 'sao-paulo',
     lat: -23.5505,
     lng: -46.6333,
     reference: 'MASP',
     src: 'https://assets.aceternity.com/avatars/1.webp',
-    subject: 'Funcoes',
+    subject: 'Funções',
   },
   {
     city: 'Teresina',
-    detail: 'Interpretacao puxou a proxima revisao.',
+    detail: 'Interpretação puxou a próxima revisão.',
     id: 'teresina',
     lat: -5.0892,
     lng: -42.8016,
@@ -249,52 +249,52 @@ const globalStudyMarkers: HomeGlobalStudyMarkerModel[] = [
   },
   {
     city: 'Porto Alegre',
-    detail: 'Redacao foi dividida em duas revisoes curtas.',
+    detail: 'Redação foi dividida em duas revisões curtas.',
     id: 'porto-alegre',
     lat: -30.0346,
     lng: -51.2177,
-    reference: 'Gasometro',
+    reference: 'Gasômetro',
     src: 'https://assets.aceternity.com/avatars/4.webp',
-    subject: 'Redacao',
+    subject: 'Redação',
   },
   {
-    city: 'Brasilia',
-    detail: 'Probabilidade apareceu como ganho mais rapido.',
+    city: 'Brasília',
+    detail: 'Probabilidade apareceu como ganho mais rápido.',
     id: 'brasilia',
     lat: -15.7939,
     lng: -47.8828,
-    reference: 'Eixao',
+    reference: 'Eixão',
     src: 'https://assets.aceternity.com/avatars/5.webp',
-    subject: 'Matematica',
+    subject: 'Matemática',
   },
   {
     city: 'Salvador',
-    detail: 'Estequiometria entrou antes do proximo simulado.',
+    detail: 'Estequiometria entrou antes do próximo simulado.',
     id: 'salvador',
     lat: -12.9777,
     lng: -38.5016,
     reference: 'Pelourinho',
     src: 'https://assets.aceternity.com/avatars/6.webp',
-    subject: 'Quimica',
+    subject: 'Química',
   },
 ]
 
 const globalStudyMetrics: HomeGlobalStudyMetricModel[] = [
   {
     description:
-      'A gamificacao transforma o estudo em progresso visivel, com metas, desafios e incentivo para manter a rotina ativa.',
-    label: 'Gamificacao',
+      'A gamificação transforma o estudo em progresso visível, com metas, desafios e incentivo para manter a rotina ativa.',
+    label: 'Gamificação',
     value: '01',
   },
   {
     description:
-      'Os dashboards de desempenho mostram acertos, erros, evolucao por materia e os pontos que mais pedem ajuste.',
+      'Os dashboards de desempenho mostram acertos, erros, evolução por matéria e os pontos que mais pedem ajuste.',
     label: 'Dashboards',
     value: '02',
   },
   {
     description:
-      'O mapa mental organiza conceitos, ligacoes entre temas e revisoes rapidas para facilitar memorizacao e clareza.',
+      'O mapa mental organiza conceitos, ligações entre temas e revisões rápidas para facilitar memorização e clareza.',
     label: 'Mapa mental',
     value: '03',
   },
@@ -303,46 +303,46 @@ const globalStudyMetrics: HomeGlobalStudyMetricModel[] = [
 const globalStudySteps: HomeGlobalStudyStepModel[] = [
   {
     description:
-      'Cada resposta, simulado e bloco concluido alimenta o Cognix com dados reais sobre o que ja esta firme e o que ainda precisa de reforco.',
+      'Cada resposta, simulado e bloco concluído alimenta o Cognix com dados reais sobre o que já está firme e o que ainda precisa de reforço.',
     label: 'Entrada',
     toneClassName: 'border-[#2fd6c8]',
     title: 'Resultado recebido',
   },
   {
     description:
-      'A IA interpreta padroes de erro, reincidencia e peso dos temas para descobrir onde uma revisao curta pode gerar mais ganho.',
+      'A IA interpreta padrões de erro, reincidência e peso dos temas para descobrir onde uma revisão curta pode gerar mais ganho.',
     label: 'Leitura',
     toneClassName: 'border-[#5a8dff]',
-    title: 'Diagnostico em tempo real',
+    title: 'Diagnóstico em tempo real',
   },
   {
     description:
-      'A proxima sessao chega organizada por prioridade, com foco definido e tempo sugerido para estudar sem dispersao.',
-    label: 'Saida',
+      'A próxima sessão chega organizada por prioridade, com foco definido e tempo sugerido para estudar sem dispersão.',
+    label: 'Saída',
     toneClassName: 'border-[#ff8f70]',
-    title: 'Plano acionavel',
+    title: 'Plano acionável',
   },
 ]
 
 const footerGroups: HomeFooterGroupModel[] = [
   {
     items: [
-      'Diagnostico',
+      'Diagnóstico',
       'Plano de estudo',
-      'Gamificacao',
+      'Gamificação',
       'Mapa mental',
     ],
     title: 'Produto',
   },
   {
-    items: ['Sobre o projeto', 'Contato', 'Atualizacoes', 'Parcerias'],
+    items: ['Sobre o projeto', 'Contato', 'Atualizações', 'Parcerias'],
     title: 'Empresa',
   },
   {
     items: [
       'Termos de uso',
-      'Politica de privacidade',
-      'Politica de cookies',
+      'Política de privacidade',
+      'Política de cookies',
     ],
     title: 'Legal',
   },
@@ -356,22 +356,22 @@ export const homePageModel: HomePageModel = {
   },
   globalStudySection: {
     description:
-      'Resultados entram, prioridades aparecem e a proxima sessao ganha foco.',
+      'Resultados entram, prioridades aparecem e a próxima sessão ganha foco.',
     eyebrow: 'Rota viva de estudo',
     markers: globalStudyMarkers,
     metrics: globalStudyMetrics,
     primaryCta: 'Acompanhar lançamento',
     secondaryCta: 'Solicitar apresentação',
     steps: globalStudySteps,
-    title: 'Seu estudo nao precisa de mais abas. Precisa de uma rota.',
+    title: 'Seu estudo não precisa de mais abas. Precisa de uma rota.',
   },
   launchBanner: {
-    compactMessage: 'Cognix sera liberado em breve.',
+    compactMessage: 'Cognix será liberado em breve.',
     compactTag: 'Em breve',
     message:
-      'O Cognix esta em fase final de testes. A experiencia completa sera liberada em breve.',
-    tag: 'Lancamento proximo',
-    tabletMessage: 'A experiencia completa do Cognix sera liberada em breve.',
+      'O Cognix está em fase final de testes. A experiência completa será liberada em breve.',
+    tag: 'Lançamento próximo',
+    tabletMessage: 'A experiência completa do Cognix será liberada em breve.',
   },
   particlesOptions,
   premiumHero: {
@@ -381,14 +381,14 @@ export const homePageModel: HomePageModel = {
     subtitle:
       'Cognix indica o que revisar e organiza seu plano de estudo. Pare de perder tempo estudando errado.',
     titlePrefix: 'Estude com',
-    titleWords: ['IA', 'foco', 'clareza', 'metodo'],
+    titleWords: ['IA', 'foco', 'clareza', 'método'],
   },
   productValueSection: {
     cards: productValueCards,
     description:
-      'O Cognix analisa seu desempenho, identifica onde voce esta errando e transforma isso em um plano de estudo claro para o ENEM.',
+      'O Cognix analisa seu desempenho, identifica onde você está errando e transforma isso em um plano de estudo claro.',
     eyebrow: 'O que o Cognix faz',
-    title: 'Nao e mais um app de estudo generico.',
+    title: 'Não é mais um app de estudo genérico.',
   },
   themeStyle: cognixThemeStyle,
 }
