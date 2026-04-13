@@ -28,18 +28,19 @@ export function isRequestPresentationPageRoute(
   return value === requestPresentationPageRoute
 }
 
-export function createRequestPresentationHashHref() {
-  return `/#/${requestPresentationPageRoute}`
+export function createRequestPresentationPageHref() {
+  return `/${requestPresentationPageRoute}`
 }
 
-export function getRequestPresentationPageRouteFromHash(hash: string) {
-  if (!hash.startsWith('#/')) {
+export function getRequestPresentationPageRouteFromPathname(pathname: string) {
+  const normalizedPathname =
+    pathname === '/' ? pathname : pathname.replace(/\/+$/, '')
+
+  if (normalizedPathname === '/') {
     return null
   }
 
-  const route = decodeURIComponent(
-    hash.slice(2).replace(/\/+$/, '').split('?')[0],
-  )
+  const route = decodeURIComponent(normalizedPathname.slice(1).split('?')[0])
 
   return isRequestPresentationPageRoute(route) ? route : null
 }

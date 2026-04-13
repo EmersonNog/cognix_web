@@ -3,11 +3,13 @@ import { useEffect, useMemo, useState } from 'react'
 import { HomePageController } from '@/pages/home/controller/HomePageController'
 import { LegalPageController } from '@/pages/legal/controller/LegalPageController'
 import {
-  getLegalPageRouteFromHash,
+  getLegalPageRouteFromPathname,
+  isLegalPageRoute,
   legalPages,
 } from '@/pages/legal/model/legal-pages.model'
 import {
-  getRequestPresentationPageRouteFromHash,
+  getRequestPresentationPageRouteFromPathname,
+  isRequestPresentationPageRoute,
   requestPresentationPageModel,
 } from '@/pages/request-presentation/model/request-presentation-page.model'
 import { RequestPresentationPageController } from '@/pages/request-presentation/controller/RequestPresentationPageController'
@@ -17,24 +19,51 @@ const HOME_PAGE_DESCRIPTION =
   'Cognix ajuda você a descobrir o que revisar e organiza seu plano de estudo.'
 
 function App() {
+  const [pathname, setPathname] = useState(() => window.location.pathname)
   const [hash, setHash] = useState(() => window.location.hash)
-  const legalRoute = useMemo(() => getLegalPageRouteFromHash(hash), [hash])
+  const legalRoute = useMemo(
+    () => getLegalPageRouteFromPathname(pathname),
+    [pathname],
+  )
   const requestPresentationRoute = useMemo(
-    () => getRequestPresentationPageRouteFromHash(hash),
-    [hash],
+    () => getRequestPresentationPageRouteFromPathname(pathname),
+    [pathname],
   )
 
   useEffect(() => {
-    const handleHashChange = () => {
+    const syncLocationState = () => {
+      setPathname(window.location.pathname)
       setHash(window.location.hash)
     }
 
-    window.addEventListener('hashchange', handleHashChange)
+    window.addEventListener('popstate', syncLocationState)
+    window.addEventListener('hashchange', syncLocationState)
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange)
+      window.removeEventListener('popstate', syncLocationState)
+      window.removeEventListener('hashchange', syncLocationState)
     }
   }, [])
+
+  useEffect(() => {
+    if (pathname !== '/' || !hash.startsWith('#/')) {
+      return
+    }
+
+    const legacyRoute = decodeURIComponent(
+      hash.slice(2).replace(/\/+$/, '').split('?')[0],
+    )
+
+    if (
+      !isLegalPageRoute(legacyRoute) &&
+      !isRequestPresentationPageRoute(legacyRoute)
+    ) {
+      return
+    }
+
+    window.history.replaceState(null, '', `/${legacyRoute}`)
+    window.dispatchEvent(new PopStateEvent('popstate'))
+  }, [hash, pathname])
 
   useEffect(() => {
     let pageTitle = HOME_PAGE_TITLE
@@ -62,7 +91,7 @@ function App() {
       return
     }
 
-    if (!hash || hash.startsWith('#/')) {
+    if (!hash) {
       return
     }
 

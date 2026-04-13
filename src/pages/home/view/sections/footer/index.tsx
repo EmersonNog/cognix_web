@@ -1,3 +1,4 @@
+import { AppLink } from '@/components/ui/app-link'
 import { SectionPattern } from '@/components/ui/section-pattern'
 import logoOutlined from '@/assets/logo_outlined_dark.png'
 import type { HomeFooterModel } from '@/pages/home/model/home-page.model'
@@ -50,14 +51,14 @@ export function HomeFooterSection({ footer }: HomeFooterSectionProps) {
                   {typeof item === 'string' ? (
                     item
                   ) : item.href ? (
-                    <a
+                    <AppLink
                       className="inline-flex text-[#0f1728] transition-colors duration-200 hover:text-[#335cff]"
                       href={item.href}
                       rel={item.external ? 'noreferrer noopener' : undefined}
                       target={item.external ? '_blank' : undefined}
                     >
                       {item.label}
-                    </a>
+                    </AppLink>
                   ) : (
                     <span>{item.label}</span>
                   )}

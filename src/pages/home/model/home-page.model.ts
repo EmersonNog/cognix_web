@@ -5,8 +5,8 @@ import dashboardMapaMentalMockup from '@/assets/mockup/dashboard_mapa_mental.web
 import planoMockup from '@/assets/mockup/plano.webp'
 import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.webp'
 import simuladoMockup from '@/assets/mockup/simulado.webp'
-import { createLegalHashHref } from '@/pages/legal/model/legal-pages.model'
-import { createRequestPresentationHashHref } from '@/pages/request-presentation/model/request-presentation-page.model'
+import { createLegalPageHref } from '@/pages/legal/model/legal-pages.model'
+import { createRequestPresentationPageHref } from '@/pages/request-presentation/model/request-presentation-page.model'
 
 export type HomeFeatureCardModel = {
   accentClassName: string
@@ -404,7 +404,7 @@ const homeFooterGroups: HomeFooterGroupModel[] = [
         label: 'Como funciona',
       },
       {
-        href: createRequestPresentationHashHref(),
+        href: createRequestPresentationPageHref(),
         label: 'Solicitar apresentacao',
       },
     ],
@@ -413,15 +413,15 @@ const homeFooterGroups: HomeFooterGroupModel[] = [
   {
     items: [
       {
-        href: createLegalHashHref('termos-de-uso'),
+        href: createLegalPageHref('termos-de-uso'),
         label: 'Termos de uso',
       },
       {
-        href: createLegalHashHref('politica-de-privacidade'),
+        href: createLegalPageHref('politica-de-privacidade'),
         label: 'Politica de privacidade',
       },
       {
-        href: createLegalHashHref('politica-de-cookies'),
+        href: createLegalPageHref('politica-de-cookies'),
         label: 'Politica de cookies',
       },
     ],

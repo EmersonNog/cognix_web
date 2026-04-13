@@ -39,16 +39,19 @@ export function isLegalPageRoute(value: string): value is LegalPageRoute {
   return legalPageRoutes.includes(value as LegalPageRoute)
 }
 
-export function createLegalHashHref(route: LegalPageRoute) {
-  return `/#/${route}`
+export function createLegalPageHref(route: LegalPageRoute) {
+  return `/${route}`
 }
 
-export function getLegalPageRouteFromHash(hash: string) {
-  if (!hash.startsWith('#/')) {
+export function getLegalPageRouteFromPathname(pathname: string) {
+  const normalizedPathname =
+    pathname === '/' ? pathname : pathname.replace(/\/+$/, '')
+
+  if (normalizedPathname === '/') {
     return null
   }
 
-  const route = hash.slice(2).replace(/\/+$/, '').split('?')[0]
+  const route = decodeURIComponent(normalizedPathname.slice(1).split('?')[0])
 
   return isLegalPageRoute(route) ? route : null
 }

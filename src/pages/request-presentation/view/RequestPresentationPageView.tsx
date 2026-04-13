@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 
+import { AppLink } from '@/components/ui/app-link'
 import logoOutlined from '@/assets/logo_outlined_light.png'
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type {
@@ -178,16 +179,16 @@ export function RequestPresentationPageView({
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,45,0.16)_0%,rgba(7,26,45,0.8)_72%,rgba(7,26,45,1)_100%)]" />
 
         <div className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-16">
-          <a
-            href="/#inicio"
+          <AppLink
+            href="/"
             className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3.5 py-2 text-[0.76rem] font-medium text-[#e6ecff] transition-colors duration-200 hover:border-white/22 hover:bg-white/10 sm:text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar para a home
-          </a>
+          </AppLink>
 
-          <a
-            href="/#inicio"
+          <AppLink
+            href="/"
             className="inline-flex items-center gap-2.5 text-sm font-medium text-[#e6ecff]/92"
           >
             <img
@@ -197,7 +198,7 @@ export function RequestPresentationPageView({
               src={logoOutlined}
             />
             <span>Cognix</span>
-          </a>
+          </AppLink>
         </div>
 
         <div className="relative mx-auto mt-10 grid w-full max-w-7xl gap-8 px-5 sm:mt-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)] lg:items-end lg:px-16">

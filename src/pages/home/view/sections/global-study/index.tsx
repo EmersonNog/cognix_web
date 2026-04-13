@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react'
 
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type { HomeGlobalStudySectionModel } from '@/pages/home/model/home-page.model'
-import { requestPresentationPageRoute } from '@/pages/request-presentation/model/request-presentation-page.model'
+import { createRequestPresentationPageHref } from '@/pages/request-presentation/model/request-presentation-page.model'
 import { GlobalStudyHeader } from './components/GlobalStudyHeader'
 import { GlobalStudyMetricsCarousel } from './components/GlobalStudyMetricsCarousel'
 import { GlobalStudyVisualPanel } from './components/GlobalStudyVisualPanel'
@@ -49,7 +49,10 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
   }, [])
 
   const openRequestPresentationPage = useCallback(() => {
-    window.location.hash = `/${requestPresentationPageRoute}`
+    const targetPath = createRequestPresentationPageHref()
+
+    window.history.pushState(null, '', targetPath)
+    window.dispatchEvent(new PopStateEvent('popstate'))
   }, [])
 
   const accentStyle = getAccentStyle(hasEntered)

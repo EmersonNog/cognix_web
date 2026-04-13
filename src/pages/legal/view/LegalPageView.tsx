@@ -8,10 +8,11 @@ import {
 } from 'lucide-react'
 
 import logoOutlined from '@/assets/logo_outlined_light.png'
+import { AppLink } from '@/components/ui/app-link'
 import { SectionPattern } from '@/components/ui/section-pattern'
 import { cn } from '@/lib/utils'
 import {
-  createLegalHashHref,
+  createLegalPageHref,
   legalPages,
   legalPageRoutes,
   type LegalPageModel,
@@ -60,16 +61,16 @@ export function LegalPageView({ page }: LegalPageViewProps) {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,45,0.2)_0%,rgba(7,26,45,0.78)_72%,rgba(7,26,45,1)_100%)]" />
 
         <div className="relative mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-16">
-          <a
-            href="/#inicio"
+          <AppLink
+            href="/"
             className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3.5 py-2 text-[0.76rem] font-medium text-[#e6ecff] transition-colors duration-200 hover:border-white/22 hover:bg-white/10 sm:text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Voltar para a home
-          </a>
+          </AppLink>
 
-          <a
-            href="/#inicio"
+          <AppLink
+            href="/"
             className="inline-flex items-center gap-2.5 text-sm font-medium text-[#e6ecff]/92"
           >
             <img
@@ -79,7 +80,7 @@ export function LegalPageView({ page }: LegalPageViewProps) {
               src={logoOutlined}
             />
             <span>Cognix</span>
-          </a>
+          </AppLink>
         </div>
 
         <div className="relative mx-auto mt-10 grid w-full max-w-7xl gap-8 px-5 sm:mt-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,20rem)] lg:items-end lg:px-16">
@@ -140,7 +141,7 @@ export function LegalPageView({ page }: LegalPageViewProps) {
                 const isActive = route === page.route
 
                 return (
-                  <a
+                  <AppLink
                     key={route}
                     aria-current={isActive ? 'page' : undefined}
                     className={cn(
@@ -149,10 +150,10 @@ export function LegalPageView({ page }: LegalPageViewProps) {
                         ? 'bg-[#0f2342] text-white shadow-[0_12px_28px_rgba(15,35,66,0.18)]'
                         : 'text-[#30425f] hover:bg-[#eef3fb] hover:text-[#0f2342]',
                     )}
-                    href={createLegalHashHref(route)}
+                    href={createLegalPageHref(route)}
                   >
                     {legalPage.title}
-                  </a>
+                  </AppLink>
                 )
               })}
             </div>
