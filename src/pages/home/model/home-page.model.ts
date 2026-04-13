@@ -1,10 +1,10 @@
 import type { ISourceOptions } from '@tsparticles/engine'
 import type { CSSProperties } from 'react'
 
-import dashboardMapaMentalMockup from '@/assets/mockup/dashboard_mapa_mental.png'
-import planoMockup from '@/assets/mockup/plano.png'
-import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.png'
-import simuladoMockup from '@/assets/mockup/simulado.png'
+import dashboardMapaMentalMockup from '@/assets/mockup/dashboard_mapa_mental.webp'
+import planoMockup from '@/assets/mockup/plano.webp'
+import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.webp'
+import simuladoMockup from '@/assets/mockup/simulado.webp'
 import { createLegalHashHref } from '@/pages/legal/model/legal-pages.model'
 
 export type HomeFeatureCardModel = {
