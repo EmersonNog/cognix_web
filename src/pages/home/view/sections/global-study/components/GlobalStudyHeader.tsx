@@ -1,9 +1,12 @@
+import { AppLink } from '@/components/ui/app-link'
+
 type GlobalStudyHeaderProps = {
   description: string
   eyebrow: string
-  onPrimaryCta: () => void
-  onSecondaryCta: () => void
+  primaryCtaHref: string
   primaryCta: string
+  primaryCtaTarget?: '_blank' | '_self'
+  secondaryCtaHref: string
   secondaryCta: string
   title: string
 }
@@ -11,9 +14,10 @@ type GlobalStudyHeaderProps = {
 export function GlobalStudyHeader({
   description,
   eyebrow,
-  onPrimaryCta,
-  onSecondaryCta,
   primaryCta,
+  primaryCtaHref,
+  primaryCtaTarget,
+  secondaryCtaHref,
   secondaryCta,
   title,
 }: GlobalStudyHeaderProps) {
@@ -32,21 +36,21 @@ export function GlobalStudyHeader({
       </p>
 
       <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-        <button
-          type="button"
-          onClick={onPrimaryCta}
+        <AppLink
+          href={primaryCtaHref}
+          rel={primaryCtaTarget === '_blank' ? 'noopener noreferrer' : undefined}
+          target={primaryCtaTarget}
           className="inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#0b3028] px-5 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(11,48,40,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#13483d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#36c2a3]"
         >
           {primaryCta}
-        </button>
+        </AppLink>
 
-        <button
-          type="button"
-          onClick={onSecondaryCta}
+        <AppLink
+          href={secondaryCtaHref}
           className="inline-flex min-h-12 items-center justify-center rounded-[8px] border border-[#b9dccc] bg-white/84 px-5 text-sm font-semibold text-[#12483b] shadow-[0_14px_34px_rgba(20,86,69,0.09)] transition duration-200 hover:-translate-y-0.5 hover:border-[#87cfbb] hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#72a8ff]"
         >
           {secondaryCta}
-        </button>
+        </AppLink>
       </div>
     </>
   )

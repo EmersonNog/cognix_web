@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type { HomeGlobalStudySectionModel } from '@/pages/home/model/home-page.model'
@@ -32,28 +32,13 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
       prefersReducedMotion,
     })
 
-  const handleMetricCarouselPause = useCallback(() => {
+  const handleMetricCarouselPause = () => {
     setIsMetricCarouselPaused(true)
-  }, [])
+  }
 
-  const handleMetricCarouselResume = useCallback(() => {
+  const handleMetricCarouselResume = () => {
     setIsMetricCarouselPaused(false)
-  }, [])
-
-  const openLaunchInstagram = useCallback(() => {
-    window.open(
-      'https://www.instagram.com/cognix_hub/',
-      '_blank',
-      'noopener,noreferrer',
-    )
-  }, [])
-
-  const openRequestPresentationPage = useCallback(() => {
-    const targetPath = createRequestPresentationPageHref()
-
-    window.history.pushState(null, '', targetPath)
-    window.dispatchEvent(new PopStateEvent('popstate'))
-  }, [])
+  }
 
   const accentStyle = getAccentStyle(hasEntered)
   const contentStyle = getContentStyle(hasEntered)
@@ -92,10 +77,11 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
           <GlobalStudyHeader
             description={section.description}
             eyebrow={section.eyebrow}
-            onPrimaryCta={openLaunchInstagram}
-            onSecondaryCta={openRequestPresentationPage}
             primaryCta={section.primaryCta}
+            primaryCtaHref="https://www.instagram.com/cognix_hub/"
+            primaryCtaTarget="_blank"
             secondaryCta={section.secondaryCta}
+            secondaryCtaHref={createRequestPresentationPageHref()}
             title={section.title}
           />
 
