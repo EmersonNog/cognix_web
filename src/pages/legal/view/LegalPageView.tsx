@@ -235,7 +235,7 @@ export function LegalPageView({ page }: LegalPageViewProps) {
 
               <section className="rounded-[1.9rem] border border-[#d8e0ee] bg-white/94 p-6 shadow-[0_18px_50px_rgba(12,22,44,0.07)]">
                 <h2 className="text-[1.05rem] font-semibold tracking-[-0.02em] text-[#09172c]">
-                  Resumo rapido
+                  Resumo rápido
                 </h2>
 
                 <ul className="mt-4 space-y-3">

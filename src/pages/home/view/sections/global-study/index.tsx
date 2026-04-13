@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react'
 
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type { HomeGlobalStudySectionModel } from '@/pages/home/model/home-page.model'
-import { scrollToElement } from '@/pages/home/view/scrollToElement'
+import { requestPresentationPageRoute } from '@/pages/request-presentation/model/request-presentation-page.model'
 import { GlobalStudyHeader } from './components/GlobalStudyHeader'
 import { GlobalStudyMetricsCarousel } from './components/GlobalStudyMetricsCarousel'
 import { GlobalStudyVisualPanel } from './components/GlobalStudyVisualPanel'
@@ -48,14 +48,8 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
     )
   }, [])
 
-  const scrollToDiagnostics = useCallback(() => {
-    const target = document.getElementById('cognix-diagnostico')
-
-    if (!target) {
-      return
-    }
-
-    scrollToElement(target)
+  const openRequestPresentationPage = useCallback(() => {
+    window.location.hash = `/${requestPresentationPageRoute}`
   }, [])
 
   const accentStyle = getAccentStyle(hasEntered)
@@ -96,7 +90,7 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
             description={section.description}
             eyebrow={section.eyebrow}
             onPrimaryCta={openLaunchInstagram}
-            onSecondaryCta={scrollToDiagnostics}
+            onSecondaryCta={openRequestPresentationPage}
             primaryCta={section.primaryCta}
             secondaryCta={section.secondaryCta}
             title={section.title}

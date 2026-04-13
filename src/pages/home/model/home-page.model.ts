@@ -6,6 +6,7 @@ import planoMockup from '@/assets/mockup/plano.webp'
 import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.webp'
 import simuladoMockup from '@/assets/mockup/simulado.webp'
 import { createLegalHashHref } from '@/pages/legal/model/legal-pages.model'
+import { createRequestPresentationHashHref } from '@/pages/request-presentation/model/request-presentation-page.model'
 
 export type HomeFeatureCardModel = {
   accentClassName: string
@@ -403,7 +404,7 @@ const homeFooterGroups: HomeFooterGroupModel[] = [
         label: 'Como funciona',
       },
       {
-        href: '/#rota-cognix',
+        href: createRequestPresentationHashHref(),
         label: 'Solicitar apresentacao',
       },
     ],
