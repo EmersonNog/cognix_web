@@ -1,5 +1,5 @@
 import { SectionPattern } from '@/components/ui/section-pattern'
-import logoOutlined from '@/assets/logo_outlined.png'
+import logoOutlined from '@/assets/logo_outlined_dark.png'
 import type { HomeFooterModel } from '@/pages/home/model/home-page.model'
 
 type HomeFooterSectionProps = {
@@ -46,7 +46,22 @@ export function HomeFooterSection({ footer }: HomeFooterSectionProps) {
 
             <ul className="mt-2 space-y-1 text-[0.82rem] leading-[1.2rem] text-[#0f1728] sm:mt-3.5 sm:space-y-2 sm:text-[1rem] sm:leading-7">
               {group.items.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={typeof item === 'string' ? item : item.label}>
+                  {typeof item === 'string' ? (
+                    item
+                  ) : item.href ? (
+                    <a
+                      className="inline-flex text-[#0f1728] transition-colors duration-200 hover:text-[#335cff]"
+                      href={item.href}
+                      rel={item.external ? 'noreferrer noopener' : undefined}
+                      target={item.external ? '_blank' : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </li>
               ))}
             </ul>
           </section>

@@ -289,7 +289,7 @@ export const PremiumHeroSection = forwardRef<HTMLElement, PremiumHeroSectionProp
     return (
       <section
         ref={ref}
-        className="relative sticky top-0 z-0 isolate h-[100svh] overflow-hidden bg-[#060E20] text-[#DEE5FF]"
+        className="relative sticky top-0 z-0 isolate h-[100dvh] overflow-hidden bg-[#060E20] text-[#DEE5FF]"
       >
         <div className="absolute inset-0" style={stageStyle}>
           <div className="absolute inset-0" style={backgroundStyle}>
@@ -322,7 +322,7 @@ export const PremiumHeroSection = forwardRef<HTMLElement, PremiumHeroSectionProp
           <div className="absolute inset-x-0 bottom-0 h-px bg-white/6" />
 
           <div
-            className="relative mx-auto flex h-[100svh] w-full max-w-7xl items-center px-5 pb-6 pt-[5.25rem] sm:px-8 sm:pb-8 sm:pt-[5.9rem] md:pb-6 md:pt-[5.8rem] lg:px-16 lg:pb-10 lg:pt-[6.9rem] xl:pt-[7.2rem]"
+            className="relative mx-auto flex h-[100dvh] w-full max-w-7xl items-center px-5 pb-6 pt-[5.25rem] sm:px-8 sm:pb-8 sm:pt-[5.9rem] md:pb-6 md:pt-[5.8rem] lg:px-16 lg:pb-10 lg:pt-[6.9rem] xl:pt-[7.2rem]"
             style={contentStyle}
           >
             <div className="grid w-full items-center gap-8 sm:gap-10 md:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(15rem,17.5rem)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(16rem,18.5rem)] xl:gap-12">

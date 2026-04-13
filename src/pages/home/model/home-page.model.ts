@@ -5,6 +5,7 @@ import dashboardMapaMentalMockup from '@/assets/mockup/dashboard_mapa_mental.png
 import planoMockup from '@/assets/mockup/plano.png'
 import recomendadosDesempenhoMockup from '@/assets/mockup/recomendados_desempenho.png'
 import simuladoMockup from '@/assets/mockup/simulado.png'
+import { createLegalHashHref } from '@/pages/legal/model/legal-pages.model'
 
 export type HomeFeatureCardModel = {
   accentClassName: string
@@ -77,8 +78,16 @@ export type HomeGlobalStudySectionModel = {
   title: string
 }
 
+export type HomeFooterItemModel =
+  | string
+  | {
+      external?: boolean
+      href?: string
+      label: string
+    }
+
 export type HomeFooterGroupModel = {
-  items: string[]
+  items: HomeFooterItemModel[]
   title: string
 }
 
@@ -100,7 +109,7 @@ export type HomePageModel = {
 }
 
 export const cognixThemeStyle: CSSProperties = {
-  minHeight: '100svh',
+  minHeight: '100dvh',
 }
 
 const particlesOptions: ISourceOptions = {
@@ -332,7 +341,7 @@ const globalStudySteps: HomeGlobalStudyStepModel[] = [
   },
 ]
 
-const footerGroups: HomeFooterGroupModel[] = [
+export const footerGroupsLegacy: HomeFooterGroupModel[] = [
   {
     items: [
       'Diagnóstico',
@@ -356,6 +365,69 @@ const footerGroups: HomeFooterGroupModel[] = [
   },
 ]
 
+const homeFooterGroups: HomeFooterGroupModel[] = [
+  {
+    items: [
+      {
+        href: '/#cognix-diagnostico',
+        label: 'Diagnostico de desempenho',
+      },
+      {
+        href: '/#cognix-hub',
+        label: 'Plano semanal inteligente',
+      },
+      {
+        href: '/#cognix-hub',
+        label: 'Recomendacoes do dia',
+      },
+      {
+        href: '/#rota-cognix',
+        label: 'Rota de estudo com IA',
+      },
+    ],
+    title: 'Produto',
+  },
+  {
+    items: [
+      {
+        href: '/#inicio',
+        label: 'Pagina inicial',
+      },
+      {
+        external: true,
+        href: 'https://www.instagram.com/cognix_hub/',
+        label: 'Instagram oficial',
+      },
+      {
+        href: '/#cognix-hub',
+        label: 'Como funciona',
+      },
+      {
+        href: '/#rota-cognix',
+        label: 'Solicitar apresentacao',
+      },
+    ],
+    title: 'Empresa',
+  },
+  {
+    items: [
+      {
+        href: createLegalHashHref('termos-de-uso'),
+        label: 'Termos de uso',
+      },
+      {
+        href: createLegalHashHref('politica-de-privacidade'),
+        label: 'Politica de privacidade',
+      },
+      {
+        href: createLegalHashHref('politica-de-cookies'),
+        label: 'Politica de cookies',
+      },
+    ],
+    title: 'Legal',
+  },
+]
+
 export const homePageModel: HomePageModel = {
   cognixHubSection: {
     topics: cognixHubTopics,
@@ -363,7 +435,7 @@ export const homePageModel: HomePageModel = {
   footer: {
     brandName: 'Cognix',
     description: 'Planejamento inteligente de estudo com IA.',
-    groups: footerGroups,
+    groups: homeFooterGroups,
   },
   globalStudySection: {
     description:

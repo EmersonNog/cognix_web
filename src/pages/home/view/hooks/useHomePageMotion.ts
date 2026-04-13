@@ -126,23 +126,37 @@ export function useHomePageMotion({
   const sectionRevealProgress = Math.min(Math.max(pageProgress / 0.62, 0), 1)
   const heroStageProgress = Math.min(Math.max(pageProgress / 0.78, 0), 1)
   const heroEffectProgress = Math.min(sectionScrollProgress / 0.34, 1)
-  const heroOpacity = 1 - sectionScrollProgress * 0.72
+  const heroFadeStart = isMobile ? 0.18 : 0
+  const heroUnderlayFadeProgress = isMobile
+    ? clamp01((stickyThemeProgress - heroFadeStart) / (1 - heroFadeStart))
+    : 0
+  const heroUnderlayOpacity = isMobile
+    ? 1 - heroUnderlayFadeProgress ** 2.8
+    : 1
+  const heroContentOpacityBase =
+    1 - sectionScrollProgress * (isMobile ? 0.48 : 0.72)
+  const heroOpacity = heroContentOpacityBase * heroUnderlayOpacity
   const heroTranslateY =
-    sectionScrollProgress * (isMobile ? -38 : isTablet ? -62 : -104)
+    sectionScrollProgress * (isMobile ? -24 : isTablet ? -62 : -104)
   const heroScale =
-    1 - sectionScrollProgress * (isMobile ? 0.035 : isTablet ? 0.05 : 0.075)
+    1 - sectionScrollProgress * (isMobile ? 0.022 : isTablet ? 0.05 : 0.075)
   const heroVisualTranslateX =
     heroEffectProgress * (isMobile ? 0 : isTablet ? 26 : 42)
   const heroVisualTranslateY =
-    heroEffectProgress * (isMobile ? -28 : isTablet ? -42 : -58)
+    heroEffectProgress * (isMobile ? -18 : isTablet ? -42 : -58)
   const heroVisualRotate =
-    heroEffectProgress * (isMobile ? -4 : isTablet ? -7 : -10)
+    heroEffectProgress * (isMobile ? -2.5 : isTablet ? -7 : -10)
   const heroVisualScale =
-    1 - heroEffectProgress * (isMobile ? 0.08 : isTablet ? 0.11 : 0.16)
-  const heroOverlayOpacity = heroEffectProgress * (isMobile ? 0.62 : 0.78)
+    1 - heroEffectProgress * (isMobile ? 0.05 : isTablet ? 0.11 : 0.16)
+  const heroVisualOpacity =
+    1 - heroEffectProgress * (isMobile ? 0.26 : 0.42)
+  const heroOverlayOpacity = heroEffectProgress * (isMobile ? 0.48 : 0.78)
   const heroStageScale =
-    1 - heroStageProgress * (isMobile ? 0.012 : isTablet ? 0.018 : 0.026)
-  const heroStageOpacity = 1 - heroStageProgress * 0.1
+    1 - heroStageProgress * (isMobile ? 0.008 : isTablet ? 0.018 : 0.026)
+  const heroStageOpacityBase =
+    1 - heroStageProgress * (isMobile ? 0.05 : 0.1)
+  const heroStageOpacity =
+    heroStageOpacityBase * heroUnderlayOpacity
 
   const sectionEnterOffset =
     (1 - sectionRevealProgress) * (isMobile ? 18 : isTablet ? 28 : 42)
@@ -155,8 +169,10 @@ export function useHomePageMotion({
   return {
     particlesReady,
     premiumHeroBackgroundStyle: {
-      opacity: 1 - sectionScrollProgress * 0.1,
-      transform: `scale(${1 + sectionScrollProgress * 0.024})`,
+      opacity:
+        (1 - sectionScrollProgress * (isMobile ? 0.04 : 0.1)) *
+        heroUnderlayOpacity,
+      transform: `scale(${1 + sectionScrollProgress * (isMobile ? 0.015 : 0.024)})`,
       willChange: 'transform, opacity',
     },
     premiumHeroContentStyle: {
@@ -170,7 +186,9 @@ export function useHomePageMotion({
       willChange: 'transform, opacity',
     },
     premiumHeroParticlesStyle: {
-      opacity: 1 - sectionScrollProgress * 0.12,
+      opacity:
+        (1 - sectionScrollProgress * (isMobile ? 0.05 : 0.12)) *
+        heroUnderlayOpacity,
       willChange: 'opacity',
     },
     premiumHeroStageStyle: {
@@ -180,7 +198,7 @@ export function useHomePageMotion({
       willChange: 'transform, opacity',
     },
     premiumHeroVisualStyle: {
-      opacity: 1 - heroEffectProgress * 0.42,
+      opacity: heroVisualOpacity,
       transform: `translate3d(${heroVisualTranslateX}px, ${heroVisualTranslateY}px, 0) rotate(${heroVisualRotate}deg) scale(${heroVisualScale})`,
       willChange: 'transform, opacity',
     },

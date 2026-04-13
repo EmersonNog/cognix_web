@@ -61,7 +61,7 @@ export const ProductValueSection = forwardRef<HTMLElement, ProductValueSectionPr
     <section
       id="cognix-diagnostico"
       ref={ref}
-      className="relative z-10 flex min-h-[100svh] scroll-mt-24 items-start overflow-hidden bg-white px-5 pb-16 pt-16 text-[#060E20] sm:scroll-mt-28 sm:px-8 sm:pb-20 sm:pt-20 lg:h-[100svh] lg:min-h-0 lg:items-center lg:px-16 lg:pb-16 lg:pt-16"
+      className="relative z-10 flex min-h-[100dvh] scroll-mt-24 items-start overflow-hidden bg-white px-5 pb-16 pt-16 text-[#060E20] sm:scroll-mt-28 sm:px-8 sm:pb-20 sm:pt-20 lg:h-[100dvh] lg:min-h-0 lg:items-center lg:px-16 lg:pb-16 lg:pt-16"
     >
       <SectionPattern variant="light" className="opacity-70" />
       <div
