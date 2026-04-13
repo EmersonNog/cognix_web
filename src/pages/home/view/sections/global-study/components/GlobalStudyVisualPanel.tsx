@@ -2,22 +2,18 @@ import type { CSSProperties } from 'react'
 
 import { Globe3D } from '@/components/ui/3d-globe'
 import type {
-  HomeGlobalStudyMarkerModel,
   HomeGlobalStudyStepModel,
 } from '@/pages/home/model/home-page.model'
 import { globeConfig } from '../constants'
 
-import { ActiveMarkerCard } from './ActiveMarkerCard'
 import { GlobalStudyStepsGrid } from './GlobalStudyStepsGrid'
 
 type GlobalStudyVisualPanelProps = {
-  activeMarker?: HomeGlobalStudyMarkerModel
   steps: HomeGlobalStudyStepModel[]
   visualStyle: CSSProperties
 }
 
 export function GlobalStudyVisualPanel({
-  activeMarker,
   steps,
   visualStyle,
 }: GlobalStudyVisualPanelProps) {
@@ -45,8 +41,6 @@ export function GlobalStudyVisualPanel({
             <div className="h-full w-[72%] rounded-full bg-[linear-gradient(90deg,#36c2a3,#72a8ff,#ff9b7f)]" />
           </div>
         </div>
-
-        <ActiveMarkerCard marker={activeMarker} />
       </div>
 
       <GlobalStudyStepsGrid steps={steps} />

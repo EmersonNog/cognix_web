@@ -54,17 +54,6 @@ export type HomeCognixHubSectionModel = {
   topics: HomeCognixHubTopicModel[]
 }
 
-export type HomeGlobalStudyMarkerModel = {
-  city: string
-  detail: string
-  id: string
-  lat: number
-  lng: number
-  reference: string
-  src: string
-  subject: string
-}
-
 export type HomeGlobalStudyMetricModel = {
   description: string
   label: string
@@ -80,8 +69,7 @@ export type HomeGlobalStudyStepModel = {
 
 export type HomeGlobalStudySectionModel = {
   description: string
-  eyebrow: string
-  markers: HomeGlobalStudyMarkerModel[]
+  eyebrow: string 
   metrics: HomeGlobalStudyMetricModel[]
   primaryCta: string
   secondaryCta: string
@@ -299,69 +287,6 @@ const cognixHubTopics: HomeCognixHubTopicModel[] = [
   },
 ]
 
-const globalStudyMarkers: HomeGlobalStudyMarkerModel[] = [
-  {
-    city: 'São Paulo',
-    detail: 'Funções entrou como prioridade nesta rota.',
-    id: 'sao-paulo',
-    lat: -23.5505,
-    lng: -46.6333,
-    reference: 'MASP',
-    src: 'https://assets.aceternity.com/avatars/1.webp',
-    subject: 'Funções',
-  },
-  {
-    city: 'Teresina',
-    detail: 'Interpretação puxou a próxima revisão.',
-    id: 'teresina',
-    lat: -5.0892,
-    lng: -42.8016,
-    reference: 'Ponte Estaiada',
-    src: 'https://assets.aceternity.com/avatars/2.webp',
-    subject: 'Linguagens',
-  },
-  {
-    city: 'Manaus',
-    detail: 'Ecologia voltou para o topo do plano.',
-    id: 'manaus',
-    lat: -3.119,
-    lng: -60.0217,
-    reference: 'Teatro Amazonas',
-    src: 'https://assets.aceternity.com/avatars/3.webp',
-    subject: 'Biologia',
-  },
-  {
-    city: 'Porto Alegre',
-    detail: 'Redação foi dividida em duas revisões curtas.',
-    id: 'porto-alegre',
-    lat: -30.0346,
-    lng: -51.2177,
-    reference: 'Gasômetro',
-    src: 'https://assets.aceternity.com/avatars/4.webp',
-    subject: 'Redação',
-  },
-  {
-    city: 'Brasília',
-    detail: 'Probabilidade apareceu como ganho mais rápido.',
-    id: 'brasilia',
-    lat: -15.7939,
-    lng: -47.8828,
-    reference: 'Eixão',
-    src: 'https://assets.aceternity.com/avatars/5.webp',
-    subject: 'Matemática',
-  },
-  {
-    city: 'Salvador',
-    detail: 'Estequiometria entrou antes do próximo simulado.',
-    id: 'salvador',
-    lat: -12.9777,
-    lng: -38.5016,
-    reference: 'Pelourinho',
-    src: 'https://assets.aceternity.com/avatars/6.webp',
-    subject: 'Química',
-  },
-]
-
 const globalStudyMetrics: HomeGlobalStudyMetricModel[] = [
   {
     description:
@@ -443,8 +368,7 @@ export const homePageModel: HomePageModel = {
   globalStudySection: {
     description:
       'Resultados entram, prioridades aparecem e a próxima sessão ganha foco.',
-    eyebrow: 'Rota viva de estudo',
-    markers: globalStudyMarkers,
+    eyebrow: 'Rota viva de estudo', 
     metrics: globalStudyMetrics,
     primaryCta: 'Acompanhar lançamento',
     secondaryCta: 'Solicitar apresentação',

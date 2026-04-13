@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 import { SectionPattern } from '@/components/ui/section-pattern'
 import type { HomeGlobalStudySectionModel } from '@/pages/home/model/home-page.model'
@@ -31,11 +31,6 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
       metricCount: section.metrics.length,
       prefersReducedMotion,
     })
-
-  const activeMarker = useMemo(
-    () => section.markers[0],
-    [section.markers],
-  )
 
   const handleMetricCarouselPause = useCallback(() => {
     setIsMetricCarouselPaused(true)
@@ -119,7 +114,6 @@ export function GlobalStudySection({ section }: GlobalStudySectionProps) {
         </div>
 
         <GlobalStudyVisualPanel
-          activeMarker={activeMarker}
           steps={section.steps}
           visualStyle={visualStyle}
         />

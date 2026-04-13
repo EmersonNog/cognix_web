@@ -145,7 +145,7 @@ export function CognixHubSection({ section }: CognixHubSectionProps) {
     <section
       id="cognix-hub"
       ref={sectionRef}
-      className="relative z-20 overflow-x-clip overflow-y-visible bg-[#EAF8F1] text-[#060E20] [--launch-banner-offset:5.5rem] sm:[--launch-banner-offset:6rem] lg:[--launch-banner-offset:6.5rem]"
+      className="relative z-20 overflow-x-clip overflow-y-visible bg-[#EAF2FF] text-[#060E20] [--launch-banner-offset:5.5rem] sm:[--launch-banner-offset:6rem] lg:[--launch-banner-offset:6.5rem]"
       style={{
         height: `calc(${topicCount * 100}svh + var(--launch-banner-offset))`,
       }}
@@ -154,7 +154,7 @@ export function CognixHubSection({ section }: CognixHubSectionProps) {
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.34)_0%,rgba(234,248,241,0)_20%,rgba(234,248,241,0)_78%,rgba(224,236,255,0.34)_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.38)_0%,rgba(234,242,255,0)_20%,rgba(234,242,255,0)_78%,rgba(214,228,255,0.42)_100%)]"
       />
 
       <div className="sticky top-0 h-[100svh] overflow-hidden">
