@@ -70,7 +70,7 @@ export function PlansSection() {
               ))}
             </ul>
             <div className="mt-auto">
-              <a href="#" className={secondaryButtonClass + ' w-full'}>
+              <a href="/assinatura?plano=mensal" className={secondaryButtonClass + ' w-full'}>
                 Começar por R$ 9,90
               </a>
               <div className="mt-[14px] text-center text-[12px] text-[var(--slate-2)]">
@@ -130,7 +130,7 @@ export function PlansSection() {
               </ul>
               <div className="relative mt-auto">
                 <a
-                  href="#"
+                  href="/assinatura?plano=anual"
                   className={`${primaryButtonClass} w-full`}
                 >
                   Assinar plano anual

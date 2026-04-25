@@ -58,7 +58,7 @@ export function ObjectionsSection() {
               fidelidade, sem burocracia.
             </p>
           </div>
-          <a href="#planos" className={primaryButtonClass}>
+          <a href="/assinatura?plano=mensal" className={primaryButtonClass}>
             Começar agora
           </a>
         </div>

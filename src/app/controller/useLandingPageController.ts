@@ -25,6 +25,10 @@ function resolveIsContactPage() {
   return resolveCurrentSlug() === 'contato'
 }
 
+function resolveIsSubscriptionPage() {
+  return resolveCurrentSlug() === 'assinatura'
+}
+
 function scrollToCurrentHashTarget() {
   const hash = window.location.hash
 
@@ -50,6 +54,9 @@ export function useLandingPageController() {
   )
   const [legalPage, setLegalPage] = useState(resolveLegalPageFromLocation)
   const [isContactPage, setIsContactPage] = useState(resolveIsContactPage)
+  const [isSubscriptionPage, setIsSubscriptionPage] = useState(
+    resolveIsSubscriptionPage,
+  )
 
   useEffect(() => {
     const onScroll = () => {
@@ -68,6 +75,7 @@ export function useLandingPageController() {
     const onRouteChange = () => {
       setLegalPage(resolveLegalPageFromLocation())
       setIsContactPage(resolveIsContactPage())
+      setIsSubscriptionPage(resolveIsSubscriptionPage())
       scrollToCurrentHashTarget()
     }
 
@@ -120,10 +128,11 @@ export function useLandingPageController() {
         observer.disconnect()
       }
     }
-  }, [isContactPage, legalPage?.slug])
+  }, [isContactPage, isSubscriptionPage, legalPage?.slug])
 
   return {
     isContactPage,
+    isSubscriptionPage,
     isScrolled,
     legalPage,
   }

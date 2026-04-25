@@ -34,7 +34,7 @@ export function FinalCtaSection() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a
-                href="#"
+                href="/assinatura?plano=mensal"
                 className={primaryButtonClass}
               >
                 Começar agora por R$ 9,90
