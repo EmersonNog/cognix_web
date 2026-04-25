@@ -18,7 +18,7 @@ export function HeaderSection({ isScrolled }: HeaderSectionProps) {
       )}
     >
       <div className={`${containerClass} flex h-[72px] items-center justify-between gap-6`}>
-        <Brand />
+        <Brand href="/" />
 
         <nav
           aria-label="Seções"
@@ -37,7 +37,7 @@ export function HeaderSection({ isScrolled }: HeaderSectionProps) {
 
         <div className="flex items-center gap-[10px]"> 
           <a
-            href="#planos"
+            href="/#planos"
             className="inline-flex h-[44px] items-center justify-center rounded-[999px] bg-[var(--primary)] px-[18px] text-[15px] font-semibold text-white shadow-[0_10px_24px_-10px_rgba(37,99,235,0.55),inset_0_1px_0_rgba(255,255,255,0.18)] transition-[transform,background] duration-150 hover:-translate-y-px hover:bg-[var(--primary-600)]"
           >
             Começar por R$ 9,90

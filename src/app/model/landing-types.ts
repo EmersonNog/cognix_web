@@ -47,6 +47,7 @@ export type FooterColumn = {
   links: Array<{
     href: string
     label: string
+    external?: boolean
   }>
 }
 

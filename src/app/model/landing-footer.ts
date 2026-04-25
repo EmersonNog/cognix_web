@@ -4,10 +4,10 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Produto',
     links: [
-      { href: '#solucao', label: 'Como funciona' },
-      { href: '#beneficios', label: 'Benefícios' },
-      { href: '#planos', label: 'Planos' },
-      { href: '#faq', label: 'Perguntas' },
+      { href: '/#solucao', label: 'Como funciona' },
+      { href: '/#beneficios', label: 'Benefícios' },
+      { href: '/#planos', label: 'Planos' },
+      { href: '/#faq', label: 'Perguntas' },
     ],
   },
   {
@@ -21,12 +21,18 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
   {
-    title: 'Empresa',
+    title: 'Legal',
     links: [
-      { href: '#', label: 'Sobre' },
-      { href: '#', label: 'Contato' },
-      { href: '#', label: 'Termos de uso' },
-      { href: '#', label: 'Privacidade' },
+      { href: '/termos-de-uso', label: 'Termos de uso' },
+      { href: '/politica-de-privacidade', label: 'Privacidade' },
+      { href: '/politica-de-cookies', label: 'Cookies' },
+    ],
+  },
+  {
+    title: 'Contato',
+    links: [
+      { href: 'https://www.instagram.com/cognix_hub/', label: 'Instagram' },
+      { href: '/contato', label: 'Email' },
     ],
   },
 ]
