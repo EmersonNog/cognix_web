@@ -34,9 +34,9 @@ export function SolutionSection() {
         </div>
 
         <div className="grid grid-cols-12 gap-6">
-          <div className="col-span-12 grid overflow-hidden rounded-[28px] border border-[var(--border)] bg-[linear-gradient(135deg,#EFF4FF_0%,#F3EEFF_100%)] p-12 max-[900px]:grid-cols-1 max-[900px]:p-8 min-[901px]:grid-cols-[1.1fr_1fr] min-[901px]:gap-10">
+          <div className="col-span-12 grid overflow-hidden rounded-[28px] border border-[var(--border)] bg-[radial-gradient(120%_140%_at_100%_0%,rgba(216,173,77,0.12),transparent_58%),linear-gradient(135deg,#1d102f_0%,#130a22_100%)] p-12 shadow-[var(--shadow-md)] max-[900px]:grid-cols-1 max-[900px]:p-8 min-[901px]:grid-cols-[1.1fr_1fr] min-[901px]:gap-10">
             <div>
-              <span className="mb-4 inline-flex items-center gap-1.5 rounded-[999px] border border-[var(--border)] bg-white px-[10px] py-1.5 text-[12px] font-semibold text-[var(--secondary)]">
+              <span className="mb-4 inline-flex items-center gap-1.5 rounded-[999px] border border-[var(--border)] bg-white/[0.04] px-[10px] py-1.5 text-[12px] font-semibold text-[var(--primary)]">
                 <LandingIcon name="zap" className="h-3 w-3" strokeWidth={2.4} />
                 Plano personalizado com IA
               </span>
@@ -55,7 +55,7 @@ export function SolutionSection() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 rounded-[18px] border border-[var(--border)] bg-white p-[22px] shadow-[0_1px_2px_rgba(15,23,42,0.04)]">
+            <div className="flex flex-col gap-3 rounded-[18px] border border-[var(--border)] bg-[var(--surface-card)] p-[22px] shadow-[var(--shadow-sm)]">
               {solutionPlanRows.map((item) => {
                 const avatarClass = {
                   blue: 'bg-[var(--primary)]',
@@ -101,7 +101,7 @@ export function SolutionSection() {
 
           <article
             data-reveal
-            className="reveal col-span-7 rounded-[28px] border border-[var(--border)] bg-white p-8 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-[#CBD5E1] hover:shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)] max-[980px]:col-span-12"
+            className="reveal col-span-7 rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color,background] duration-200 hover:-translate-y-[3px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)] hover:shadow-[var(--shadow-md)] max-[980px]:col-span-12"
           >
             <ToneIcon tone="blue" className="mb-5 h-[52px] w-[52px]">
               <LandingIcon name="barChart3" className="h-[26px] w-[26px]" strokeWidth={2} />
@@ -121,7 +121,7 @@ export function SolutionSection() {
                   74%
                 </span>
               </div>
-              <div className="mb-[14px] h-[10px] overflow-hidden rounded-[999px] bg-[#E2E8F0]">
+              <div className="mb-[14px] h-[10px] overflow-hidden rounded-[999px] bg-white/[0.08]">
                 <div className="h-full w-[74%] rounded-[999px] bg-[linear-gradient(90deg,var(--primary),var(--secondary))]" />
               </div>
               <div className="mb-1 flex items-center justify-between text-[13px] font-medium text-[var(--slate)]">
@@ -130,7 +130,7 @@ export function SolutionSection() {
                   68%
                 </span>
               </div>
-              <div className="mb-[14px] h-[10px] overflow-hidden rounded-[999px] bg-[#E2E8F0]">
+              <div className="mb-[14px] h-[10px] overflow-hidden rounded-[999px] bg-white/[0.08]">
                 <div className="h-full w-[68%] rounded-[999px] bg-[linear-gradient(90deg,var(--primary),var(--secondary))]" />
               </div>
               <div className="mb-1 flex items-center justify-between text-[13px] font-medium text-[var(--slate)]">
@@ -139,7 +139,7 @@ export function SolutionSection() {
                   52%
                 </span>
               </div>
-              <div className="h-[10px] overflow-hidden rounded-[999px] bg-[#E2E8F0]">
+              <div className="h-[10px] overflow-hidden rounded-[999px] bg-white/[0.08]">
                 <div className="h-full w-[52%] rounded-[999px] bg-[linear-gradient(90deg,#F59E0B,#F97316)]" />
               </div>
             </div>
@@ -147,7 +147,7 @@ export function SolutionSection() {
 
           <article
             data-reveal
-            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-white p-8 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-[#CBD5E1] hover:shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)] max-[980px]:col-span-12"
+            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color,background] duration-200 hover:-translate-y-[3px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)] hover:shadow-[var(--shadow-md)] max-[980px]:col-span-12"
           >
             <ToneIcon tone="purple" className="mb-5 h-[52px] w-[52px]">
               <LandingIcon name="fileText" className="h-[26px] w-[26px]" strokeWidth={2} />
@@ -159,7 +159,7 @@ export function SolutionSection() {
               Escreva, receba feedback direcionado e evolua tema a tema. Sem
               ficar esperando correção manual por dias.
             </p>
-            <div className="mt-[22px] rounded-[16px] border border-[var(--border)] bg-white p-3">
+            <div className="mt-[22px] rounded-[16px] border border-[var(--border)] bg-white/[0.04] p-3">
               <div className="mb-[6px] text-[12px] font-medium text-[var(--slate)]">
                 Tema da semana
               </div>
@@ -167,13 +167,13 @@ export function SolutionSection() {
                 Desafios da mobilidade urbana no Brasil
               </div>
               <div className="flex flex-wrap gap-[6px]">
-                <span className="rounded-[999px] bg-[var(--success-50)] px-[10px] py-1 text-[11px] font-semibold text-[#15803D]">
+                <span className="rounded-[999px] bg-[var(--success-50)] px-[10px] py-1 text-[11px] font-semibold text-[var(--success)]">
                   C1 · 160
                 </span>
-                <span className="rounded-[999px] bg-[var(--success-50)] px-[10px] py-1 text-[11px] font-semibold text-[#15803D]">
+                <span className="rounded-[999px] bg-[var(--success-50)] px-[10px] py-1 text-[11px] font-semibold text-[var(--success)]">
                   C2 · 200
                 </span>
-                <span className="rounded-[999px] bg-[var(--amber-50)] px-[10px] py-1 text-[11px] font-semibold text-[#B45309]">
+                <span className="rounded-[999px] bg-[var(--amber-50)] px-[10px] py-1 text-[11px] font-semibold text-[var(--amber)]">
                   C3 · 140
                 </span>
               </div>
@@ -184,7 +184,7 @@ export function SolutionSection() {
             <article
               key={card.title}
               data-reveal
-              className="reveal col-span-4 rounded-[28px] border border-[var(--border)] bg-white p-8 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-[#CBD5E1] hover:shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)] max-[980px]:col-span-12"
+              className="reveal col-span-4 rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color,background] duration-200 hover:-translate-y-[3px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)] hover:shadow-[var(--shadow-md)] max-[980px]:col-span-12"
             >
               <ToneIcon tone={card.tone} className="mb-5 h-[52px] w-[52px]">
                 <LandingIcon name={card.icon} className="h-[26px] w-[26px]" strokeWidth={2} />
@@ -200,7 +200,7 @@ export function SolutionSection() {
 
           <article
             data-reveal
-            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-white p-8 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-[#CBD5E1] hover:shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)] max-[980px]:col-span-12"
+            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color,background] duration-200 hover:-translate-y-[3px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)] hover:shadow-[var(--shadow-md)] max-[980px]:col-span-12"
           >
             <ToneIcon tone="purple" className="mb-5 h-[52px] w-[52px]">
               <Users className="h-[26px] w-[26px]" strokeWidth={2} />
@@ -240,7 +240,7 @@ export function SolutionSection() {
 
           <article
             data-reveal
-            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-white p-8 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-[3px] hover:border-[#CBD5E1] hover:shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)] max-[980px]:col-span-12"
+            className="reveal col-span-5 rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color,background] duration-200 hover:-translate-y-[3px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)] hover:shadow-[var(--shadow-md)] max-[980px]:col-span-12"
           >
             <ToneIcon tone="green" className="mb-5 h-[52px] w-[52px]">
               <LandingIcon name="zap" className="h-[26px] w-[26px]" strokeWidth={2} />

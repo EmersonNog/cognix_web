@@ -5,12 +5,11 @@ export const faqs: FaqItem[] = [
     question: 'O Cognix serve para ENEM?',
     answer:
       'Sim. O Cognix foi pensado para estudantes que querem se preparar para o ENEM, vestibulares e outros processos seletivos — com questões organizadas por matéria e área do conhecimento.',
-    open: true,
   },
   {
     question: 'O app tem questões por matéria?',
     answer:
-      'Sim. Você pode praticar com o banco de questões organizado por área do conhecimento e filtrar por matÃ©ria especÃ­fica, com histÃ³rico por desempenho.',
+      'Sim. Você pode praticar com o banco de questões organizado por área do conhecimento e filtrar por matéria específica, com histórico por desempenho.',
   },
   {
     question: 'O Cognix cria plano de estudos?',

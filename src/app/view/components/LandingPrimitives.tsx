@@ -36,6 +36,7 @@ type FaqItemProps = {
   question: string
   answer: string
   open?: boolean
+  onOpenChange?: (open: boolean) => void
 }
 
 type PlusIconProps = {
@@ -52,13 +53,13 @@ export function Eyebrow({ children, className, dotClassName }: EyebrowProps) {
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-2 rounded-[999px] border border-[color:color-mix(in_oklab,var(--primary)_14%,transparent)] bg-[var(--primary-50)] px-3 py-1.5 font-[var(--font-body)] text-[13px] font-semibold uppercase tracking-[0.04em] text-[var(--primary)]',
+        'inline-flex items-center gap-2 rounded-[999px] border border-[color:color-mix(in_oklab,var(--primary)_28%,transparent)] bg-[var(--primary-50)] px-3 py-1.5 font-[var(--font-body)] text-[13px] font-bold uppercase tracking-[0.08em] text-[var(--primary)]',
         className,
       )}
     >
       <span
         className={clsx(
-          'h-[6px] w-[6px] rounded-full bg-[var(--primary)] shadow-[0_0_0_4px_rgba(37,99,235,0.14)]',
+          'h-[6px] w-[6px] rounded-full bg-[var(--primary)] shadow-[0_0_0_4px_rgba(216,173,77,0.16)]',
           dotClassName,
         )}
       />
@@ -77,7 +78,7 @@ export function FloatCard({
   return (
     <div
       className={clsx(
-        'absolute z-[3] flex min-w-[180px] items-center gap-[10px] rounded-[14px] border border-[var(--border)] bg-white px-[14px] py-3 shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12),0_2px_6px_-2px_rgba(15,23,42,0.06)]',
+        'absolute z-[3] flex min-w-[180px] items-center gap-[10px] rounded-[14px] border border-[var(--border)] bg-[var(--surface-card)]/95 px-[14px] py-3 shadow-[var(--shadow-md)] backdrop-blur-[10px]',
         className,
       )}
       style={style}
@@ -99,8 +100,8 @@ export function ToneIcon({ tone, children, className }: ToneIconProps) {
   const toneClass = {
     blue: 'bg-[var(--primary-50)] text-[var(--primary)]',
     purple: 'bg-[var(--secondary-50)] text-[var(--secondary)]',
-    green: 'bg-[var(--success-50)] text-[#15803D]',
-    amber: 'bg-[var(--amber-50)] text-[#B45309]',
+    green: 'bg-[var(--success-50)] text-[var(--success)]',
+    amber: 'bg-[var(--amber-50)] text-[var(--amber)]',
   }[tone]
 
   return (
@@ -119,7 +120,7 @@ export function BenefitCard({
   return (
     <article
       data-reveal
-      className="reveal flex flex-col gap-3 rounded-[20px] border border-[var(--border)] bg-white px-[26px] py-[26px] transition-[transform,border-color] duration-200 hover:-translate-y-[2px] hover:border-[#CBD5E1]"
+      className="reveal flex flex-col gap-3 rounded-[20px] border border-[var(--border)] bg-[var(--surface-card)] px-[26px] py-[26px] shadow-[var(--shadow-sm)] transition-[transform,border-color,background] duration-200 hover:-translate-y-[2px] hover:border-[rgba(216,173,77,0.34)] hover:bg-[var(--surface-card-2)]"
     >
       <ToneIcon tone={tone} className="h-11 w-11 rounded-[12px]">
         <LandingIcon name={icon} className="h-[22px] w-[22px]" strokeWidth={2} />
@@ -134,16 +135,22 @@ export function BenefitCard({
   )
 }
 
-export function FaqItem({ question, answer, open = false }: FaqItemProps) {
+export function FaqItem({
+  question,
+  answer,
+  open = false,
+  onOpenChange,
+}: FaqItemProps) {
   return (
     <details
       data-reveal
       open={open}
-      className="reveal group mb-3 overflow-hidden rounded-[18px] border border-[var(--border)] bg-white transition-[border-color,box-shadow] duration-200 open:border-[#CBD5E1] open:shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
+      onToggle={(event) => onOpenChange?.(event.currentTarget.open)}
+      className="reveal group mb-3 overflow-hidden rounded-[18px] border border-[var(--border)] bg-[var(--surface-card)] transition-[border-color,box-shadow,background] duration-200 open:border-[rgba(216,173,77,0.36)] open:bg-[var(--surface-card-2)] open:shadow-[var(--shadow-sm)]"
     >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-6 py-[22px] font-[var(--font-display)] text-[17px] font-semibold tracking-[-0.01em] text-[var(--ink)] [&::-webkit-details-marker]:hidden">
         {question}
-        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[var(--bg)] text-[var(--ink)] transition-[transform,background,color] duration-200 group-open:rotate-45 group-open:bg-[var(--primary)] group-open:text-white">
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[var(--bg-muted)] text-[var(--primary)] transition-[transform,background,color] duration-200 group-open:rotate-45 group-open:bg-[var(--primary)] group-open:text-[#100816]">
           <PlusIcon className="h-[14px] w-[14px]" />
         </span>
       </summary>
@@ -156,7 +163,7 @@ export function FaqItem({ question, answer, open = false }: FaqItemProps) {
 
 export function CheckBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-[999px] border border-[var(--border)] bg-white px-[14px] py-2 text-[13px] font-medium text-[var(--ink-2)]">
+    <span className="inline-flex items-center gap-1.5 rounded-[999px] border border-[var(--border)] bg-white/[0.04] px-[14px] py-2 text-[13px] font-medium text-[var(--ink-2)]">
       <Check className="h-[14px] w-[14px] text-[var(--primary)]" strokeWidth={2.4} />
       {children}
     </span>

@@ -21,13 +21,13 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-white px-0 pb-[120px] pt-[72px] max-[980px]:pb-20 max-[980px]:pt-12">
+    <section className="relative overflow-hidden bg-[var(--surface)] px-0 pb-[120px] pt-[72px] max-[980px]:pb-20 max-[980px]:pt-12">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            'radial-gradient(60% 40% at 82% 12%, rgba(124,58,237,0.10), transparent 60%), radial-gradient(50% 45% at 18% 0%, rgba(37,99,235,0.10), transparent 65%), linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)',
+            'radial-gradient(60% 44% at 82% 13%, rgba(216,173,77,0.16), transparent 62%), radial-gradient(50% 42% at 18% 0%, rgba(90,48,135,0.3), transparent 68%), linear-gradient(180deg, #0d0717 0%, #12091f 100%)',
         }}
       />
       <div
@@ -40,7 +40,7 @@ export function HeroSection() {
 
           <h1 className="mb-[22px] font-[var(--font-display)] text-[clamp(34px,5vw,60px)] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--ink)]">
             Estude com direção, pratique com inteligência e{' '}
-            <span className="bg-[linear-gradient(90deg,var(--primary)_0%,var(--secondary)_100%)] bg-clip-text text-transparent">
+            <span className="bg-[linear-gradient(90deg,#f4d67a_0%,#d8ad4d_46%,#f39a21_100%)] bg-clip-text text-transparent">
               evolua com o Cognix
             </span>
             .
@@ -76,7 +76,7 @@ export function HeroSection() {
         </div>
 
         <div className="relative flex min-h-[560px] w-full items-center justify-center px-8 max-[980px]:mx-auto max-[980px]:mt-3 max-[980px]:min-h-[580px] max-[980px]:max-w-[520px] max-[980px]:px-6">
-          <div className="pointer-events-none absolute inset-[-10%_-15%] z-0 animate-[pulseGlow_6s_ease-in-out_infinite] bg-[radial-gradient(closest-side,rgba(124,58,237,0.22),rgba(37,99,235,0.18)_40%,transparent_72%)] blur-[2px]" />
+          <div className="pointer-events-none absolute inset-[-10%_-15%] z-0 animate-[pulseGlow_6s_ease-in-out_infinite] bg-[radial-gradient(closest-side,rgba(216,173,77,0.2),rgba(81,45,121,0.26)_42%,transparent_72%)] blur-[2px]" />
 
           <FloatCard
             title="Matemática +12%"

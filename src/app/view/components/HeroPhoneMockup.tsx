@@ -5,10 +5,10 @@ type HeroPhoneMockupProps = {
 }
 
 const metricCards = [
-  { x: 60, y: 276, iconSurface: 'rgba(134,166,255,0.16)' },
-  { x: 206, y: 276, iconSurface: 'rgba(208,163,255,0.16)' },
-  { x: 60, y: 456, iconSurface: 'rgba(255,208,100,0.16)' },
-  { x: 206, y: 456, iconSurface: 'rgba(109,227,192,0.16)' },
+  { x: 60, y: 276, iconSurface: 'rgba(216,173,77,0.16)' },
+  { x: 206, y: 276, iconSurface: 'rgba(155,116,223,0.18)' },
+  { x: 60, y: 456, iconSurface: 'rgba(244,182,78,0.16)' },
+  { x: 206, y: 456, iconSurface: 'rgba(115,225,191,0.14)' },
 ]
 
 const navItems = [
@@ -28,22 +28,22 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
     >
       <defs>
         <linearGradient id="phone-body" x1="195" x2="195" y1="18" y2="878">
-          <stop offset="0%" stopColor="#192234" />
-          <stop offset="55%" stopColor="#111827" />
-          <stop offset="100%" stopColor="#0A1020" />
+          <stop offset="0%" stopColor="#211534" />
+          <stop offset="55%" stopColor="#150d23" />
+          <stop offset="100%" stopColor="#08040e" />
         </linearGradient>
         <linearGradient id="screen-surface" x1="195" x2="195" y1="36" y2="860">
-          <stop offset="0%" stopColor="#0C132A" />
-          <stop offset="45%" stopColor="#0A1024" />
-          <stop offset="100%" stopColor="#090E21" />
+          <stop offset="0%" stopColor="#160d25" />
+          <stop offset="45%" stopColor="#100819" />
+          <stop offset="100%" stopColor="#09040f" />
         </linearGradient>
         <linearGradient id="card-surface" x1="60" x2="334" y1="276" y2="636">
-          <stop offset="0%" stopColor="#182440" />
-          <stop offset="100%" stopColor="#17223D" />
+          <stop offset="0%" stopColor="#241537" />
+          <stop offset="100%" stopColor="#1a102b" />
         </linearGradient>
         <linearGradient id="nav-active" x1="214" x2="282" y1="794" y2="868">
-          <stop offset="0%" stopColor="#1A2445" />
-          <stop offset="100%" stopColor="#141F3C" />
+          <stop offset="0%" stopColor="#3a2558" />
+          <stop offset="100%" stopColor="#211534" />
         </linearGradient>
         <linearGradient id="shimmer" x1="-100%" y1="0%" x2="0%" y2="0%">
           <stop offset="0%" stopColor="rgba(255,255,255,0.08)" />
@@ -60,9 +60,9 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
           r="1"
           gradientTransform="translate(310 118) rotate(117) scale(120 130)"
         >
-          <stop stopColor="#8B5CF6" stopOpacity="0.34" />
-          <stop offset="0.45" stopColor="#7C3AED" stopOpacity="0.12" />
-          <stop offset="1" stopColor="#7C3AED" stopOpacity="0" />
+          <stop stopColor="#d8ad4d" stopOpacity="0.28" />
+          <stop offset="0.45" stopColor="#9b74df" stopOpacity="0.12" />
+          <stop offset="1" stopColor="#9b74df" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="bottom-glow"
@@ -71,8 +71,8 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
           r="1"
           gradientTransform="translate(250 828) rotate(90) scale(90 110)"
         >
-          <stop stopColor="#8B5CF6" stopOpacity="0.2" />
-          <stop offset="1" stopColor="#8B5CF6" stopOpacity="0" />
+          <stop stopColor="#d8ad4d" stopOpacity="0.18" />
+          <stop offset="1" stopColor="#d8ad4d" stopOpacity="0" />
         </radialGradient>
         <clipPath id="screen-clip">
           <rect x="52" y="36" width="286" height="824" rx="46" />
@@ -90,9 +90,9 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
           stroke="rgba(255,255,255,0.14)"
           strokeWidth="1.5"
         />
-        <rect x="136" y="46" width="118" height="32" rx="16" fill="#050A16" />
-        <rect x="30" y="180" width="5" height="92" rx="2.5" fill="#374151" />
-        <rect x="355" y="226" width="5" height="108" rx="2.5" fill="#374151" />
+        <rect x="136" y="46" width="118" height="32" rx="16" fill="#09040f" />
+        <rect x="30" y="180" width="5" height="92" rx="2.5" fill="#3a2558" />
+        <rect x="355" y="226" width="5" height="108" rx="2.5" fill="#3a2558" />
 
         <g clipPath="url(#screen-clip)">
           <rect x="52" y="36" width="286" height="824" rx="46" fill="url(#screen-surface)" />
@@ -104,12 +104,12 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
           <rect x="308" y="50" width="18" height="12" rx="6" fill="url(#shimmer)" />
           <rect x="332" y="48" width="24" height="16" rx="8" fill="url(#shimmer)" />
 
-          <rect x="60" y="96" width="270" height="66" rx="24" fill="#1A2542" />
-          <rect x="78" y="110" width="28" height="28" rx="12" fill="rgba(196,181,253,0.16)" />
+          <rect x="60" y="96" width="270" height="66" rx="24" fill="#241537" />
+          <rect x="78" y="110" width="28" height="28" rx="12" fill="rgba(216,173,77,0.16)" />
           <rect x="118" y="116" width="92" height="14" rx="7" fill="url(#shimmer)" />
-          <rect x="250" y="108" width="38" height="42" rx="16" fill="#111A34" />
+          <rect x="250" y="108" width="38" height="42" rx="16" fill="#180f27" />
           <rect x="259" y="120" width="20" height="18" rx="9" fill="url(#shimmer)" />
-          <rect x="294" y="108" width="38" height="42" rx="16" fill="#111A34" />
+          <rect x="294" y="108" width="38" height="42" rx="16" fill="#180f27" />
           <rect x="303" y="120" width="20" height="18" rx="9" fill="url(#shimmer)" />
 
           <rect x="60" y="192" width="182" height="20" rx="10" fill="url(#shimmer)" />
@@ -125,7 +125,7 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
                 height="138"
                 rx="24"
                 fill="url(#card-surface)"
-                stroke="#263558"
+                stroke="#38244f"
                 strokeWidth="1.2"
               />
               <rect
@@ -174,7 +174,7 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
             height="90"
             rx="24"
             fill="url(#card-surface)"
-            stroke="#263558"
+            stroke="#38244f"
             strokeWidth="1.2"
           />
           <rect x="78" y="756" width="40" height="40" rx="15" fill="rgba(255,146,117,0.14)" />
@@ -182,7 +182,7 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
           <rect x="132" y="792" width="142" height="16" rx="8" fill="url(#shimmer)" />
           <rect x="132" y="816" width="126" height="10" rx="5" fill="url(#shimmer)" />
 
-          <rect x="68" y="810" width="252" height="68" rx="24" fill="#121A34" />
+          <rect x="68" y="810" width="252" height="68" rx="24" fill="#180f27" />
           <rect x="198" y="800" width="68" height="72" rx="22" fill="url(#nav-active)" />
           <rect x="198" y="800" width="68" height="72" rx="22" fill="url(#bottom-glow)" />
 
@@ -194,7 +194,7 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
                 width="20"
                 height="20"
                 rx="10"
-                fill={item.active ? 'rgba(196,181,253,0.9)' : 'url(#shimmer)'}
+                fill={item.active ? 'rgba(216,173,77,0.92)' : 'url(#shimmer)'}
               />
               <rect
                 x={item.x - 18}
@@ -202,7 +202,7 @@ export function HeroPhoneMockup({ className }: HeroPhoneMockupProps) {
                 width="36"
                 height="8"
                 rx="4"
-                fill={item.active ? 'rgba(196,181,253,0.72)' : 'url(#shimmer)'}
+                fill={item.active ? 'rgba(216,173,77,0.72)' : 'url(#shimmer)'}
               />
             </g>
           ))}

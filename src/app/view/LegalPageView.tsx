@@ -15,7 +15,7 @@ export function LegalPageView({ isScrolled, page }: LegalPageViewProps) {
       <HeaderSection isScrolled={isScrolled} />
 
       <main>
-        <section className="bg-[linear-gradient(180deg,#F8FAFF_0%,#FFFFFF_42%,#FFFFFF_100%)] pb-10 pt-[88px] max-[720px]:pb-8 max-[720px]:pt-[64px]">
+        <section className="bg-[radial-gradient(60%_44%_at_82%_10%,rgba(216,173,77,0.12),transparent_62%),linear-gradient(180deg,#0d0717_0%,#12091f_100%)] pb-10 pt-[88px] max-[720px]:pb-8 max-[720px]:pt-[64px]">
           <div className={containerClass}>
             <div className="mx-auto max-w-[860px]">
               <Eyebrow className="mb-5">{page.eyebrow}</Eyebrow>
@@ -35,9 +35,9 @@ export function LegalPageView({ isScrolled, page }: LegalPageViewProps) {
           </div>
         </section>
 
-        <section className="bg-white pb-[104px] max-[720px]:pb-[72px]">
+        <section className="bg-[var(--surface)] pb-[104px] pt-16 max-[720px]:pb-[72px] max-[720px]:pt-10">
           <div className={containerClass}>
-            <div className="mx-auto max-w-[860px] rounded-[28px] border border-[var(--border)] bg-white p-10 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.35)] max-[720px]:p-6">
+            <div className="mx-auto max-w-[860px] rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-10 shadow-[var(--shadow-md)] max-[720px]:p-6">
               {page.sections.map((section) => (
                 <article
                   key={section.title}

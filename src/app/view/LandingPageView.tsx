@@ -16,7 +16,7 @@ type LandingPageViewProps = {
 
 export function LandingPageView({ isScrolled }: LandingPageViewProps) {
   return (
-    <div className="min-h-dvh bg-[var(--surface)] text-[var(--ink)]">
+    <div className="min-h-dvh bg-[var(--surface)] text-[var(--ink)] selection:bg-[var(--primary)] selection:text-[#100816]">
       <HeaderSection isScrolled={isScrolled} />
 
       <main>

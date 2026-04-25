@@ -27,7 +27,7 @@ export function ObjectionsSection() {
             <article
               key={item.question}
               data-reveal
-              className="reveal flex flex-col gap-[10px] rounded-[20px] border border-[var(--border)] bg-white p-7"
+              className="reveal flex flex-col gap-[10px] rounded-[20px] border border-[var(--border)] bg-[var(--surface-card)] p-7 shadow-[var(--shadow-sm)]"
             >
               <div className="flex items-start gap-[10px] font-[var(--font-display)] text-[18px] font-bold leading-[1.25] tracking-[-0.01em] text-[var(--ink)]">
                 <span className="mt-0.5 text-[40px] leading-[0.9] text-[var(--primary)]">
@@ -42,8 +42,8 @@ export function ObjectionsSection() {
           ))}
         </div>
 
-        <div className="mt-12 grid items-center gap-6 rounded-[28px] border border-[#A7F3D0] bg-[linear-gradient(135deg,#ECFDF5_0%,#F0FDFA_100%)] px-8 py-7 max-[780px]:grid-cols-1 max-[780px]:text-center min-[781px]:grid-cols-[auto_1fr_auto]">
-          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[#A7F3D0] bg-white text-[#059669]">
+        <div className="mt-12 grid items-center gap-6 rounded-[28px] border border-[rgba(216,173,77,0.26)] bg-[radial-gradient(90%_130%_at_0%_0%,rgba(115,225,191,0.12),transparent_54%),linear-gradient(135deg,#1c122c_0%,#130a22_100%)] px-8 py-7 shadow-[var(--shadow-md)] max-[780px]:grid-cols-1 max-[780px]:text-center min-[781px]:grid-cols-[auto_1fr_auto]">
+          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[rgba(115,225,191,0.22)] bg-[var(--success-50)] text-[var(--success)]">
             <ShieldCheck className="h-7 w-7" strokeWidth={2} />
           </div>
           <div>
@@ -52,7 +52,7 @@ export function ObjectionsSection() {
             </h3>
             <p className="text-[14.5px] leading-[1.6] text-[var(--ink-2)]">
               Teste o Cognix por{' '}
-              <strong className="text-[#047857]">R$ 9,90 no primeiro mês</strong>
+              <strong className="text-[var(--success)]">R$ 9,90 no primeiro mês</strong>
               . Explore o banco de questões, os indicadores, os flashcards e a
               redação guiada. Se não quiser continuar, basta cancelar — sem
               fidelidade, sem burocracia.

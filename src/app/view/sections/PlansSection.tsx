@@ -34,7 +34,7 @@ export function PlansSection() {
           className="reveal mx-auto grid max-w-[960px] auto-rows-fr grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-stretch gap-6 max-[780px]:grid-cols-1"
         >
           <article
-            className="flex h-full min-w-0 flex-col rounded-[28px] border border-[var(--border)] bg-white p-9"
+            className="flex h-full min-w-0 flex-col rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-9 shadow-[var(--shadow-sm)]"
           >
             <div className="mb-4 flex items-center justify-between">
               <h3 className="font-[var(--font-display)] text-[22px] font-bold tracking-[-0.01em] text-[var(--ink)]">
@@ -80,15 +80,15 @@ export function PlansSection() {
           </article>
 
           <div className="relative flex h-full min-w-0">
-            <span className="absolute left-1/2 top-0 z-[3] inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-[999px] bg-[linear-gradient(90deg,#FCD34D_0%,#FBBF24_100%)] px-4 py-2 font-[var(--font-display)] text-[12px] font-bold uppercase tracking-[0.04em] whitespace-nowrap text-[#0F172A] shadow-[0_10px_24px_-10px_rgba(251,191,36,0.6)]">
-              <span className="h-[6px] w-[6px] rounded-full bg-[#0F172A]" />
+            <span className="absolute left-1/2 top-0 z-[3] inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-[999px] bg-[linear-gradient(90deg,#f4d67a_0%,#d8ad4d_100%)] px-4 py-2 font-[var(--font-display)] text-[12px] font-bold uppercase tracking-[0.04em] whitespace-nowrap text-[#100816] shadow-[0_12px_28px_-12px_rgba(216,173,77,0.78)]">
+              <span className="h-[6px] w-[6px] rounded-full bg-[#100816]" />
               Mais estratégico
             </span>
 
             <article
-              className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-[28px] border border-transparent bg-[linear-gradient(180deg,#0F172A_0%,#0B1220_100%)] px-9 pb-9 pt-11 text-white shadow-[0_40px_80px_-40px_rgba(37,99,235,0.6)]"
+              className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-[28px] border border-[rgba(216,173,77,0.26)] bg-[radial-gradient(120%_100%_at_100%_0%,rgba(216,173,77,0.18),transparent_56%),linear-gradient(180deg,#241537_0%,#100819_100%)] px-9 pb-9 pt-11 text-white shadow-[var(--shadow-lg)]"
             >
-              <div className="pointer-events-none absolute right-[-30%] top-[-40%] h-[320px] w-[320px] bg-[radial-gradient(closest-side,rgba(124,58,237,0.45),transparent_70%)]" />
+              <div className="pointer-events-none absolute right-[-30%] top-[-40%] h-[320px] w-[320px] bg-[radial-gradient(closest-side,rgba(216,173,77,0.22),transparent_70%)]" />
               <div className="relative mb-4 flex items-center justify-between">
                 <h3 className="font-[var(--font-display)] text-[22px] font-bold tracking-[-0.01em] text-white">
                   Anual
@@ -111,7 +111,7 @@ export function PlansSection() {
                   · 12 meses de acesso
                 </span>
               </div>
-              <span className="relative mb-5 inline-flex items-center gap-1.5 rounded-[999px] bg-[rgba(34,197,94,0.18)] px-[10px] py-[5px] text-[12px] font-semibold text-[#86EFAC]">
+              <span className="relative mb-5 inline-flex items-center gap-1.5 rounded-[999px] bg-[var(--success-50)] px-[10px] py-[5px] text-[12px] font-semibold text-[var(--success)]">
                 <Check className="h-3 w-3" strokeWidth={2.6} />
                 2 meses grátis no plano anual
               </span>
@@ -121,7 +121,7 @@ export function PlansSection() {
                     key={feature}
                     className="flex items-start gap-[10px] text-[15px] text-white/[0.88]"
                   >
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-[6px] bg-[rgba(96,165,250,0.18)] text-[#93C5FD]">
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-[6px] bg-[var(--primary-50)] text-[var(--primary)]">
                       <Check className="h-3 w-3" strokeWidth={3} />
                     </span>
                     {feature}
@@ -131,10 +131,7 @@ export function PlansSection() {
               <div className="relative mt-auto">
                 <a
                   href="#"
-                  className={primaryButtonClass.replace(
-                    'group inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-[var(--primary)] px-[22px] text-[16px] font-semibold tracking-[-0.01em] text-white shadow-[0_10px_24px_-10px_rgba(37,99,235,0.55),inset_0_1px_0_rgba(255,255,255,0.18)] transition-[transform,box-shadow,background] duration-150 hover:-translate-y-px hover:bg-[var(--primary-600)]',
-                    'inline-flex h-[52px] w-full items-center justify-center rounded-[999px] bg-white px-[22px] text-[16px] font-semibold tracking-[-0.01em] text-[var(--ink)] transition-[transform,background] duration-150 hover:-translate-y-px hover:bg-[#F1F5F9]',
-                  )}
+                  className={`${primaryButtonClass} w-full`}
                 >
                   Assinar plano anual
                 </a>

@@ -5,25 +5,47 @@ import logoLight from '@/assets/logo_outlined_light.png'
 type BrandProps = {
   href?: string
   className?: string
+  logoClassName?: string
+  logoWrapperClassName?: string
+  orientation?: 'horizontal' | 'vertical'
+  textClassName?: string
 }
 
-export function Brand({ href = '#', className }: BrandProps) {
+export function Brand({
+  href = '#',
+  className,
+  logoClassName,
+  logoWrapperClassName,
+  orientation = 'horizontal',
+  textClassName,
+}: BrandProps) {
   return (
     <a
       href={href}
       className={clsx(
-        'flex items-center gap-[10px] font-[var(--font-display)] text-[20px] font-bold tracking-[-0.02em] text-[var(--ink)]',
+        'flex font-[var(--font-display)] text-[20px] font-bold tracking-[-0.02em] text-[var(--ink)]',
+        orientation === 'vertical'
+          ? 'flex-col items-start gap-3'
+          : 'items-center gap-[10px]',
         className,
       )}
     >
-      <span className="grid h-[34px] w-[34px] place-items-center overflow-hidden rounded-[10px] bg-[radial-gradient(120%_120%_at_30%_20%,#3b6cf0_0%,#2563eb_50%,#1e40af_100%)] shadow-[0_6px_14px_-6px_rgba(37,99,235,0.6),inset_0_1px_0_rgba(255,255,255,0.25)]">
+      <span
+        className={clsx(
+          'grid h-[54px] w-[44px] place-items-center overflow-hidden',
+          logoWrapperClassName,
+        )}
+      >
         <img
           src={logoLight}
           alt=""
-          className="h-[22px] w-[22px] drop-shadow-[0_1px_0_rgba(0,0,0,0.15)]"
+          className={clsx(
+            'h-[52px] w-auto drop-shadow-[0_10px_20px_rgba(216,173,77,0.28)]',
+            logoClassName,
+          )}
         />
       </span>
-      Cognix
+      <span className={clsx('leading-none', textClassName)}>Cognix.</span>
     </a>
   )
 }

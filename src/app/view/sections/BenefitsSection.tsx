@@ -15,7 +15,7 @@ export function BenefitsSection() {
         <div className="mx-auto mb-14 max-w-[760px] text-center">
           <Eyebrow
             className="mb-[18px] border-[color:color-mix(in_oklab,var(--secondary)_14%,transparent)] bg-[var(--secondary-50)] text-[var(--secondary)]"
-            dotClassName="bg-[var(--secondary)] shadow-[0_0_0_4px_rgba(124,58,237,0.15)]"
+            dotClassName="bg-[var(--secondary)] shadow-[0_0_0_4px_rgba(155,116,223,0.16)]"
           >
             Benefícios
           </Eyebrow>

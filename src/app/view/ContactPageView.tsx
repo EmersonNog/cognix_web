@@ -11,7 +11,7 @@ type ContactPageViewProps = {
 }
 
 const inputClass =
-  'w-full rounded-[18px] border border-[var(--border)] bg-white px-4 py-3 text-[15px] text-[var(--ink)] outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-[var(--slate-2)] focus:border-[var(--primary)] focus:shadow-[0_0_0_4px_rgba(37,99,235,0.10)]'
+  'w-full rounded-[18px] border border-[var(--border)] bg-white/[0.04] px-4 py-3 text-[15px] text-[var(--ink)] outline-none transition-[border-color,box-shadow,background] duration-150 placeholder:text-[var(--slate-2)] focus:border-[var(--primary)] focus:bg-white/[0.06] focus:shadow-[0_0_0_4px_var(--ring)]'
 
 export function ContactPageView({ isScrolled }: ContactPageViewProps) {
   const { feedback, form, handleSubmit, isSubmitting, status, updateField } =
@@ -22,7 +22,7 @@ export function ContactPageView({ isScrolled }: ContactPageViewProps) {
       <HeaderSection isScrolled={isScrolled} />
 
       <main>
-        <section className="bg-[linear-gradient(180deg,#F8FAFF_0%,#FFFFFF_46%,#FFFFFF_100%)] py-[88px] max-[720px]:py-[64px]">
+        <section className="bg-[radial-gradient(60%_44%_at_82%_10%,rgba(216,173,77,0.12),transparent_62%),linear-gradient(180deg,#0d0717_0%,#12091f_100%)] py-[88px] max-[720px]:py-[64px]">
           <div className={containerClass}>
             <div className="mx-auto grid max-w-[980px] grid-cols-[0.9fr_1.1fr] gap-8 max-[860px]:grid-cols-1">
               <div>
@@ -40,7 +40,7 @@ export function ContactPageView({ isScrolled }: ContactPageViewProps) {
 
               <form
                 onSubmit={handleSubmit}
-                className="rounded-[28px] border border-[var(--border)] bg-white p-8 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.35)] max-[720px]:p-6"
+                className="rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-8 shadow-[var(--shadow-md)] max-[720px]:p-6"
               >
                 <div className="mb-6 flex items-center gap-3">
                   <span className="grid h-12 w-12 place-items-center rounded-[16px] bg-[var(--primary-50)] text-[var(--primary)]">
@@ -127,8 +127,8 @@ export function ContactPageView({ isScrolled }: ContactPageViewProps) {
                   <p
                     className={`mt-4 rounded-[16px] px-4 py-3 text-[14px] font-medium ${
                       status === 'success'
-                        ? 'bg-[var(--success-50)] text-[#15803D]'
-                        : 'bg-[#FEF2F2] text-[#B91C1C]'
+                        ? 'bg-[var(--success-50)] text-[var(--success)]'
+                        : 'bg-[var(--danger-50)] text-[var(--danger)]'
                     }`}
                   >
                     {feedback}

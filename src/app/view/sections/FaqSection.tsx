@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { faqs } from '@/app/model/landing-faq'
 import {
   Eyebrow,
@@ -6,10 +8,12 @@ import {
 import { containerClass } from '@/app/view/viewTokens'
 
 export function FaqSection() {
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null)
+
   return (
     <section
       id="faq"
-      className="bg-[var(--surface)] py-[104px] max-[720px]:py-[72px]"
+      className="bg-[var(--surface)] pb-10 pt-[104px] max-[720px]:pb-8 max-[720px]:pt-[72px]"
     >
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">
@@ -28,7 +32,16 @@ export function FaqSection() {
               key={item.question}
               question={item.question}
               answer={item.answer}
-              open={item.open}
+              open={openQuestion === item.question}
+              onOpenChange={(isOpen) => {
+                setOpenQuestion((currentQuestion) => {
+                  if (isOpen) {
+                    return item.question
+                  }
+
+                  return currentQuestion === item.question ? null : currentQuestion
+                })
+              }}
             />
           ))}
         </div>
