@@ -36,7 +36,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
     price: 'R$ 199,90',
     cadence: 'por ano',
     note: 'Equivale a R$ 16,65/mês, com 2 meses grátis.',
-    checkoutNote: 'Pagamento único anual com 12 meses de acesso completo.',
+    checkoutNote: 'Assinatura anual com 12 meses de acesso completo.',
     cta: 'Assinar plano anual',
     features: [
       'Tudo do plano mensal',

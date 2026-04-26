@@ -52,9 +52,13 @@ export function PlansSection() {
                 /1º mês
               </span>
             </div>
-            <div className="mb-6 text-[14px] text-[var(--slate)]">
+            <div className="mb-3 text-[14px] text-[var(--slate)]">
               Depois, <strong className="text-[var(--ink)]">R$ 19,90/mês</strong>.
               Cancele quando quiser.
+            </div>
+            <div className="mb-6 rounded-[16px] border border-[rgba(216,173,77,0.24)] bg-[var(--primary-50)] px-4 py-3 text-[13px] leading-[1.5] text-[var(--ink)]">
+              Cupom <strong>COGNIX10</strong> liberado. Cole no checkout da
+              AbacatePay para ativar o primeiro mês por R$ 9,90.
             </div>
             <ul className="mb-7 flex list-none flex-col gap-3 p-0">
               {monthlyFeatures.map((feature) => (
@@ -74,7 +78,7 @@ export function PlansSection() {
                 Começar por R$ 9,90
               </a>
               <div className="mt-[14px] text-center text-[12px] text-[var(--slate-2)]">
-                Sem fidelidade · Cancele quando quiser
+                Cole o cupom no checkout · Cancele quando quiser
               </div>
             </div>
           </article>

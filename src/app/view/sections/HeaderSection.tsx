@@ -8,7 +8,8 @@ type HeaderSectionProps = {
   isScrolled: boolean
 }
 
-const playStoreUrl = 'https://play.google.com/store/search?q=Cognix&c=apps'
+const playStoreUrl =
+  'https://play.google.com/store/apps/details?id=com.cognixhub.app&hl=pt_BR'
 
 export function HeaderSection({ isScrolled }: HeaderSectionProps) {
   return (

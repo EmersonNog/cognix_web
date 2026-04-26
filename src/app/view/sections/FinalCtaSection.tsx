@@ -48,7 +48,7 @@ export function FinalCtaSection() {
               </a>
             </div>
             <div className="mt-[22px] text-[14px] text-white/[0.55]">
-              Primeiro mês por apenas R$ 9,90 · Cancele quando quiser
+              Cupom COGNIX10 liberado para o primeiro mês · Cole no checkout
             </div>
           </div>
         </div>
