@@ -36,10 +36,13 @@ export function PlansSection() {
           <article
             className="flex h-full min-w-0 flex-col rounded-[28px] border border-[var(--border)] bg-[var(--surface-card)] p-9 shadow-[var(--shadow-sm)]"
           >
-            <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex items-start justify-between gap-3">
               <h3 className="font-[var(--font-display)] text-[22px] font-bold tracking-[-0.01em] text-[var(--ink)]">
                 Mensal
               </h3>
+              <span className="inline-flex shrink-0 items-center rounded-[999px] border border-[rgba(216,173,77,0.26)] bg-[var(--primary-50)] px-3 py-1 text-[12px] font-bold text-[var(--primary)]">
+                Cupom COGNIX10
+              </span>
             </div>
             <div className="my-5 flex items-baseline gap-1">
               <span className="font-[var(--font-display)] text-[22px] font-semibold text-[var(--slate)]">
@@ -55,10 +58,6 @@ export function PlansSection() {
             <div className="mb-3 text-[14px] text-[var(--slate)]">
               Depois, <strong className="text-[var(--ink)]">R$ 19,90/mês</strong>.
               Cancele quando quiser.
-            </div>
-            <div className="mb-6 rounded-[16px] border border-[rgba(216,173,77,0.24)] bg-[var(--primary-50)] px-4 py-3 text-[13px] leading-[1.5] text-[var(--ink)]">
-              Cupom <strong>COGNIX10</strong> liberado. Cole no checkout da
-              AbacatePay para ativar o primeiro mês por R$ 9,90.
             </div>
             <ul className="mb-7 flex list-none flex-col gap-3 p-0">
               {monthlyFeatures.map((feature) => (
@@ -78,7 +77,7 @@ export function PlansSection() {
                 Começar por R$ 9,90
               </a>
               <div className="mt-[14px] text-center text-[12px] text-[var(--slate-2)]">
-                Cole o cupom no checkout · Cancele quando quiser
+                Cancele quando quiser
               </div>
             </div>
           </article>
