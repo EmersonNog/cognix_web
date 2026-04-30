@@ -1,5 +1,7 @@
 import { type SyntheticEvent, useState } from 'react'
 
+import { trackMetaLead } from '@/app/service/metaPixel'
+
 type ContactFormField = 'name' | 'email' | 'message'
 
 type ContactFormState = Record<ContactFormField, string>
@@ -68,9 +70,10 @@ export function useContactFormController() {
       setForm(initialForm)
       setStatus('success')
       setFeedback('Mensagem enviada. Vamos responder assim que possível.')
+      trackMetaLead()
     } catch {
       setStatus('error')
-      setFeedback('Não conseguimos enviar agora. Tente novamente em instantes.')
+      setFeedback('Nao conseguimos enviar agora. Tente novamente em instantes.')
     }
   }
 

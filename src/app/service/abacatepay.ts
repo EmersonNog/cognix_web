@@ -1,10 +1,12 @@
 import type { SubscriptionPlanId } from '@/app/model/subscription-plans'
+import type { CheckoutAttribution } from '@/app/service/attribution'
 
 type CreateSubscriptionCheckoutInput = {
   planId: SubscriptionPlanId
   name: string
   email: string
   taxId: string
+  attribution?: CheckoutAttribution
   couponCode?: string
 }
 
@@ -23,6 +25,7 @@ export async function createAbacatePaySubscriptionCheckout({
   name,
   email,
   taxId,
+  attribution,
   couponCode,
 }: CreateSubscriptionCheckoutInput) {
   const response = await fetch(abacatePaySubscriptionEndpoint, {
@@ -31,7 +34,7 @@ export async function createAbacatePaySubscriptionCheckout({
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ planId, name, email, taxId, couponCode }),
+    body: JSON.stringify({ planId, name, email, taxId, couponCode, attribution }),
   })
 
   let payload: CreateSubscriptionCheckoutResponse | null = null

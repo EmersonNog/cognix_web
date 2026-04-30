@@ -5,16 +5,23 @@ import {
   type SubscriptionPlanId,
 } from '@/app/model/subscription-plans'
 import { createAbacatePaySubscriptionCheckout } from '@/app/service/abacatepay'
+import { readCheckoutAttribution } from '@/app/service/attribution'
 import { FIRST_MONTH_COUPON_CODE } from '@/app/view/subscription/subscriptionConstants'
 import {
-  copyCouponToClipboard,
+  type CouponCopyStatus,
+  maybeCopyFirstMonthCoupon,
+  readSubmittedCheckoutForm,
+  resolveCheckoutDisplayState,
+  resolveCouponHelperText,
+  trackInitiateCheckout,
+  validateCheckoutSubmission,
+} from '@/app/view/subscription/subscriptionCheckoutHelpers'
+import {
   maskCpf,
   normalizeCouponCode,
   resolveInitialConfirmation,
   resolveInitialPlanId,
 } from '@/app/view/subscription/subscriptionUtils'
-
-type CouponCopyStatus = 'idle' | 'copied' | 'blocked'
 
 export function useSubscriptionCheckout() {
   const [selectedPlanId, setSelectedPlanId] = useState(resolveInitialPlanId)
@@ -37,27 +44,22 @@ export function useSubscriptionCheckout() {
     isCouponFieldEnabled &&
     couponCode.trim() !== '' &&
     normalizeCouponCode(couponCode) !== FIRST_MONTH_COUPON_CODE
-  const checkoutDisplayPrice =
-    isMonthlyPlan && !isFirstMonthCouponApplied ? 'R$ 19,90' : selectedPlan.price
-  const checkoutPriceLabel =
-    isMonthlyPlan && isFirstMonthCouponApplied ? 'Com cupom' : 'Total hoje'
-  const checkoutDisplayNote =
-    isMonthlyPlan && isFirstMonthCouponApplied
-      ? 'Primeiro mês por R$ 9,90.'
-      : isCouponFieldEnabled
-        ? 'Digite o cupom para ativar o desconto.'
-        : isMonthlyPlan
-          ? 'Mensalidade de R$ 19,90.'
-          : selectedPlan.checkoutNote
-  const couponHelperText = !isMonthlyPlan
-    ? null
-    : isCouponCodeInvalid
-      ? `Cupom inválido. Use ${FIRST_MONTH_COUPON_CODE}.`
-      : couponCopyStatus === 'copied'
-        ? 'Cupom copiado.'
-        : couponCopyStatus === 'blocked'
-          ? `Copie ${FIRST_MONTH_COUPON_CODE} no checkout.`
-          : null
+  const {
+    checkoutDisplayNote,
+    checkoutDisplayPrice,
+    checkoutPriceLabel,
+    checkoutValue,
+  } = resolveCheckoutDisplayState({
+    isCouponFieldEnabled,
+    isFirstMonthCouponApplied,
+    isMonthlyPlan,
+    selectedPlan,
+  })
+  const couponHelperText = resolveCouponHelperText({
+    couponCopyStatus,
+    isCouponCodeInvalid,
+    isMonthlyPlan,
+  })
 
   function handlePlanSelect(planId: SubscriptionPlanId) {
     setSelectedPlanId(planId)
@@ -94,33 +96,17 @@ export function useSubscriptionCheckout() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const formData = new FormData(event.currentTarget)
-    const name = String(formData.get('name') ?? '').trim()
-    const email = String(formData.get('email') ?? '').trim()
-    const submittedTaxId = String(formData.get('taxId') ?? '').trim()
-    const submittedCouponCode = isCouponFieldEnabled
-      ? normalizeCouponCode(String(formData.get('couponCode') ?? '').trim())
-      : ''
-    const cleanTaxId = submittedTaxId.replace(/\D/g, '')
+    const submittedForm = readSubmittedCheckoutForm(
+      event.currentTarget,
+      isCouponFieldEnabled,
+    )
+    const validationError = validateCheckoutSubmission(
+      submittedForm,
+      selectedPlan.id,
+    )
 
-    if (!name || !email || !submittedTaxId) {
-      setErrorMessage('Informe seu nome, email e CPF para continuar.')
-      return
-    }
-
-    if (cleanTaxId.length !== 11) {
-      setErrorMessage('Informe um CPF válido para continuar.')
-      return
-    }
-
-    if (
-      selectedPlan.id === 'mensal' &&
-      submittedCouponCode &&
-      submittedCouponCode !== FIRST_MONTH_COUPON_CODE
-    ) {
-      setErrorMessage(
-        `Cupom inválido. Use ${FIRST_MONTH_COUPON_CODE} ou deixe o campo vazio para continuar sem cupom.`,
-      )
+    if (validationError) {
+      setErrorMessage(validationError)
       return
     }
 
@@ -129,24 +115,25 @@ export function useSubscriptionCheckout() {
     setCouponCopyStatus('idle')
 
     try {
-      if (
-        selectedPlan.id === 'mensal' &&
-        submittedCouponCode === FIRST_MONTH_COUPON_CODE
-      ) {
-        const didCopyCoupon = await copyCouponToClipboard(
-          FIRST_MONTH_COUPON_CODE,
-        )
-        setCouponCopyStatus(didCopyCoupon ? 'copied' : 'blocked')
+      const nextCouponCopyStatus = await maybeCopyFirstMonthCoupon({
+        couponCode: submittedForm.couponCode,
+        planId: selectedPlan.id,
+      })
+
+      if (nextCouponCopyStatus) {
+        setCouponCopyStatus(nextCouponCopyStatus)
       }
 
       const checkoutUrl = await createAbacatePaySubscriptionCheckout({
         planId: selectedPlan.id,
-        name,
-        email,
-        taxId: submittedTaxId,
-        couponCode: submittedCouponCode || undefined,
+        name: submittedForm.name,
+        email: submittedForm.email,
+        taxId: submittedForm.taxId,
+        attribution: readCheckoutAttribution(),
+        couponCode: submittedForm.couponCode || undefined,
       })
 
+      trackInitiateCheckout(selectedPlan, checkoutValue)
       window.location.assign(checkoutUrl)
     } catch (error) {
       setIsSubmitting(false)
@@ -174,6 +161,7 @@ export function useSubscriptionCheckout() {
     checkoutDisplayPrice,
     checkoutPriceLabel,
     checkoutDisplayNote,
+    checkoutValue,
     handlePlanSelect,
     handleTaxIdChange,
     handleCouponCodeChange,

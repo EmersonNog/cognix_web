@@ -1,3 +1,4 @@
+import { useMetaPixelPageTracking } from '@/app/controller/useMetaPixelPageTracking'
 import { useLandingPageController } from '@/app/controller/useLandingPageController'
 import { ContactPageView } from '@/app/view/ContactPageView'
 import { LegalPageView } from '@/app/view/LegalPageView'
@@ -5,6 +6,8 @@ import { LandingPageView } from '@/app/view/LandingPageView'
 import { SubscriptionPageView } from '@/app/view/SubscriptionPageView'
 
 function App() {
+  useMetaPixelPageTracking()
+
   const { isContactPage, isScrolled, isSubscriptionPage, legalPage } =
     useLandingPageController()
 

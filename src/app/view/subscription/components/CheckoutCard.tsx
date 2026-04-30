@@ -217,7 +217,7 @@ export function CheckoutCard({
         <button
           type="submit"
           disabled={isSubmitting || isCouponCodeInvalid}
-          className={`${primaryButtonClass} w-full disabled:cursor-not-allowed disabled:opacity-70`}
+          className={`checkout-button ${primaryButtonClass} w-full disabled:cursor-not-allowed disabled:opacity-70`}
         >
           {isSubmitting ? (
             <>
