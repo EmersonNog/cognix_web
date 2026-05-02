@@ -32,7 +32,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
   {
     id: 'anual',
     name: 'Plano anual',
-    eyebrow: 'Mais estratégico',
+    eyebrow: 'Mais vendido',
     price: 'R$ 199,90',
     cadence: 'por ano',
     note: 'Equivale a R$ 16,65/mês, com 2 meses grátis.',

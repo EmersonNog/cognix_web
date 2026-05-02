@@ -3,7 +3,7 @@ import { containerClass } from '@/app/view/viewTokens'
 
 export function TrustStrip() {
   return (
-    <div className="border-y border-[var(--border)] bg-[var(--bg)] py-7">
+    <div className="border-y border-[var(--border)] bg-white/[0.02] py-7 backdrop-blur-[6px]">
       <div
         data-reveal
         className={`${containerClass} reveal flex flex-wrap items-center justify-between gap-8`}

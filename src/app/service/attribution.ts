@@ -1,3 +1,8 @@
+import {
+  canUseDom,
+  safeParseJson,
+} from '@/app/service/browserRuntime'
+
 const ATTRIBUTION_STORAGE_KEY = 'cognix.checkoutAttribution'
 const MAX_ATTRIBUTION_VALUE_LENGTH = 300
 
@@ -23,10 +28,6 @@ export type CheckoutAttribution = Partial<
   capturedAt?: string
   landingPage?: string
   referrer?: string
-}
-
-function canUseBrowserStorage() {
-  return typeof window !== 'undefined' && typeof document !== 'undefined'
 }
 
 function sanitizeAttributionValue(value: string | null) {
@@ -63,18 +64,15 @@ function readCookie(name: string) {
 }
 
 function readStoredAttribution(): CheckoutAttribution {
-  if (!canUseBrowserStorage()) {
+  if (!canUseDom()) {
     return {}
   }
 
   try {
-    const raw = window.localStorage.getItem(ATTRIBUTION_STORAGE_KEY)
-
-    if (!raw) {
-      return {}
-    }
-
-    const parsed = JSON.parse(raw) as CheckoutAttribution
+    const parsed = safeParseJson<CheckoutAttribution>(
+      window.localStorage.getItem(ATTRIBUTION_STORAGE_KEY),
+      {},
+    )
 
     return parsed && typeof parsed === 'object' ? parsed : {}
   } catch {
@@ -94,7 +92,7 @@ function writeStoredAttribution(attribution: CheckoutAttribution) {
 }
 
 export function captureAttributionFromCurrentUrl() {
-  if (!canUseBrowserStorage()) {
+  if (!canUseDom()) {
     return
   }
 
@@ -134,7 +132,7 @@ export function readCheckoutAttribution(): CheckoutAttribution | undefined {
   const stored = readStoredAttribution()
   const attribution: CheckoutAttribution = { ...stored }
 
-  if (canUseBrowserStorage()) {
+  if (canUseDom()) {
     META_COOKIE_KEYS.forEach((key) => {
       const value = readCookie(key)
 

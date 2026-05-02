@@ -97,6 +97,16 @@
   }
 }
 
+@keyframes mockupMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);

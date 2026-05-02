@@ -13,7 +13,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="bg-[var(--surface)] pb-10 pt-[104px] max-[720px]:pb-8 max-[720px]:pt-[72px]"
+      className="bg-transparent pb-10 pt-[104px] max-[720px]:pb-8 max-[720px]:pt-[72px]"
     >
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">

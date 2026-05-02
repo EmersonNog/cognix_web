@@ -9,7 +9,7 @@ export function BenefitsSection() {
   return (
     <section
       id="beneficios"
-      className="bg-[var(--bg)] py-[104px] max-[720px]:py-[72px]"
+      className="bg-transparent py-[104px] max-[720px]:py-[72px]"
     >
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">

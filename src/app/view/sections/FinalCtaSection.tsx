@@ -9,7 +9,7 @@ import {
 
 export function FinalCtaSection() {
   return (
-    <section className="bg-[radial-gradient(70%_60%_at_50%_0%,rgba(216,173,77,0.08),transparent_60%),var(--surface)] pb-[120px] pt-6 max-[720px]:pb-[72px] max-[720px]:pt-4">
+    <section className="bg-transparent pb-[120px] pt-6 max-[720px]:pb-[72px] max-[720px]:pt-4">
       <div className={containerClass}>
         <div
           data-reveal

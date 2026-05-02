@@ -6,16 +6,18 @@ import {
 } from '@/app/model/subscription-plans'
 import { createAbacatePaySubscriptionCheckout } from '@/app/service/abacatepay'
 import { readCheckoutAttribution } from '@/app/service/attribution'
-import { FIRST_MONTH_COUPON_CODE } from '@/app/view/subscription/subscriptionConstants'
 import {
   type CouponCopyStatus,
   maybeCopyFirstMonthCoupon,
-  readSubmittedCheckoutForm,
-  resolveCheckoutDisplayState,
   resolveCouponHelperText,
-  trackInitiateCheckout,
+} from '@/app/view/subscription/checkoutCoupon'
+import {
+  readSubmittedCheckoutForm,
   validateCheckoutSubmission,
-} from '@/app/view/subscription/subscriptionCheckoutHelpers'
+} from '@/app/view/subscription/checkoutForm'
+import { resolveCheckoutDisplayState } from '@/app/view/subscription/checkoutPricing'
+import { trackInitiateCheckout } from '@/app/view/subscription/checkoutTracking'
+import { FIRST_MONTH_COUPON_CODE } from '@/app/view/subscription/subscriptionConstants'
 import {
   maskCpf,
   normalizeCouponCode,

@@ -9,7 +9,7 @@ import {
 
 export function ObjectionsSection() {
   return (
-    <section className="bg-[var(--bg)] py-[104px] max-[720px]:py-[72px]">
+    <section className="bg-transparent py-[104px] max-[720px]:py-[72px]">
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">
           <Eyebrow className="mb-[18px]">Dúvidas comuns</Eyebrow>

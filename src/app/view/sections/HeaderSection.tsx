@@ -1,15 +1,13 @@
 import clsx from 'clsx'
 import { Smartphone } from 'lucide-react'
 
+import { GOOGLE_PLAY_URL } from '@/app/model/app-links'
 import { navItems } from '@/app/model/landing-navigation'
 import { containerClass } from '@/app/view/viewTokens'
 
 type HeaderSectionProps = {
   isScrolled: boolean
 }
-
-const playStoreUrl =
-  'https://play.google.com/store/apps/details?id=com.cognixhub.app&hl=pt_BR'
 
 export function HeaderSection({ isScrolled }: HeaderSectionProps) {
   return (
@@ -45,7 +43,7 @@ export function HeaderSection({ isScrolled }: HeaderSectionProps) {
 
         <div className="flex items-center gap-[10px]">
           <a
-            href={playStoreUrl}
+            href={GOOGLE_PLAY_URL}
             target="_blank"
             rel="noreferrer"
             aria-label="Baixar o app Cognix na Google Play"

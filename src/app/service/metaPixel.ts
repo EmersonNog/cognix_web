@@ -1,3 +1,5 @@
+import { canUseDom } from '@/app/service/browserRuntime'
+
 const META_PIXEL_ID = '1479374593823597'
 const META_PIXEL_SCRIPT_ID = 'meta-pixel-script'
 const META_PIXEL_SCRIPT_URL =
@@ -23,10 +25,6 @@ declare global {
     __metaPixelLastPageView?: string
     fbq?: MetaPixelFn
   }
-}
-
-function canUseMetaPixel() {
-  return typeof window !== 'undefined' && typeof document !== 'undefined'
 }
 
 function ensureMetaPixelQueue() {
@@ -72,7 +70,7 @@ function ensureMetaPixelScript() {
 }
 
 function resolvePageViewKey() {
-  if (!canUseMetaPixel()) {
+  if (!canUseDom()) {
     return ''
   }
 
@@ -82,7 +80,7 @@ function resolvePageViewKey() {
 }
 
 export function initMetaPixel() {
-  if (!canUseMetaPixel() || window.__metaPixelInitialized) {
+  if (!canUseDom() || window.__metaPixelInitialized) {
     return
   }
 
@@ -97,7 +95,7 @@ export function trackMetaEvent(
   eventName: string,
   parameters?: MetaPixelParameters,
 ) {
-  if (!canUseMetaPixel()) {
+  if (!canUseDom()) {
     return
   }
 
@@ -120,7 +118,7 @@ export function trackMetaLead() {
 }
 
 export function trackMetaPageView(pageViewKey = resolvePageViewKey()) {
-  if (!canUseMetaPixel() || !pageViewKey) {
+  if (!canUseDom() || !pageViewKey) {
     return
   }
 

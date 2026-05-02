@@ -1,5 +1,6 @@
 import { ArrowLeft, Check } from 'lucide-react'
 
+import { GOOGLE_PLAY_URL } from '@/app/model/app-links'
 import { Eyebrow } from '@/app/view/components/LandingPrimitives'
 import {
   primaryButtonClass,
@@ -32,7 +33,7 @@ export function SubscriptionSuccessPanel({
           Voltar para a landing
         </a>
         <a
-          href="https://play.google.com/store/apps/details?id=com.cognixhub.app&hl=pt_BR"
+          href={GOOGLE_PLAY_URL}
           target="_blank"
           rel="noreferrer"
           className={primaryButtonClass}
