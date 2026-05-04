@@ -4,7 +4,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: 'Produto',
     links: [
-      { href: '/#solucao', label: 'Como funciona' },
+      { href: '/#solucao', label: 'Resultados' },
       { href: '/#beneficios', label: 'Benefícios' },
       { href: '/#planos', label: 'Planos' },
       { href: '/#faq', label: 'Perguntas' },

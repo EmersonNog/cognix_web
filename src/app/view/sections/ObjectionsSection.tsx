@@ -4,12 +4,13 @@ import { objections } from '@/app/model/landing-objections'
 import { Eyebrow } from '@/app/view/components/LandingPrimitives'
 import {
   containerClass,
+  contentSectionClass,
   primaryButtonClass,
 } from '@/app/view/viewTokens'
 
 export function ObjectionsSection() {
   return (
-    <section className="bg-transparent py-[104px] max-[720px]:py-[72px]">
+    <section className={contentSectionClass}>
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">
           <Eyebrow className="mb-[18px]">Dúvidas comuns</Eyebrow>
@@ -42,7 +43,7 @@ export function ObjectionsSection() {
           ))}
         </div>
 
-        <div className="mt-12 grid items-center gap-6 rounded-[28px] border border-[rgba(216,173,77,0.26)] bg-[radial-gradient(90%_130%_at_0%_0%,rgba(115,225,191,0.12),transparent_54%),linear-gradient(135deg,#1c122c_0%,#130a22_100%)] px-8 py-7 shadow-[var(--shadow-md)] max-[780px]:grid-cols-1 max-[780px]:text-center min-[781px]:grid-cols-[auto_1fr_auto]">
+        <div className="mt-12 grid items-center gap-6 rounded-[28px] border border-[rgba(216,173,77,0.26)] bg-[radial-gradient(90%_130%_at_0%_0%,rgba(115,225,191,0.12),transparent_54%),linear-gradient(135deg,#1c122c_0%,#130a22_100%)] px-8 py-7 shadow-[var(--shadow-md)] max-[720px]:hidden max-[780px]:grid-cols-1 max-[780px]:text-center min-[781px]:grid-cols-[auto_1fr_auto]">
           <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[16px] border border-[rgba(115,225,191,0.22)] bg-[var(--success-50)] text-[var(--success)]">
             <ShieldCheck className="h-7 w-7" strokeWidth={2} />
           </div>

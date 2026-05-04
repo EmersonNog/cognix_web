@@ -3,13 +3,16 @@ import {
   BenefitCard,
   Eyebrow,
 } from '@/app/view/components/LandingPrimitives'
-import { containerClass } from '@/app/view/viewTokens'
+import {
+  containerClass,
+  contentSectionClass,
+} from '@/app/view/viewTokens'
 
 export function BenefitsSection() {
   return (
     <section
       id="beneficios"
-      className="bg-transparent py-[104px] max-[720px]:py-[72px]"
+      className={contentSectionClass}
     >
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">

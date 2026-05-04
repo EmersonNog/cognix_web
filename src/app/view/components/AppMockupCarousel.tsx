@@ -25,13 +25,13 @@ export function AppMockupCarousel({
             {items.map((mockup) => (
               <figure
                 key={`${copyIndex}-${mockup.label}`}
-                className="relative w-[340px] shrink-0 overflow-hidden rounded-[28px] shadow-[0_28px_80px_-34px_rgba(0,0,0,0.82)] max-[720px]:w-[280px]"
+                className="relative w-[340px] shrink-0 overflow-hidden rounded-[20px] shadow-[0_28px_80px_-34px_rgba(0,0,0,0.82)] max-[720px]:w-[280px]"
               >
                 <img
                   src={mockup.src}
                   alt={mockup.alt}
                   loading="lazy"
-                  className="relative z-[1] w-full rounded-[28px]"
+                  className="relative z-[1] w-full rounded-[20px]"
                 />
                 <figcaption className="absolute bottom-5 left-5 z-[2] rounded-[999px] border border-[rgba(255,255,255,0.08)] bg-[#0b0914]/85 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--ink-2)] backdrop-blur-[8px]">
                   {mockup.label}

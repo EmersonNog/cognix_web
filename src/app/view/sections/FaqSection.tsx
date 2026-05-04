@@ -5,7 +5,10 @@ import {
   Eyebrow,
   FaqItem,
 } from '@/app/view/components/LandingPrimitives'
-import { containerClass } from '@/app/view/viewTokens'
+import {
+  containerClass,
+  contentSectionClass,
+} from '@/app/view/viewTokens'
 
 export function FaqSection() {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null)
@@ -13,7 +16,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="bg-transparent pb-10 pt-[104px] max-[720px]:pb-8 max-[720px]:pt-[72px]"
+      className={contentSectionClass}
     >
       <div className={containerClass}>
         <div className="mx-auto mb-14 max-w-[760px] text-center">

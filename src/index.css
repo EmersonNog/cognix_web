@@ -107,6 +107,16 @@
   }
 }
 
+@keyframes trustStripMarqueeRight {
+  from {
+    transform: translateX(calc(-50% - 0.875rem));
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -118,6 +128,27 @@
 .reveal.on {
   opacity: 1;
   transform: translateY(0);
+}
+
+.trust-strip-marquee-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.trust-strip-marquee-track {
+  animation: trustStripMarqueeRight 18s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -16,7 +16,7 @@ export function HeroActionLinks() {
         />
       </a>
       <a href="#solucao" className={secondaryButtonClass}>
-        Ver recursos do app
+        Ver antes e depois
       </a>
     </div>
   )

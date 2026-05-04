@@ -39,6 +39,6 @@ export const faqs: FaqItem[] = [
   {
     question: 'Posso cancelar?',
     answer:
-      'Sim. No plano mensal, você pode cancelar quando quiser pela própria conta do aplicativo, sem fidelidade.',
+      'Sim. No plano mensal e anual, você pode cancelar quando quiser pela própria conta do aplicativo, sem fidelidade.',
   },
 ]
