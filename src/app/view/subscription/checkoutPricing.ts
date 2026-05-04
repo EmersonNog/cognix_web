@@ -14,10 +14,10 @@ type CheckoutDisplayState = {
   checkoutValue: number
 }
 
-const MONTHLY_RENEWAL_PRICE = 'R$ 19,90'
-const MONTHLY_RENEWAL_VALUE = 19.9
-const MONTHLY_FIRST_MONTH_VALUE = 9.9
-const ANNUAL_VALUE = 199.9
+const MONTHLY_RENEWAL_PRICE = 'R$ 29,90'
+const MONTHLY_RENEWAL_VALUE = 29.9
+const MONTHLY_FIRST_MONTH_VALUE = 19.9
+const ANNUAL_VALUE = 299
 
 export function resolveCheckoutDisplayState({
   isCouponFieldEnabled,
@@ -52,7 +52,7 @@ function resolveCheckoutDisplayNote({
   selectedPlan,
 }: ResolveCheckoutDisplayStateInput) {
   if (isMonthlyPlan && isFirstMonthCouponApplied) {
-    return 'Primeiro mês por R$ 9,90.'
+    return 'Primeiro mês por R$ 19,90.'
   }
 
   if (isCouponFieldEnabled) {
@@ -60,7 +60,7 @@ function resolveCheckoutDisplayNote({
   }
 
   if (isMonthlyPlan) {
-    return 'Mensalidade de R$ 19,90.'
+    return 'Mensalidade de R$ 29,90.'
   }
 
   return selectedPlan.checkoutNote

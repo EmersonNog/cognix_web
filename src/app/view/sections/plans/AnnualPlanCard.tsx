@@ -24,7 +24,7 @@ export function AnnualPlanCard() {
             R$
           </span>
           <span className="font-[var(--font-display)] text-[54px] font-extrabold leading-none tracking-[-0.03em] text-white">
-            16,65
+            24,91
           </span>
           <span className="ml-1 text-[15px] font-medium text-white/[0.65]">
             /mês
@@ -33,7 +33,7 @@ export function AnnualPlanCard() {
         <div className="relative mb-5 text-[11px] leading-none tracking-[-0.03em] text-white/[0.70]">
           <span className="whitespace-nowrap">
             Cobrado anualmente ·{' '}
-            <strong className="font-semibold text-white">R$ 199,90/ano</strong>{' '}
+            <strong className="font-semibold text-white">R$ 299,00/ano</strong>{' '}
             · 12 meses de acesso
           </span>
         </div>

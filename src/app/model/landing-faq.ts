@@ -34,7 +34,7 @@ export const faqs: FaqItem[] = [
   {
     question: 'Quanto custa?',
     answer:
-      'O plano mensal custa R$ 9,90 no primeiro mês e depois R$ 19,90/mês. O plano anual custa R$ 16,65/mês — com economia de R$ 38,90 em relação ao mensal.',
+      'O plano mensal custa R$ 19,90 no primeiro mês e depois R$ 29,90/mês. O plano anual custa R$ 24,91/mês — com economia de R$ 59,80 em relação ao mensal.',
   },
   {
     question: 'Posso cancelar?',

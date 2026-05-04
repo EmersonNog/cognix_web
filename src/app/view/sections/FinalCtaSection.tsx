@@ -37,7 +37,7 @@ export function FinalCtaSection() {
                 href="/assinatura?plano=mensal"
                 className={primaryButtonClass}
               >
-                Começar agora por R$ 9,90
+                Começar agora por R$ 19,90
                 <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
               </a>
               <a

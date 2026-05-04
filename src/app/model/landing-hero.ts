@@ -1,7 +1,7 @@
 import type { PlanOfDayItem } from '@/app/model/landing-types'
 
 export const heroMetaItems = [
-  '1º mês por R$ 9,90',
+  '1º mês por R$ 19,90',
   'Cancele quando quiser',
   'Sem fidelidade',
 ]

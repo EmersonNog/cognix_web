@@ -18,14 +18,14 @@ export function MonthlyPlanCard() {
           R$
         </span>
         <span className="font-[var(--font-display)] text-[54px] font-extrabold leading-none tracking-[-0.03em] text-[var(--ink)]">
-          9,90
+          19,90
         </span>
         <span className="ml-1 text-[15px] font-medium text-[var(--slate)]">
           /1º mês
         </span>
       </div>
       <div className="mb-3 text-[14px] text-[var(--slate)]">
-        Depois, <strong className="text-[var(--ink)]">R$ 19,90/mês</strong>.
+        Depois, <strong className="text-[var(--ink)]">R$ 29,90/mês</strong>.
         Cancele quando quiser.
       </div>
       <PlanFeatureList
@@ -37,7 +37,7 @@ export function MonthlyPlanCard() {
           href="/assinatura?plano=mensal"
           className={secondaryButtonClass + ' w-full'}
         >
-          Começar por R$ 9,90
+          Começar por R$ 19,90
         </a>
         <div className="mt-[14px] text-center text-[12px] text-[var(--slate-2)]">
           Cancele quando quiser

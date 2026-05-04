@@ -52,7 +52,7 @@ export function ObjectionsSection() {
             </h3>
             <p className="text-[14.5px] leading-[1.6] text-[var(--ink-2)]">
               Teste o Cognix por{' '}
-              <strong className="text-[var(--success)]">R$ 9,90 no primeiro mês</strong>
+              <strong className="text-[var(--success)]">R$ 19,90 no primeiro mês</strong>
               . Explore o banco de questões, os indicadores, os flashcards e a
               redação guiada. Se não quiser continuar, basta cancelar — sem
               fidelidade, sem burocracia.
