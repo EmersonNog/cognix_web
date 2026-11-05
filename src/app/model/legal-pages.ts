@@ -18,52 +18,125 @@ export const legalPages = [
     eyebrow: 'Termos legais',
     title: 'Termos de uso',
     description:
-      'Regras para acesso e uso da landing page do Cognix, seus materiais institucionais e canais oficiais.',
+      'Regras para usar o app Cognix, suas assinaturas e este site. Última atualização: 5 de novembro de 2026.',
     sections: [
       {
-        title: '1. Sobre esta página',
+        title: '1. Sobre o Cognix e estes termos',
         paragraphs: [
-          'Estes termos regulam o acesso e o uso da landing page do Cognix, incluindo materiais institucionais, recursos visuais, informações sobre produto e links para canais oficiais.',
-          'Ao continuar navegando, você reconhece que utiliza esta página para fins informativos e concorda com as regras descritas aqui.',
+          'O Cognix é um app de estudos com questões de provas, trilha de estudos, redação, chat com inteligência artificial, análise de desempenho, plano da semana, flashcards, mapas mentais e salas multiplayer. Ele está disponível para Android, iOS e por este site (mkt.cognix-hub.com).',
+          'Estes termos valem para o app, para as assinaturas e para este site. Ao criar uma conta ou usar o Cognix, você concorda com eles. Se não concordar, não use o serviço.',
         ],
       },
       {
-        title: '2. Uso permitido',
+        title: '2. Sua conta',
         paragraphs: [
-          'O uso do Cognix deve respeitar a legislação aplicável e os limites técnicos e comerciais do projeto.',
+          'Para usar o app, você precisa criar uma conta com Google, Apple ou e-mail. A conta é pessoal e intransferível.',
         ],
         bullets: [
-          'Usar o site de forma lícita e compatível com sua finalidade institucional e informativa.',
-          'Não tentar copiar, desmontar, automatizar, raspar ou explorar tecnicamente a página sem autorização.',
-          'Não praticar atos que comprometam segurança, desempenho, reputação ou disponibilidade do ambiente.',
+          'Informe dados verdadeiros e mantenha seu acesso em segurança. Você é responsável pelo que for feito com a sua conta.',
+          'Não compartilhe a conta nem a assinatura com outras pessoas.',
+          'Menores de 18 anos devem usar o Cognix com a autorização de um responsável legal, que também responde pela assinatura.',
         ],
       },
       {
-        title: '3. Propriedade intelectual',
+        title: '3. Planos e cobrança',
         paragraphs: [
-          'Marca, identidade visual, textos, layout, mockups, imagens, código e demais elementos da landing page pertencem ao Cognix ou são utilizados com autorização.',
-          'Nenhum material pode ser reproduzido, redistribuído ou reutilizado comercialmente sem permissão prévia e expressa.',
+          'Parte dos recursos exige uma assinatura ativa ou o período de teste. Há dois planos: o mensal, que custa R$ 19,90 no primeiro mês e R$ 29,90 por mês depois disso, e o anual, de R$ 299,00 por ano.',
+          'O preço que vale é o exibido na tela de compra, que pode variar conforme a loja, o país e as ofertas vigentes. A oferta do primeiro mês do plano mensal vale uma única vez por pessoa.',
+          'Você pode assinar pelo Google Play, pela App Store ou por este site. No Google Play e na App Store, a cobrança é feita pela própria loja. Pelo site, o pagamento é processado pela AbacatePay.',
+          'A assinatura é renovada automaticamente ao fim de cada período, mensal ou anual, até ser cancelada.',
         ],
       },
       {
-        title: '4. Conteúdo e disponibilidade',
+        title: '4. Teste grátis',
         paragraphs: [
-          'O Cognix está em evolução e pode alterar descrições, recursos, cronogramas, telas, promessas de lançamento e disponibilidade da experiência sem aviso prévio.',
-          'A página e seus conteúdos são apresentados conforme disponibilidade, sem garantia de funcionamento ininterrupto ou de permanência integral de cada elemento publicado.',
+          'Contas novas podem ativar um teste grátis de 3 dias, com acesso a todos os recursos e sem cobrança. O teste é ativado por você, dentro do app, e pode ser usado uma única vez por conta.',
+          'Ao fim do teste, o acesso completo termina. Nenhuma assinatura é contratada automaticamente.',
         ],
       },
       {
-        title: '5. Canais externos e limitações',
+        title: '5. Cancelamento',
         paragraphs: [
-          'Esta landing page pode direcionar o usuário para canais e plataformas de terceiros, como o Instagram oficial do Cognix. O uso dessas plataformas segue as regras e políticas dos respectivos provedores.',
-          'O Cognix não se responsabiliza por indisponibilidade, alterações externas ou práticas de terceiros fora do seu controle direto.',
+          'Não há fidelidade: você pode cancelar quando quiser. Após o cancelamento, o acesso continua até o fim do período já pago e a assinatura não é renovada. Para cancelar:',
+        ],
+        bullets: [
+          'Google Play: Play Store → Pagamentos e assinaturas → Assinaturas.',
+          'App Store: Ajustes → seu nome → Assinaturas.',
+          'Site: no app, em Minha assinatura.',
+          'Desinstalar o app ou excluir a conta não cancela assinaturas feitas no Google Play ou na App Store. Cancele na loja antes.',
         ],
       },
       {
-        title: '6. Privacidade e atualizações',
+        title: '6. Reembolso',
         paragraphs: [
-          'O tratamento de dados relacionado a esta página segue a Política de privacidade e a Política de cookies publicadas pelo Cognix.',
-          'Estes termos podem ser atualizados a qualquer momento. A versão mais recente publicada nesta tela passa a valer a partir da sua disponibilização.',
+          'Pedidos de reembolso de compras feitas no Google Play ou na App Store seguem as regras de cada loja e devem ser feitos diretamente a ela.',
+          'Para compras feitas pelo site, você pode desistir em até 7 dias da contratação, conforme o artigo 49 do Código de Defesa do Consumidor, pedindo o reembolso pelo e-mail informado no item 15.',
+        ],
+      },
+      {
+        title: '7. Inteligência artificial',
+        paragraphs: [
+          'O chat, a correção de redações e outras funções do Cognix usam inteligência artificial. As respostas são geradas automaticamente e podem conter erros, imprecisões ou informações desatualizadas. Confira o que for importante. A IA é um apoio aos estudos e não substitui professores ou orientação profissional.',
+          'O uso da IA tem um limite mensal por conta, exibido no app, que pode ser ajustado para manter o serviço estável.',
+          'Não envie à IA dados pessoais sensíveis, nem conteúdos de terceiros que você não tenha o direito de usar.',
+        ],
+      },
+      {
+        title: '8. Seu conteúdo',
+        paragraphs: [
+          'Redações, mensagens, anexos, flashcards e outros conteúdos que você cria continuam sendo seus. Você autoriza o Cognix a armazená-los e processá-los apenas para prestar o serviço, por exemplo para corrigir uma redação ou responder no chat.',
+          'Você é responsável pelo que envia. Não é permitido enviar conteúdo ilegal, ofensivo, que viole direitos de terceiros ou que contenha vírus e códigos maliciosos.',
+        ],
+      },
+      {
+        title: '9. Conteúdo do Cognix',
+        paragraphs: [
+          'As questões vêm de provas aplicadas por instituições públicas e são usadas para fins educacionais. As pinturas usadas nas capas do app são obras em domínio público.',
+          'A marca, a identidade visual, os textos, a organização das trilhas, o código e os demais elementos do app e do site pertencem ao Cognix. Eles não podem ser copiados, redistribuídos ou usados comercialmente sem autorização.',
+        ],
+      },
+      {
+        title: '10. Uso permitido',
+        paragraphs: ['Ao usar o Cognix, você se compromete a não:'],
+        bullets: [
+          'Copiar, raspar, automatizar o acesso ou extrair em massa questões e outros conteúdos.',
+          'Tentar acessar áreas restritas, contornar limites ou bloqueios, ou fazer engenharia reversa do app.',
+          'Atrapalhar outras pessoas, inclusive nas salas multiplayer, ou usar o serviço para fins ilegais.',
+        ],
+      },
+      {
+        title: '11. Disponibilidade e resultados',
+        paragraphs: [
+          'Trabalhamos para manter o Cognix sempre disponível, mas podem ocorrer manutenções e falhas. Recursos podem ser alterados, melhorados ou removidos ao longo do tempo.',
+          'O Cognix ajuda a organizar e praticar seus estudos, mas não garante aprovação ou nota em nenhuma prova.',
+        ],
+      },
+      {
+        title: '12. Suspensão e exclusão da conta',
+        paragraphs: [
+          'Podemos suspender ou encerrar contas que violem estes termos, com aviso sempre que possível.',
+          'Você pode excluir sua conta a qualquer momento pelo app. A exclusão remove seus dados conforme a Política de privacidade e não pode ser desfeita.',
+        ],
+      },
+      {
+        title: '13. Privacidade',
+        paragraphs: [
+          'O tratamento dos seus dados segue a Política de privacidade e a Política de cookies publicadas neste site.',
+        ],
+      },
+      {
+        title: '14. Alterações e lei aplicável',
+        paragraphs: [
+          'Estes termos podem ser atualizados. Quando a mudança for relevante, avisaremos no app ou neste site. Continuar usando o Cognix depois disso significa aceitar a nova versão.',
+          'Estes termos seguem as leis do Brasil, incluindo o Código de Defesa do Consumidor. Fica eleito o foro do domicílio do consumidor.',
+        ],
+      },
+      {
+        title: '15. Contato',
+        paragraphs: [
+          'Dúvidas, pedidos de reembolso de compras feitas pelo site ou outras solicitações:',
+          'vestibularapp@gmail.com',
+          '@cognix_hub',
         ],
       },
     ],
